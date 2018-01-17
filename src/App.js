@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Title, Field, Control, Input, Button } from 'reactbulma'
+import { Title, Field, Control, Input, Button } from 'reactbulma';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect
+} from 'react-router-dom';
 
 
 class App extends Component {
+
 
 state = {
   // procedure search enable/disable
@@ -22,26 +29,28 @@ showSearch = () => {
     const { procSelect } = this.state
 
     return (
-      <div className="App">
-        <div className="ProcInvSelector">
-          <Title onClick={this.showSearch}>Procedures</Title>
-          {
-            procSelect &&
-            <Field hasAddons>
-              <Control>
-                <Input placeholder="Enter the name of a procedure:" />
-              </Control>
-              <Control>
-                <Button info>
-                  Search
-                </Button>
-              </Control>
-            </Field>
-          }
-          <hr/>
-          <Title>Inventory</Title>
+      <Router>
+        <div className="App">
+          <div className="ProcInvSelector">
+            <Title onClick={this.showSearch}>Procedures</Title>
+            {
+              procSelect &&
+              <Field hasAddons>
+                <Control>
+                  <Input placeholder="Enter the name of a procedure:" />
+                </Control>
+                <Control>
+                  <Button info>
+                    Search
+                  </Button>
+                </Control>
+              </Field>
+            }
+            <hr/>
+              <Link to="/inventory"><Title>Inventory</Title></Link>
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }
