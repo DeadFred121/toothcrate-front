@@ -5,8 +5,10 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  Redirect
+  Redirect,
+  Switch
 } from 'react-router-dom';
+import Inventory from './components/Inventory'
 
 
 class App extends Component {
@@ -49,6 +51,12 @@ showSearch = () => {
             <hr/>
               <Link to="/inventory"><Title>Inventory</Title></Link>
           </div>
+
+          <Switch>
+            <Route path="/inventory" component={Inventory}/>
+          </Switch>
+
+
         </div>
       </Router>
     );
