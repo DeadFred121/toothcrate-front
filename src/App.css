@@ -1,4 +1,11 @@
+html, body, #root {
+  height: 100%;
+}
+
 .App {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   text-align: center;
 }
 
@@ -22,8 +29,16 @@
   font-size: large;
 }
 
+.content {
+  flex: 1 0 auto
+}
+
+.NavBar {
+  height: 100px;
+}
+
 .invTitle {
-  
+
 }
 
 @keyframes App-logo-spin {

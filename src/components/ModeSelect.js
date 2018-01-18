@@ -4,6 +4,8 @@ import SearchInput from 'grommet/components/SearchInput';
 import Box from 'grommet/components/Box';
 import Animate from 'grommet/components/Animate';
 import App from 'grommet/components/App'
+import Image from 'grommet/components/Image'
+import logo from '../images/TCLogo.png'
 import {BrowserRouter as Router, Route, Link, Redirect, Switch} from 'react-router-dom';
 
 class ModeSelect extends Component {
@@ -25,7 +27,8 @@ class ModeSelect extends Component {
     const {procSelect} = this.state
 
     return (<App>
-      <Headline align="center" size="large" onClick={this.showSearch}>
+                <Image src={logo} size='med'/>
+      <Headline align="center" size="med" onClick={this.showSearch}>
         Procedures
       </Headline>
       {
@@ -34,12 +37,13 @@ class ModeSelect extends Component {
             }} align='center'>
             <Animate enter={{
                 "animation" : "fade",
-                "duration" : 1000,
+                "duration" : 750,
                 "delay" : 0
               }} keep={true}>
               <SearchInput
                 placeHolder='Search'
                 suggestions={['Clean', 'Filling', 'Crown', 'Grillz']}
+                size="med"
               />
             </Animate>
           </Box>
@@ -47,7 +51,7 @@ class ModeSelect extends Component {
       }
       <hr />
       <Link to="/inventory">
-        <Headline className="invTitle" align="center" size="large">Inventory</Headline>
+        <Headline className="invTitle" align="center" size="med">Inventory</Headline>
       </Link>
     </App>)
   }
