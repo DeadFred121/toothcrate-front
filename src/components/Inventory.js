@@ -3,37 +3,66 @@ import TableHeader from 'grommet/components/TableHeader';
 import App from 'grommet/components/App';
 import TableRow from 'grommet/components/TableRow';
 import Table from 'grommet/components/Table';
+import Status from 'grommet/components/icons/Status';
 
 class Inventory extends Component {
   render() {
     return (<App>
       <Table>
-        <TableHeader labels={['Name', 'Note']} sortIndex={0} sortAscending={true}/>
+        <TableHeader labels={['Item Code', 'Name', 'Quantity', 'Category', 'Par Level']} sortIndex={0} sortAscending={true}/>
         <tbody>
           <TableRow>
             <td>
-              Alan
+              XL-421
             </td>
             <td>
-              plays accordion
+              Toothbrush
+            </td>
+            <td>
+              Essentials
+            </td>
+            <td>
+              2
+            </td>
+            <td>
+              <Status value='critical' />
             </td>
           </TableRow>
           <TableRow>
             <td>
-              Chris
+              XL-422
             </td>
             <td>
-              drops the mic
+              Toothbrush 2
             </td>
+            <td>
+              Essentials
+            </td>
+            <td>
+              188
+            </td>
+            <td>
+              <Status value='ok' />
+            </td>
+            </TableRow>
+            <TableRow>
+              <td>
+                XL-423
+              </td>
+              <td>
+                Toothbrush 3
+              </td>
+              <td>
+                Essentials
+              </td>
+              <td>
+                300
+              </td>
+              <td>
+                <Status value='warning' />
+              </td>
           </TableRow>
-          <TableRow>
-            <td>
-              Tracy
-            </td>
-            <td>
-              travels the world
-            </td>
-          </TableRow>
+
         </tbody>
       </Table>
     </App>)
