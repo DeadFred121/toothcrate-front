@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Title, Field, Control, Input, Button } from 'reactbulma';
 import Headline from 'grommet/components/Headline';
+import Image from 'grommet/components/Image'
 
 import {
   BrowserRouter as Router,
@@ -15,7 +16,9 @@ import ModeSelect from './components/ModeSelect'
 import NavBar from './components/NavBar'
 import Toothfooter from './components/ToothFooter'
 
-import '../node_modules/grommet-css'
+import logo from './images/TCLogo.png'
+
+import '../node_modules/grommet/grommet-hpinc.min.css'
 
 class App extends Component {
 
@@ -28,8 +31,9 @@ state = {
 
     return (
       <Router>
-        <div className="App">
+        <div className="App" centered='true' inline={true}>
           <NavBar />
+          <Image src={logo} size='med'/>
           <ModeSelect />
           <Switch>
             <Route path="/inventory" component={ Inventory }/>
