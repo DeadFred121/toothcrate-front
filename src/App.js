@@ -37,41 +37,40 @@ state = {
         <div className="App" centered='true' inline={true}>
           <NavBar />
           <div className="content">
-          <Switch>
-            <Route exact path="/" component={ ModeSelect }/>
-            <Route path="/inventory" component={ Inventory }/>
-          </Switch>
-        </div>
-          <Footer justify='between'>
-            <Title>
-              <s/>
-              <a href="/"><Image src={logo} size='thumb'/>
-              </a>
-            </Title>
-            <Box direction='row' align='center' pad={{
+            <Switch>
+              <Route exact path="/" component={ ModeSelect }/>
+              <Route path="/inventory" component={ Inventory }/>
+            </Switch>
+          </div>
+            <Footer justify='between'>
+              <Title>
+                <s/>
+                  <a href="/"><Image src={logo} size='thumb'/>
+                </a>
+              </Title>
+              <Box direction='row' align='center' pad={{
                 "between" : "medium"
               }}>
-              <Paragraph margin='none'>
-                © 2017-2018 Invent/Story
-              </Paragraph>
-              <Menu direction='row' size='small' dropAlign={{
+                <Paragraph margin='none'>
+                  © 2017-2018 Invent/Story
+                </Paragraph>
+                <Menu direction='row' size='small' dropAlign={{
                   "right" : "right"
                 }}>
-                <Anchor href='#'>
-                  Support
-                </Anchor>
-                <Anchor href='#'>
-                  Contact
-                </Anchor>
-                <Anchor href='#'>
-                  About
-                </Anchor>
-              </Menu>
-            </Box>
-          </Footer>
-          {/* <Toothfooter /> */}
-        </div>
-      </Router>
+                  <Anchor href='#'>
+                    Support
+                  </Anchor>
+                  <Anchor href='#'>
+                    Contact
+                  </Anchor>
+                  <Anchor href='#'>
+                    About
+                  </Anchor>
+                </Menu>
+              </Box>
+            </Footer>
+          </div>
+        </Router>
     );
   }
 }
