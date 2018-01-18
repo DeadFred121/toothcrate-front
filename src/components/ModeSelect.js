@@ -6,7 +6,7 @@ import Animate from 'grommet/components/Animate';
 import App from 'grommet/components/App'
 import Image from 'grommet/components/Image'
 import logo from '../images/TCLogo.png'
-import {BrowserRouter as Router, Route, Link, Redirect, Switch} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class ModeSelect extends Component {
 

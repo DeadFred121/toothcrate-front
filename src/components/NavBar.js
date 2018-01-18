@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
-import Headline from 'grommet/components/Headline';
-import SearchInput from 'grommet/components/SearchInput';
 import Box from 'grommet/components/Box';
-import Animate from 'grommet/components/Animate';
 import App from 'grommet/components/App';
-import {BrowserRouter as Router, Route, Link, Redirect, Switch} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Header from 'grommet/components/Header'
 import Title from 'grommet/components/Title';
@@ -16,14 +13,13 @@ class NavBar extends Component {
 
   render() {
 
-    return (<App className="NavBar">
-
+    return (
+      <App className="NavBar">
       <Header fixed={true}>
         <Title>
           <Link to="/">Home</Link>
         </Title>
         <Box flex={true} justify='end' direction='row' responsive={false}>
-
           <Menu icon={<MenuIcon />} dropAlign={{
               "right" : "right"
             }}>
@@ -43,7 +39,7 @@ class NavBar extends Component {
         </Box>
       </Header>
     </App>
-      )}
+  )}
 }
 
 
