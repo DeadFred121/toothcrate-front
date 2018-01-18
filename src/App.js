@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Title, Field, Control, Input, Button } from 'reactbulma';
-import Headline from 'grommet/components/Headline';
+import { Title } from 'reactbulma';
 import Image from 'grommet/components/Image'
 
 import {
   BrowserRouter as Router,
   Route,
-  Link,
-  Redirect,
   Switch
 } from 'react-router-dom';
 import Inventory from './components/Inventory'
 import ModeSelect from './components/ModeSelect'
 import NavBar from './components/NavBar'
-import Toothfooter from './components/ToothFooter'
+import Footer from 'grommet/components/Footer'
+import Box from 'grommet/components/Box'
+import Paragraph from 'grommet/components/Paragraph'
+import Menu from 'grommet/components/Menu'
+import Anchor from 'grommet/components/Anchor'
 import '../node_modules/grommet/grommet-hpinc.min.css'
+import logo from './images/TCLogo.png'
+
 
 class App extends Component {
 
@@ -23,8 +26,6 @@ state = {
 }
 
   render() {
-
-    const { procSelect } = this.state
 
     return (
       <Router>
