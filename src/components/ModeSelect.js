@@ -3,6 +3,7 @@ import Headline from 'grommet/components/Headline';
 import SearchInput from 'grommet/components/SearchInput';
 import Box from 'grommet/components/Box';
 import Animate from 'grommet/components/Animate';
+import App from 'grommet/components/App'
 import {BrowserRouter as Router, Route, Link, Redirect, Switch} from 'react-router-dom';
 
 class ModeSelect extends Component {
@@ -23,7 +24,7 @@ class ModeSelect extends Component {
 
     const {procSelect} = this.state
 
-    return (<div className="ProcInvSelector">
+    return (<App>
       <Headline align="center" size="large" onClick={this.showSearch}>
         Procedures
       </Headline>
@@ -46,9 +47,9 @@ class ModeSelect extends Component {
       }
       <hr />
       <Link to="/inventory">
-        <Headline className="inv" align="center" size="large" >Inventory</Headline>
+        <Headline className="invTitle" align="center" size="large">Inventory</Headline>
       </Link>
-    </div>)
+    </App>)
   }
 }
 

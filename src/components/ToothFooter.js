@@ -7,11 +7,12 @@ import Menu from 'grommet/components/Menu'
 import Anchor from 'grommet/components/Anchor'
 import Footer from 'grommet/components/Footer'
 import Image from 'grommet/components/Image'
+import App from 'grommet/components/App'
 import logo from '../images/TCLogo.png'
 
 class ToothFooter extends Component {
   render() {
-    return (<div className="ToothFooter">
+    return (<App className="ToothFooter">
 
       <Footer justify='between'>
         <Title>
@@ -40,7 +41,7 @@ class ToothFooter extends Component {
           </Menu>
         </Box>
       </Footer>
-    </div>)
+    </App>)
   }
 }
 
