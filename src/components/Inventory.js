@@ -9,7 +9,7 @@ class Inventory extends Component {
   render() {
     return (<App>
       <Table>
-        <TableHeader labels={['Item Code', 'Name', 'Quantity', 'Category', 'Par Level']} sortIndex={0} sortAscending={true}/>
+        <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true}/>
         <tbody>
           <TableRow>
             <td>

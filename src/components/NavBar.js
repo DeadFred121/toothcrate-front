@@ -18,9 +18,9 @@ class NavBar extends Component {
 
     return (<App className="NavBar">
 
-      <Header>
+      <Header fixed={true}>
         <Title>
-          Home
+          <Link to="/">Home</Link>
         </Title>
         <Box flex={true} justify='end' direction='row' responsive={false}>
 
