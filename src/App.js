@@ -15,12 +15,6 @@ import Inventory from './components/Inventory'
 import ModeSelect from './components/ModeSelect'
 import NavBar from './components/NavBar'
 import Toothfooter from './components/ToothFooter'
-import Box from 'grommet/components/Box'
-import Paragraph from 'grommet/components/Paragraph'
-import Menu from 'grommet/components/Menu'
-import Anchor from 'grommet/components/Anchor'
-import Footer from 'grommet/components/Footer'
-import logo from './images/TCLogo.png'
 import '../node_modules/grommet/grommet-hpinc.min.css'
 
 class App extends Component {
@@ -71,6 +65,7 @@ state = {
             </Footer>
           </div>
         </Router>
+
     );
   }
 }
