@@ -57,6 +57,7 @@ class Inventory extends Component {
     </App>)
   }
 
+  // Rendering API Inventory request.
   componentDidMount = () => {
     api.get('/api/inventory').then(res => {
       const inventory = res.data
