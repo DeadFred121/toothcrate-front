@@ -1,22 +1,32 @@
-import React, { Component } from 'react';
-import './App.css';
-import { Title } from 'reactbulma';
-import Image from 'grommet/components/Image'
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch
-} from 'react-router-dom';
-import Inventory from './components/Inventory'
-import ModeSelect from './components/ModeSelect'
-import NavBar from './components/NavBar'
+// React Components
+import React, { Component } from 'react';
+
+// Grommet Components
+import '../node_modules/grommet/grommet-hpinc.min.css'
+import Image from 'grommet/components/Image'
 import Footer from 'grommet/components/Footer'
 import Box from 'grommet/components/Box'
 import Paragraph from 'grommet/components/Paragraph'
 import Menu from 'grommet/components/Menu'
 import Anchor from 'grommet/components/Anchor'
-import '../node_modules/grommet/grommet-hpinc.min.css'
+
+// CSS
+import './App.css';
+
+// Routing Components
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
+
+// Internal Components
+import Inventory from './components/Inventory'
+import ModeSelect from './components/ModeSelect'
+import NavBar from './components/NavBar'
+
+// Assets
 import logo from './images/TCLogo.png'
 
 
@@ -38,11 +48,8 @@ state = {
             </Switch>
           </div>
             <Footer justify='between'>
-              <Title>
-                <s/>
-                  <a href="/"><Image src={logo} size='thumb'/>
-                </a>
-              </Title>
+              <a href="/"><Image src={logo} size='thumb'/>
+              </a>
               <Box direction='row' align='center' pad={{
                 "between" : "medium"
               }}>

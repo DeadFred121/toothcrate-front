@@ -1,10 +1,17 @@
+
+// React Components
 import React, { Component } from 'react';
+
+// Grommet Components
 import TableHeader from 'grommet/components/TableHeader';
 import App from 'grommet/components/App';
 import TableRow from 'grommet/components/TableRow';
 import Table from 'grommet/components/Table';
 import Status from 'grommet/components/icons/Status';
+
+// Internal Components
 import OptionControls from '.component/OptionControls';
+
 
 class EntryShow extends Component {
   render() {
@@ -51,16 +58,16 @@ class EntryShow extends Component {
             <TableRow>
               <td>
                 XL-423
-                </td>
+              </td>
               <td>
                 Toothbrush 3
-                </td>
+              </td>
               <td>
                 Essentials
-                </td>
+              </td>
               <td>
                 300
-                </td>
+              </td>
               <td>
                 <Status value='warning' />
               </td>
