@@ -1,9 +1,14 @@
+
+// React Components
 import React, {Component} from 'react';
+
+// Grommet Components
 import TableHeader from 'grommet/components/TableHeader';
 import App from 'grommet/components/App';
 import TableRow from 'grommet/components/TableRow';
 import Table from 'grommet/components/Table';
 import Status from 'grommet/components/icons/Status';
+
 
 class Inventory extends Component {
   render() {

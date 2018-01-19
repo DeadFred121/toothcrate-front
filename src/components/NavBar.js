@@ -1,13 +1,19 @@
+
+// React Components
 import React, {Component} from 'react';
+
+// Grommet Components
 import Box from 'grommet/components/Box';
 import App from 'grommet/components/App';
-import { Link } from 'react-router-dom';
-
-import Header from 'grommet/components/Header'
+import Header from 'grommet/components/Header';
 import Title from 'grommet/components/Title';
 import Anchor from 'grommet/components/Anchor';
 import Menu from 'grommet/components/Menu';
 import MenuIcon from 'grommet/components/icons/base/Menu';
+
+// Routing Components
+import { Link } from 'react-router-dom';
+
 
 class NavBar extends Component {
 

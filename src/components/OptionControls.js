@@ -1,4 +1,8 @@
+
+// React Components
 import React, { Component } from 'react';
+
+// Grommet Components
 import App from 'grommet/components/App';
 import Button from 'grommet/components/Button';
 
