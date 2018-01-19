@@ -17,22 +17,22 @@ class NavBar extends Component {
       <App className="NavBar">
       <Header fixed={true}>
         <Title>
-          <Link to="/">Home</Link>
+          <Anchor href="/">Home</Anchor>
         </Title>
         <Box flex={true} justify='end' direction='row' responsive={false}>
           <Menu icon={<MenuIcon />} dropAlign={{
               "right" : "right"
             }}>
-            <Anchor href='#' className='active'>
+            <Anchor href='/entryedit'>
               + New Procedure
             </Anchor>
-            <Anchor href='#'>
+            <Anchor href='/inventory'>
               + New Inventory Item
             </Anchor>
-            <Anchor href='#'>
+            <Anchor href='/entryshow'>
               + Orders
             </Anchor>
-            <Anchor href='#'>
+            <Anchor href='/entryshow'>
               + Stock Update
             </Anchor>
           </Menu>

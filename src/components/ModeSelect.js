@@ -5,6 +5,7 @@ import Box from 'grommet/components/Box';
 import Animate from 'grommet/components/Animate';
 import App from 'grommet/components/App'
 import Image from 'grommet/components/Image'
+import Anchor from 'grommet/components/Anchor'
 import logo from '../images/TCLogo.png'
 import { Link } from 'react-router-dom';
 
@@ -26,8 +27,8 @@ class ModeSelect extends Component {
 
     const {procSelect} = this.state
 
-    return (<App>
-                <Image src={logo} size='med'/>
+    return (<App className='ModeSelect'>
+                <Image src={logo} size='med' align="center" />
       <Headline align="center" size="med" onClick={this.showSearch}>
         Procedures
       </Headline>
@@ -50,9 +51,9 @@ class ModeSelect extends Component {
 
       }
       <hr />
-      <Link to="/inventory">
+      <Anchor href="/inventory">
         <Headline className="invTitle" align="center" size="med">Inventory</Headline>
-      </Link>
+      </Anchor>
     </App>)
   }
 }

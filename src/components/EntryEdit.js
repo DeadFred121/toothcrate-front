@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import App from 'grommet/components/App';
 import TextInput from 'grommet/components/TextInput';
-import OptionControls from './components/OptionControls';
+import OptionControls from './OptionControls';
 import Button from 'grommet/components/Button';
 import Table from 'grommet/components/Table';
 import NumberInput from 'grommet/components/NumberInput';
-import OptionControls from './components/OptionControls';
+import TableHeader from 'grommet/components/TableHeader';
+import TableRow from 'grommet/components/TableRow';
 
 class EntryEdit extends Component {
   render() {
@@ -40,3 +41,5 @@ class EntryEdit extends Component {
     )
   }
 }
+
+export default EntryEdit;

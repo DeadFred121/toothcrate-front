@@ -4,7 +4,9 @@ import App from 'grommet/components/App';
 import TableRow from 'grommet/components/TableRow';
 import Table from 'grommet/components/Table';
 import Status from 'grommet/components/icons/Status';
-import OptionControls from '.component/OptionControls';
+import OptionControls from './OptionControls';
+import Headline from 'grommet/components/Headline';
+import Box from 'grommet/components/Box';
 
 class EntryShow extends Component {
   render() {
