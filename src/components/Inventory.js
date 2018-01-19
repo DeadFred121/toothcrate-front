@@ -8,70 +8,65 @@ import App from 'grommet/components/App';
 import TableRow from 'grommet/components/TableRow';
 import Table from 'grommet/components/Table';
 import Status from 'grommet/components/icons/Status';
+import Anchor from 'grommet/components/Anchor';
+
+// API
+import { api } from '../api/init';
 
 
 class Inventory extends Component {
+
+  state = {
+    inventory: [],
+    selectItem: null
+  }
+
+
   render() {
-    return (<App>
+    return (
+      <App>
+      {this.state.selectItem && <p>I'm a modal</p>}
       <Table>
         <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true}/>
         <tbody>
+        {this.state.inventory.map(item => (
           <TableRow>
             <td>
-              XL-421
+            <Anchor onClick={() => {
+              this.setState({selectItem: item._id})
+            }} >
+              {item.code}
+            </Anchor>
             </td>
             <td>
-              Toothbrush
+              {item.name}
             </td>
             <td>
-              Essentials
+              {item.category}
             </td>
             <td>
-              2
+              {item.quantity}
             </td>
             <td>
               <Status value='critical' />
             </td>
           </TableRow>
-          <TableRow>
-            <td>
-              XL-422
-            </td>
-            <td>
-              Toothbrush 2
-            </td>
-            <td>
-              Essentials
-            </td>
-            <td>
-              188
-            </td>
-            <td>
-              <Status value='ok' />
-            </td>
-            </TableRow>
-            <TableRow>
-              <td>
-                XL-423
-              </td>
-              <td>
-                Toothbrush 3
-              </td>
-              <td>
-                Essentials
-              </td>
-              <td>
-                300
-              </td>
-              <td>
-                <Status value='warning' />
-              </td>
-          </TableRow>
-
+        ))}
         </tbody>
       </Table>
     </App>)
   }
+
+  componentDidMount = () => {
+    api.get('/api/inventory').then(res => {
+      const inventory = res.data
+      this.setState({
+        inventory
+      })
+    })
+  }
+
+
 }
 
 export default Inventory;

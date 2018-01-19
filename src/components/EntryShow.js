@@ -75,8 +75,21 @@ class EntryShow extends Component {
           </tbody>
         </Table>
         <OptionControls />
-      </App>)
+      </App>
+    )
   }
+
+  componentDidMount = () => {
+    api.get('/api/procedure').then(res => {
+      const procedures = res.data.map(procedure => {
+        return procedure.name
+      })
+      this.setState({
+        procedures
+      })
+    })
+  }
+
 }
 
 export default EntryShow;

@@ -16,12 +16,16 @@ import logo from '../images/TCLogo.png'
 // Routing Components
 import { Link } from 'react-router-dom';
 
+// API
+import { api } from '../api/init';
+
 
 class ModeSelect extends Component {
 
   state = {
     // procedure search enable/disable
-    procSelect: false
+    procSelect: false,
+    procedures: ['Clean', 'Filling', 'Crown', 'Grillz']
   }
 
   showSearch = () => {
@@ -51,7 +55,7 @@ class ModeSelect extends Component {
               }} keep={true}>
               <SearchInput
                 placeHolder='Search'
-                suggestions={['Clean', 'Filling', 'Crown', 'Grillz']}
+                suggestions={this.state.procedures}
                 size="med"
               />
             </Animate>
@@ -64,6 +68,18 @@ class ModeSelect extends Component {
       </Link>
     </App>)
   }
+
+  componentDidMount = () => {
+    api.get('/api/procedure').then(res => {
+      const procedures = res.data.map(procedure => {
+        return procedure.name
+      })
+      this.setState({
+        procedures
+      })
+    })
+  }
+
 }
 
 export default ModeSelect;

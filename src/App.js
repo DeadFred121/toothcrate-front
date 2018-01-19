@@ -29,6 +29,9 @@ import NavBar from './components/NavBar'
 // Assets
 import logo from './images/TCLogo.png'
 
+// API/Axios
+import { api, setJwt } from './api/init';
+
 
 class App extends Component {
 

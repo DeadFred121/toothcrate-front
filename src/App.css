@@ -13,6 +13,6 @@ html, body, #root {
   flex: 1 0 auto
 }
 
-.NavBar {
-  height: 50px;
+.grommet.grommetux-app.NavBar {
+  height: 65px;
 }
