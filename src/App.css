@@ -13,6 +13,30 @@ html, body, #root {
   flex: 1 0 auto
 }
 
+#procSearch {
+  padding-right: 110px;
+}
+
+.hrSearch {
+  margin: 20px;
+}
+
+.modelHeading {
+  padding: 20px;
+}
+
+.modelBox1 {
+  margin-right: 5px
+}
+
+.modelBox2 {
+  margin-left: 5px
+}
+
+.modelEditButton {
+  margin: 10px 0;
+}
+
 .grommet.grommetux-app.NavBar {
   height: 65px;
 }
