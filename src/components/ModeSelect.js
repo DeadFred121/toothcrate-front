@@ -69,6 +69,7 @@ class ModeSelect extends Component {
     </App>)
   }
 
+  // Mapping through Procedures returned from API
   componentDidMount = () => {
     api.get('/api/procedure').then(res => {
       const procedures = res.data.map(procedure => {
