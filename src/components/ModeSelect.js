@@ -53,16 +53,16 @@ class ModeSelect extends Component {
                 "duration" : 750,
                 "delay" : 0
               }} keep={true}>
-              <SearchInput
+              <SearchInput id='procSearch'
                 placeHolder='Search'
                 suggestions={this.state.procedures}
-                size="med"
+                size="large"
               />
             </Animate>
           </Box>
 
       }
-      <hr />
+      <hr className='hrSearch' />
       <Link to="/inventory">
         <Headline className="invTitle" align="center" size="med">Inventory</Headline>
       </Link>
