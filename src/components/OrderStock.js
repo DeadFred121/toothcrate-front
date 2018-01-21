@@ -8,8 +8,7 @@ import App from 'grommet/components/App'
 import Headline from 'grommet/components/Headline';
 
 // Internal Components
-import EntryShow from './components/EntryShow';
-import OptionControls from './components/OptionControls';
+import OptionControls from './OptionControls';
 
 
 class OrderStock extends Component {
@@ -24,9 +23,10 @@ class OrderStock extends Component {
 
         <Headline>Supplier</Headline>
         <hr />
-        <EntryShow />
 
       </App>
     )
   }
 }
+
+export default OrderStock;
