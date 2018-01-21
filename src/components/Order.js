@@ -23,7 +23,7 @@ class Order extends Component {
       <App>
         <Headline>Orders</Headline>
         <SearchInput
-          placeHolder='Enter Supplier'
+          placeHolder='Search Suppliers'
           suggestions={this.state.suppliers}
         />
         <Table>
