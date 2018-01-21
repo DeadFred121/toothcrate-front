@@ -9,6 +9,10 @@ html, body, #root {
   text-align: center;
 }
 
+.NavBar {
+  height: 65px;
+}
+
 .content {
   flex: 1 0 auto
 }

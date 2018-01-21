@@ -23,14 +23,11 @@ state = {
   render() {
     return (
       <App>
+        <Headline>Stock Update</Headline>
         <SearchInput
-          placeHolder='Enter Supplier'
+          placeHolder='Search Supplier'
           suggestions={this.state.suppliers}
-          size="med"
         />
-
-        <Headline>Supplier</Headline>
-        <hr />
         <Table>
           <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity']} sortIndex={0} sortAscending={true}/>
             <tbody>

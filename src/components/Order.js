@@ -21,14 +21,11 @@ class Order extends Component {
   render() {
     return (
       <App>
+        <Headline>Orders</Headline>
         <SearchInput
           placeHolder='Enter Supplier'
           suggestions={this.state.suppliers}
-          size="med"
         />
-
-        <Headline>Supplier</Headline>
-        <hr />
         <Table>
           <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true}/>
             <tbody>

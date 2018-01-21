@@ -20,7 +20,7 @@ class ProcShow extends Component {
       <App>
         <Headline align="center" size="med">Procedure Title</Headline>
         <Table>
-          <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity']} sortIndex={0} sortAscending={true} />
+          <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Status']} sortIndex={0} sortAscending={true} />
           <tbody>
             <TableRow>
               <td>
