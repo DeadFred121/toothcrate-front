@@ -1,39 +1,33 @@
-// React Components
 import React, { Component } from 'react';
-
-// Grommet Components
 import App from 'grommet/components/App';
 import TextInput from 'grommet/components/TextInput';
+import OptionControls from './components/OptionControls';
 import Button from 'grommet/components/Button';
-import NumberInput from 'grommet/components/NumberInput';
-import TableHeader from 'grommet/components/TableHeader';
-import TableRow from 'grommet/components/TableRow';
 import Table from 'grommet/components/Table';
+import NumberInput from 'grommet/components/NumberInput';
+import OptionControls from './components/OptionControls';
 
-// Internal Components
-import OptionControls from './OptionControls';
-
-class ProcEdit extends Component {
+class EntryEdit extends Component {
   render() {
     return (
       <App>
-        <TextInput defaultValue="Procedure Name" />
+        <TextInput defaultValue="Entry Name" />
         <Table>
           <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity']} sortIndex={0} sortAscending={true} />
           <tbody>
             <TableRow>
               <td>
                 <TextInput defaultValue="Item Code" />
-              </td>
+            </td>
               <td>
                 <TextInput defaultValue="Item Name" />
-              </td>
+            </td>
               <td>
                 <TextInput defaultValue="Category" />
-              </td>
+            </td>
               <td>
                 <NumberInput step={1} />
-              </td>
+            </td>
               <td>
                 <Button icon="" critical="true" />
               </td>
@@ -46,5 +40,3 @@ class ProcEdit extends Component {
     )
   }
 }
-
-export default ProcEdit;
