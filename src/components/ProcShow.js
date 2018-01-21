@@ -7,9 +7,11 @@ import App from 'grommet/components/App';
 import TableRow from 'grommet/components/TableRow';
 import Table from 'grommet/components/Table';
 import Status from 'grommet/components/icons/Status';
+import Headline from 'grommet/components/Headline';
 
 // Internal Components
-import OptionControls from '.component/OptionControls';
+import OptionControls from './OptionControls';
+import {api} from '../api/init';
 
 
 class ProcShow extends Component {

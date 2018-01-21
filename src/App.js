@@ -25,6 +25,10 @@ import {
 import Inventory from './components/Inventory'
 import ModeSelect from './components/ModeSelect'
 import NavBar from './components/NavBar'
+import ProcEdit from './components/ProcEdit'
+import OrderStock from './components/OrderStock'
+import ItemEdit from './components/ItemEdit'
+import ProcShow from './components/ProcShow'
 
 // Assets
 import logo from './images/TCLogo.png'
@@ -48,6 +52,10 @@ state = {
             <Switch>
               <Route exact path="/" component={ ModeSelect }/>
               <Route path="/inventory" component={ Inventory }/>
+              <Route path="/procedit" component={ ProcEdit }/>
+              <Route path="/procshow" component={ ProcShow }/>
+              <Route path="/itemedit" component={ ItemEdit }/>
+              <Route path="/orderstock" component={ OrderStock }/>
             </Switch>
           </div>
             <Footer justify='between'>

@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 // Grommet Components
 import App from 'grommet/components/App';
 import Button from 'grommet/components/Button';
+import Box from 'grommet/components/Box';
 
 
 class OptionControls extends Component {
