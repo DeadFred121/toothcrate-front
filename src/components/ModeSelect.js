@@ -9,12 +9,10 @@ import Animate from 'grommet/components/Animate';
 import App from 'grommet/components/App';
 import Image from 'grommet/components/Image';
 import ClipboardIcon from 'grommet/components/icons/base/Clipboard';
-import TagIcon from 'grommet/components/icons/base/Tag';
 import Button from 'grommet/components/Button';
 import Anchor from 'grommet/components/Anchor';
 
 // Internal Components
-import ProcShow from './ProcShow';
 
 // Assets
 import logo from '../images/TCLogo.png'
