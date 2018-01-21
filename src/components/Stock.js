@@ -12,6 +12,7 @@ import TableHeader from 'grommet/components/TableHeader';
 import TableRow from 'grommet/components/TableRow';
 
 // Internal Components
+import OptionControls from './OptionControls';
 
 class Stock extends Component {
 
@@ -52,6 +53,7 @@ state = {
             </tbody>
         </Table>
         <hr />
+        <OptionControls />
 
       </App>
     )
