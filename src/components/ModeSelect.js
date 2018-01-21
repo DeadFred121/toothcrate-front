@@ -9,16 +9,15 @@ import Animate from 'grommet/components/Animate';
 import App from 'grommet/components/App';
 import Image from 'grommet/components/Image';
 import ClipboardIcon from 'grommet/components/icons/base/Clipboard';
+import TagIcon from 'grommet/components/icons/base/Tag';
 import Button from 'grommet/components/Button';
+import Anchor from 'grommet/components/Anchor';
 
 // Internal Components
 import ProcShow from './ProcShow';
 
 // Assets
 import logo from '../images/TCLogo.png'
-
-// Routing Components
-import {Link} from 'react-router-dom';
 
 // API
 import {api} from '../api/init';
@@ -60,20 +59,23 @@ class ModeSelect extends Component {
                            placeHolder='Search procedures'
                            suggestions={this.state.procedures}
                            size="large"/>
-              <Button icon={<ClipboardIcon />}
-                      label='Label'
-                      href={ProcShow}
+                           <br />
+              <Button label='Submit'
+                      href='/procshow'
                       primary={true}
-                      accent={false}
               />
             </Animate>
           </Box>
 
       }
       <hr className='hrSearch'/>
-      <Link to="/inventory">
+      <Anchor icon={<ClipboardIcon />}
+              href='/inventory'
+              primary={true}
+              disabled={false}
+      >
         <Headline className="invTitle" align="center" size="med">Inventory</Headline>
-      </Link>
+      </Anchor>
     </App>)
   }
 

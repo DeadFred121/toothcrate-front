@@ -10,7 +10,6 @@ import Status from 'grommet/components/icons/Status';
 import Anchor from 'grommet/components/Anchor';
 import Layer from 'grommet/components/Layer';
 import Heading from 'grommet/components/Heading';
-import Animate from 'grommet/components/Animate';
 import Timestamp from 'grommet/components/Timestamp';
 import Box from 'grommet/components/Box';
 import Button from 'grommet/components/Button';

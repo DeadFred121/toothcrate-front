@@ -1,4 +1,3 @@
-
 // React Components
 import React, {Component} from 'react';
 
@@ -10,10 +9,7 @@ import Title from 'grommet/components/Title';
 import Anchor from 'grommet/components/Anchor';
 import Menu from 'grommet/components/Menu';
 import MenuIcon from 'grommet/components/icons/base/Menu';
-
-// Routing Components
-import { Link } from 'react-router-dom';
-
+import LinkPreviousIcon from 'grommet/components/icons/base/LinkPrevious';
 
 class NavBar extends Component {
 
@@ -21,9 +17,16 @@ class NavBar extends Component {
 
     return (
       <App className="NavBar">
-      <Header fixed={true}>
+      <Header fixed={true}
+              float={false}
+              splash={false}
+              size='medium'>
         <Title>
-          <Link to="/">Home</Link>
+          <Anchor icon={<LinkPreviousIcon />}
+                  label='Home'
+                  href='/'
+                  primary={true}
+                  reverse={false} />
         </Title>
         <Box flex={true} justify='end' direction='row' responsive={false}>
           <Menu icon={<MenuIcon />} dropAlign={{
@@ -47,7 +50,5 @@ class NavBar extends Component {
     </App>
   )}
 }
-
-
 
 export default NavBar;
