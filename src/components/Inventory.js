@@ -148,31 +148,31 @@ class Inventory extends Component {
 
       <Table>
         <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true}/>
-        <tbody>
-          {
-            this.state.inventory.map(item => (<TableRow>
-              <td>
-                <Anchor onClick={() => {
-                    this.setState({selectItem: item._id, inventoryItem: item})
-                  }}>
-                  {item.code}
-                </Anchor>
-              </td>
-              <td>
-                {item.name}
-              </td>
-              <td>
-                {item.category}
-              </td>
-              <td>
-                {item.quantity}
-              </td>
-              <td>
-                <Status value='critical'/>
-              </td>
-            </TableRow>))
-          }
-        </tbody>
+          <tbody>
+            {
+              this.state.inventory.map(item => (<TableRow>
+                <td>
+                  <Anchor onClick={() => {
+                      this.setState({selectItem: item._id, inventoryItem: item})
+                    }}>
+                    {item.code}
+                  </Anchor>
+                </td>
+                <td>
+                  {item.name}
+                </td>
+                <td>
+                  {item.category}
+                </td>
+                <td>
+                  {item.quantity}
+                </td>
+                <td>
+                  <Status value='critical'/>
+                </td>
+              </TableRow>))
+            }
+          </tbody>
       </Table>
     </App>)
   }
