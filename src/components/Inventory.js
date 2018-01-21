@@ -146,9 +146,9 @@ class Inventory extends Component {
           </Table>
           <Box direction='row' align='stretch'>
             <Button className='modalButton1' primary='true' label='Order' fill='true'/>
-            <Button className='modelButton2' accent='true' label='Cancel' fill='true'/>
+            <Button className='modalButton2' accent='true' label='Cancel' fill='true'/>
           </Box>
-          <Button className='modelEditButton' secondary='true' icon={<EditIcon />} label='Edit Inventory Item' fill='true'/>
+          <Button className='modalEditButton' secondary='true' icon={<EditIcon />} label='Edit Inventory Item' fill='true'/>
         </Layer>
       }
       <Headline align="center" size="med">Inventory</Headline>
