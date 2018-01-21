@@ -12,8 +12,6 @@ import ClipboardIcon from 'grommet/components/icons/base/Clipboard';
 import Button from 'grommet/components/Button';
 import Anchor from 'grommet/components/Anchor';
 
-// Internal Components
-
 // Assets
 import logo from '../images/TCLogo.png'
 
@@ -25,11 +23,10 @@ class ModeSelect extends Component {
   state = {
     // procedure search enable/disable
     procSelect: false,
-    procedures: ['Clean', 'Filling', 'Crown', 'Grillz']
+    procedures: []
   }
 
   showSearch = () => {
-    console.log('State Changed!')
     this.setState(prevState => ({
       procSelect: !prevState.procSelect
     }))
@@ -37,43 +34,33 @@ class ModeSelect extends Component {
 
   render() {
 
-    const {procSelect} = this.state
+    const {procSelect, procedures} = this.state
 
-    return (<App>
-      <Image src={logo} size='med'/>
-      <Headline align="center" size="med" onClick={this.showSearch}>
-        Procedures
-      </Headline>
-      {
-        procSelect && <Box pad={{
-              "between" : "small"
-            }} align='center'>
-            <Animate enter={{
-                "animation" : "fade",
-                "duration" : 750,
-                "delay" : 0
-              }} keep={true}>
-              <SearchInput id='procSearch'
-                           placeHolder='Search procedures'
-                           suggestions={this.state.procedures}
-                           size="large"/>
-                           <br />
-              <Button label='Submit'
-                      href='/procshow'
-                      primary={true}
-              />
-            </Animate>
-          </Box>
+    return (
+      <App>
+        <Image src={logo} size='med' />
+        <Headline className='ProcHeader' align="center" size="med" onClick={this.showSearch}>
+          Procedures
+        </Headline>
+        {
+          procSelect && <Box pad={{"between" : "small"}}
+                             align='center'>
+              <Animate enter={{
+                  "animation" : "fade",
+                  "duration" : 750,
+                  "delay" : 0 }}
+                  keep={true}>
+                <SearchInput id='procSearchBar' placeHolder='Search procedures' suggestions={procedures} size="large"/>
+                <br/>
+                <Button label='Submit' href='/procshow' primary={true}/>
+              </Animate>
+            </Box>
 
-      }
-      <hr className='hrSearch'/>
-      <Anchor icon={<ClipboardIcon />}
-              href='/inventory'
-              primary={true}
-              disabled={false}
-      >
-        <Headline className="invTitle" align="center" size="med">Inventory</Headline>
-      </Anchor>
+        }
+        <hr className='hrSearch'/>
+        <Anchor icon={<ClipboardIcon />} href='/inventory' primary={true} disabled={false}>
+          <Headline className="invTitle" align="center" size="med">Inventory</Headline>
+        </Anchor>
     </App>)
   }
 

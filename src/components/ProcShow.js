@@ -11,8 +11,9 @@ import Headline from 'grommet/components/Headline';
 
 // Internal Components
 import OptionControls from './OptionControls';
-import {api} from '../api/init';
 
+// API
+import {api} from '../api/init';
 
 class ProcShow extends Component {
   render() {
