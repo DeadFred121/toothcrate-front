@@ -5,12 +5,13 @@ import React, { Component } from 'react';
 import App from 'grommet/components/App';
 import TextInput from 'grommet/components/TextInput';
 import Button from 'grommet/components/Button';
-import Table from 'grommet/components/Table';
 import NumberInput from 'grommet/components/NumberInput';
+import TableHeader from 'grommet/components/TableHeader';
+import TableRow from 'grommet/components/TableRow';
+import Table from 'grommet/components/Table';
 
 // Internal Components
-import OptionControls from './components/OptionControls';
-import OptionControls from './components/OptionControls';
+import OptionControls from './OptionControls';
 
 class ProcEdit extends Component {
   render() {

@@ -29,10 +29,10 @@ class NavBar extends Component {
           <Menu icon={<MenuIcon />} dropAlign={{
               "right" : "right"
             }}>
-            <Anchor href='#' className='active'>
+            <Anchor href='/procedit'>
               + New Procedure
             </Anchor>
-            <Anchor href='#'>
+            <Anchor href='/itemedit'>
               + New Inventory Item
             </Anchor>
             <Anchor href='#'>
