@@ -5,12 +5,12 @@ import React, { Component } from 'react';
 import SearchInput from 'grommet/components/SearchInput';
 import App from 'grommet/components/App'
 import Headline from 'grommet/components/Headline';
-import Status from 'grommet/components/Status';
+import Status from 'grommet/components/icons/Status';
+import Table from 'grommet/components/Table';
+import TableHeader from 'grommet/components/TableHeader';
+import TableRow from 'grommet/components/TableRow';
 
 // Internal Components
-import EntryShow from './components/EntryShow';
-import OptionControls from './components/OptionControls';
-
 
 class Order extends Component {
 
@@ -54,9 +54,10 @@ class Order extends Component {
             </tbody>
         </Table>
         <hr />
-        <OptionControls />
 
       </App>
     )
   }
 }
+
+export default Order;

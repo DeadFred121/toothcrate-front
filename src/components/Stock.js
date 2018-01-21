@@ -7,11 +7,11 @@ import SearchInput from 'grommet/components/SearchInput';
 import App from 'grommet/components/App'
 import Headline from 'grommet/components/Headline';
 import NumberInput from 'grommet/components/NumberInput';
+import Table from 'grommet/components/Table';
+import TableHeader from 'grommet/components/TableHeader';
+import TableRow from 'grommet/components/TableRow';
 
 // Internal Components
-import EntryShow from './components/EntryShow';
-import OptionControls from './components/OptionControls';
-
 
 class Stock extends Component {
 
@@ -52,9 +52,10 @@ state = {
             </tbody>
         </Table>
         <hr />
-        <OptionControls />
 
       </App>
     )
   }
 }
+
+export default Stock;

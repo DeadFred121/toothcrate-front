@@ -40,3 +40,5 @@ class EntryEdit extends Component {
     )
   }
 }
+
+export default EntryShow;

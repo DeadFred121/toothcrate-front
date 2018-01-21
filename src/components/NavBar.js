@@ -35,10 +35,10 @@ class NavBar extends Component {
             <Anchor href='/itemedit'>
               + New Inventory Item
             </Anchor>
-            <Anchor href='/orderstock'>
+            <Anchor href='/order'>
               + Orders
             </Anchor>
-            <Anchor href='#'>
+            <Anchor href='stock'>
               + Stock Update
             </Anchor>
           </Menu>

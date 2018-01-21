@@ -11,6 +11,9 @@ import Image from 'grommet/components/Image';
 import ClipboardIcon from 'grommet/components/icons/base/Clipboard';
 import Button from 'grommet/components/Button';
 
+// Internal Components
+import ProcShow from './ProcShow';
+
 // Assets
 import logo from '../images/TCLogo.png'
 
@@ -59,7 +62,7 @@ class ModeSelect extends Component {
                            size="large"/>
               <Button icon={<ClipboardIcon />}
                       label='Label'
-                      href='ProcShow'
+                      href={ProcShow}
                       primary={true}
                       accent={false}
               />

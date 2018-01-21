@@ -26,7 +26,8 @@ import Inventory from './components/Inventory'
 import ModeSelect from './components/ModeSelect'
 import NavBar from './components/NavBar'
 import ProcEdit from './components/ProcEdit'
-import OrderStock from './components/OrderStock'
+import Order from './components/Order'
+import Stock from './components/Stock'
 import ItemEdit from './components/ItemEdit'
 import ProcShow from './components/ProcShow'
 
@@ -51,11 +52,12 @@ state = {
           <div className="content">
             <Switch>
               <Route exact path="/" component={ ModeSelect }/>
-              <Route path="/inventory" component={ Inventory }/>
-              <Route path="/procedit" component={ ProcEdit }/>
-              <Route path="/procshow" component={ ProcShow }/>
               <Route path="/itemedit" component={ ItemEdit }/>
-              <Route path="/orderstock" component={ OrderStock }/>
+              <Route path="/inventory" component={ Inventory }/>
+              <Route path="/procshow" component={ ProcShow }/>
+              <Route path="/procedit" component={ ProcEdit }/>
+              <Route path="/order" component={ Order }/>
+              <Route path="/stock" component={ Stock }/>
             </Switch>
           </div>
             <Footer justify='between'>
