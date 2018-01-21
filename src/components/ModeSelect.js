@@ -1,4 +1,3 @@
-
 // React Components
 import React, {Component} from 'react';
 
@@ -9,16 +8,17 @@ import Box from 'grommet/components/Box';
 import Animate from 'grommet/components/Animate';
 import App from 'grommet/components/App';
 import Image from 'grommet/components/Image';
+import ClipboardIcon from 'grommet/components/icons/base/Clipboard';
+import Button from 'grommet/components/Button';
 
 // Assets
 import logo from '../images/TCLogo.png'
 
 // Routing Components
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 // API
-import { api } from '../api/init';
-
+import {api} from '../api/init';
 
 class ModeSelect extends Component {
 
@@ -40,7 +40,7 @@ class ModeSelect extends Component {
     const {procSelect} = this.state
 
     return (<App>
-                <Image src={logo} size='med'/>
+      <Image src={logo} size='med'/>
       <Headline align="center" size="med" onClick={this.showSearch}>
         Procedures
       </Headline>
@@ -54,15 +54,20 @@ class ModeSelect extends Component {
                 "delay" : 0
               }} keep={true}>
               <SearchInput id='procSearch'
-                placeHolder='Search'
-                suggestions={this.state.procedures}
-                size="large"
+                           placeHolder='Search procedures'
+                           suggestions={this.state.procedures}
+                           size="large"/>
+              <Button icon={<ClipboardIcon />}
+                      label='Label'
+                      href='ProcShow'
+                      primary={true}
+                      accent={false}
               />
             </Animate>
           </Box>
 
       }
-      <hr className='hrSearch' />
+      <hr className='hrSearch'/>
       <Link to="/inventory">
         <Headline className="invTitle" align="center" size="med">Inventory</Headline>
       </Link>
@@ -75,9 +80,7 @@ class ModeSelect extends Component {
       const procedures = res.data.map(procedure => {
         return procedure.name
       })
-      this.setState({
-        procedures
-      })
+      this.setState({procedures})
     })
   }
 
