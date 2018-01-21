@@ -51,7 +51,6 @@ state = {
         </Table>
         <hr />
         <OptionControls />
-
       </App>
     )
   }

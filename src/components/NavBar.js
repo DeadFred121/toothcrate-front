@@ -41,7 +41,7 @@ class NavBar extends Component {
             <Anchor href='/order'>
               + Orders
             </Anchor>
-            <Anchor href='stock'>
+            <Anchor href='/stock'>
               + Stock Update
             </Anchor>
           </Menu>

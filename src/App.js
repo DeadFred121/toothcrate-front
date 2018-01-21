@@ -1,18 +1,18 @@
-
 // React Components
 import React, { Component } from 'react';
 
 // Grommet Components
-import '../node_modules/grommet/grommet-hpinc.min.css'
 import Image from 'grommet/components/Image'
 import Footer from 'grommet/components/Footer'
 import Box from 'grommet/components/Box'
 import Paragraph from 'grommet/components/Paragraph'
 import Menu from 'grommet/components/Menu'
 import Anchor from 'grommet/components/Anchor'
+import Article from 'grommet/components/Article'
 
-// CSS
+// Styles
 import './App.css';
+import '../node_modules/grommet/grommet-hpinc.min.css'
 
 // Routing Components
 import {
@@ -30,6 +30,7 @@ import Order from './components/Order'
 import Stock from './components/Stock'
 import ItemEdit from './components/ItemEdit'
 import ProcShow from './components/ProcShow'
+import FooterBar from './components/FooterBar'
 
 // Assets
 import logo from './images/TCLogo.png'
@@ -47,9 +48,9 @@ state = {
 
     return (
       <Router>
-        <div className="App" centered='true' inline={true}>
+        <div className='App' centered='true' inline={true}>
           <NavBar />
-          <div className="content">
+          <Box className='Contents'>
             <Switch>
               <Route exact path="/" component={ ModeSelect }/>
               <Route path="/itemedit" component={ ItemEdit }/>
@@ -59,31 +60,8 @@ state = {
               <Route path="/order" component={ Order }/>
               <Route path="/stock" component={ Stock }/>
             </Switch>
-          </div>
-            <Footer justify='between'>
-              <a href="/"><Image src={logo} size='thumb'/>
-              </a>
-              <Box direction='row' align='center' pad={{
-                "between" : "medium"
-              }}>
-                <Paragraph margin='none'>
-                  © 2017-2018 Invent/Story
-                </Paragraph>
-                <Menu direction='row' size='small' dropAlign={{
-                  "right" : "right"
-                }}>
-                  <Anchor href='#'>
-                    Support
-                  </Anchor>
-                  <Anchor href='#'>
-                    Contact
-                  </Anchor>
-                  <Anchor href='#'>
-                    About
-                  </Anchor>
-                </Menu>
-              </Box>
-            </Footer>
+          </Box>
+          <FooterBar />
           </div>
         </Router>
 
