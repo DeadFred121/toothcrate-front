@@ -52,6 +52,7 @@ state = {
               <Route path="/inventory" component={ Inventory }/>
               <Route path="/procedit" component={ ProcEdit }/>
               <Route path="/itemedit" component={ ItemEdit }/>
+              <Route path="/orderstock" component={ OrderStock }/>
             </Switch>
           </div>
             <Footer justify='between'>
