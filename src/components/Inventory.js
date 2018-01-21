@@ -37,7 +37,7 @@ class Inventory extends Component {
               <Heading className='modelHeading' tag='h2' truncate={true}>
                   {this.state.inventoryItem.name}
               </Heading>
-              <Table responsive={true} scrollable={true}>
+              <Table responsive={false}>
                 <thead>
                   <tr>
                     <th>
@@ -65,7 +65,7 @@ class Inventory extends Component {
                   </TableRow>
                 </tbody>
                 </Table>
-                    <Table>
+                    <Table responsive={false}>
                       <thead>
                         <tr>
                           <th>
@@ -93,7 +93,7 @@ class Inventory extends Component {
                         </TableRow>
                       </tbody>
                       </Table>
-                      <Table>
+                      <Table responsive={false} >
                         <thead>
                           <tr>
                             <th>
@@ -115,7 +115,7 @@ class Inventory extends Component {
                           </TableRow>
                         </tbody>
                         </Table>
-                      <Table>
+                      <Table responsive={false} >
                         <thead>
                           <tr>
                             <th>
