@@ -13,8 +13,6 @@ import Headline from 'grommet/components/Headline';
 // Internal Components
 import InvModal from './InvModal'
 
-// API
-import {api} from '../api/init';
 
 class Inventory extends Component {
 

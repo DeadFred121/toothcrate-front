@@ -40,6 +40,20 @@ state = {
   token: null
 }
 
+  onLoginSubmitHandler = ({ username, password }) => {
+    api.post('/auth', {
+      email: username,
+      password
+    }
+    ).then(res => {
+      this.setState({
+        token: res.data.token
+      })
+      setJwt(res.data.token)
+    })
+  }
+  
+
   render() {
 
     const { inventory, selectItem, inventoryItem } = this.state
@@ -49,18 +63,7 @@ state = {
         <div className='App'>
           <NavBar />
           <Box className='Contents'>
-            { !this.state.token ? <LoginForm onSubmit={({ username, password }) => {
-              api.post('/auth', {
-                email: username,
-                password
-              }
-              ).then(res => {
-                this.setState({
-                  token: res.data.token
-                })
-                setJwt(res.data.token)
-              })
-            }} align='start'/> :
+            { !this.state.token ? <LoginForm onSubmit={this.onLoginSubmitHandler} align='start'/> :
               <Switch>
               <Route exact path="/" component={ ModeSelect }/>
               <Route path="/newitem" component={() => <NewItem
@@ -102,8 +105,17 @@ state = {
 
   // Rendering API Inventory request.
   componentDidMount = () => {
+
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.setState({
+        token: token
+      });
+    }
+
     api.get('/api/inventory').then(res => {
       const inventory = res.data
+      console.log(res)
       this.setState({inventory})
     })
   }
