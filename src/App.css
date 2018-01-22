@@ -44,6 +44,15 @@ html, body {
   margin: 10px 0;
 }
 
+.ItemEditButtons {
+  width: 40%;
+  margin: auto;
+}
+
+.NewProcNumInput {
+  padding: 12px;
+}
+
 .FooterBar {
   height: 65px;
   margin-bottom: 5px;
