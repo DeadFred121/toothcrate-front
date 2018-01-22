@@ -31,6 +31,7 @@ import Stock from './components/Stock'
 import ItemEdit from './components/ItemEdit'
 import ProcShow from './components/ProcShow'
 import FooterBar from './components/FooterBar'
+import NewItem from './components/NewItem'
 
 // Assets
 import logo from './images/TCLogo.png'
@@ -53,6 +54,7 @@ state = {
           <Box className='Contents'>
             <Switch>
               <Route exact path="/" component={ ModeSelect }/>
+              <Route path="/newitem" component={ NewItem }/>
               <Route path="/itemedit" component={ ItemEdit }/>
               <Route path="/inventory" component={ Inventory }/>
               <Route path="/procshow" component={ ProcShow }/>

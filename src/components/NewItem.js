@@ -72,7 +72,7 @@ class ItemEdit extends Component {
     return (<App className="ItemEdit">
 
         <Headline>
-          Edit Inventory Item
+          New Inventory Item
         </Headline>
         <Table responsive={false}>
           <thead>
