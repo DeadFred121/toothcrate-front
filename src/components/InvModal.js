@@ -14,12 +14,11 @@ import EditIcon from 'grommet/components/icons/base/Edit';
 
 // Internal Components
 
-const InvModal = ({ inventoryItem, selectItem }) => {
+const InvModal = ({ inventoryItem, selectItem, hideModal }) => {
 
   return (
     <App className="InvModal">
-      <Layer closer={true} onClose={() => {
-            this.setState({selectItem: null}) }}>
+      <Layer closer={true} onClose={ hideModal }>
         <Heading className='modalHeading' tag='h2' truncate={true}>
           {inventoryItem.name}
         </Heading>

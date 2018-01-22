@@ -16,16 +16,9 @@ import InvModal from './InvModal'
 
 class Inventory extends Component {
 
-  state = {
-    inventory: [],
-    selectItem: null,
-    InventoryItem: [],
-    edit: false
-  }
-
   render() {
 
-    const { inventory, selectItem, inventoryItem } = this.state
+    const { inventory, selectItem, inventoryItem, displayModal, hideModal } = this.props
 
     return (<App>
       <Headline align="center" size="med">Inventory</Headline>
@@ -33,11 +26,10 @@ class Inventory extends Component {
         <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true}/>
         <tbody>
           {
-            this.state.inventory.map(item => (<TableRow>
+            inventory.map(item => (<TableRow>
               <td>
                 <Anchor onClick={() => {
-                    this.setState({selectItem: item._id, inventoryItem: item})
-                  }}>
+                  displayModal(item)}}>
                   {item.code}
                 </Anchor>
               </td>
@@ -59,8 +51,11 @@ class Inventory extends Component {
       </Table>
 
       {
-        this.state.selectItem &&
-        <InvModal inventoryItem={inventoryItem} selectItem={selectItem} />
+        selectItem &&
+        <InvModal inventoryItem={inventoryItem}
+                  selectItem={selectItem}
+                  hideModal={hideModal}
+        />
       }
     </App>)
   }
