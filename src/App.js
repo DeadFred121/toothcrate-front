@@ -67,7 +67,6 @@ state = {
           <FooterBar />
           </div>
         </Router>
-
     );
   }
 }
