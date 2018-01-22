@@ -14,16 +14,13 @@ import Heading from 'grommet/components/Heading';
 import Timestamp from 'grommet/components/Timestamp';
 import Box from 'grommet/components/Box';
 import Button from 'grommet/components/Button';
+import Select from 'grommet/components/Select';
 import EditIcon from 'grommet/components/icons/base/Edit';
 
 // Internal Components
 import OptionControls from './OptionControls';
 
 class ItemEdit extends Component {
-
-  state = {
-    inventoryItem: []
-  }
 
   render() {
     // return (<App>
@@ -100,7 +97,14 @@ class ItemEdit extends Component {
                 <TextInput placeHolder="Item Code" />
               </td>
               <td>
-                <TextInput placeHolder="Category" />
+                <Select placeHolder='Category'
+                        inline={false}
+                        multiple={false}
+                        onSearch={true}
+                        options={['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight']}
+                        // value={undefined}
+                        // onChange={...}
+                      />
               </td>
             </TableRow>
           </tbody>
@@ -122,7 +126,14 @@ class ItemEdit extends Component {
           <tbody>
             <TableRow>
               <td>
-                <TextInput placeHolder="Supplier" />
+                <Select placeHolder='Supplier'
+                        inline={false}
+                        multiple={false}
+                        onSearch={true}
+                        options={['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight']}
+                        // value={undefined}
+                        // onChange={...}
+                      />
               </td>
               <td>
                 <TextInput placeHolder="Unit" />

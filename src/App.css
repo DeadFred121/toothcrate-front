@@ -49,6 +49,10 @@ html, body {
   margin: auto;
 }
 
+.NewProcNumInput {
+  padding: 12px;
+}
+
 .FooterBar {
   height: 65px;
   margin-bottom: 5px;
