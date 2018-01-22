@@ -44,7 +44,7 @@ import { api, setJwt } from './api/init';
 class App extends Component {
 
 state = {
-  inventory: []
+  inventory: [],
   token: null
 }
 

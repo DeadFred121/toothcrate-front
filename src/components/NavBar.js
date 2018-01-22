@@ -35,7 +35,7 @@ class NavBar extends Component {
             <Anchor path='/procedit'>
               + New Procedure
             </Anchor>
-            <Anchor path='/itemedit'>
+            <Anchor path='/newitem'>
               + New Inventory Item
             </Anchor>
             <Anchor path='/order'>
