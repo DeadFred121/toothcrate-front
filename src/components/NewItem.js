@@ -15,10 +15,14 @@ import Timestamp from 'grommet/components/Timestamp';
 import Box from 'grommet/components/Box';
 import Button from 'grommet/components/Button';
 import Select from 'grommet/components/Select';
+import Form from 'grommet/components/Form';
 import EditIcon from 'grommet/components/icons/base/Edit';
 
 // Internal Components
 import OptionControls from './OptionControls';
+
+// API/Axios
+import { api, setJwt } from '../api/init';
 
 class ItemEdit extends Component {
 
@@ -28,6 +32,34 @@ class ItemEdit extends Component {
         <Headline>
           New Inventory Item
         </Headline>
+        <Form onSubmit={(event) => {
+          event.preventDefault()
+          const form = event.target
+          const elements = form.elements
+          const name = elements.name.value
+          const code = elements.code.value
+          const category = elements.category.value
+          const supplier = elements.supplier.value
+          const unit = elements.unit.value
+          const cost = elements.cost.value
+          const quantity = elements.quantity.value
+          const parLevel = elements.parLevel.value
+
+            api.post('/api/inventory', {
+              name,
+              code,
+              category,
+              supplier,
+              unit,
+              cost,
+              quantity,
+              parLevel
+            }).then(res => {
+              console.log(res)
+              this.props.updateInventory(res)
+            })
+
+          }} >
         <Table responsive={false}>
           <thead>
             <tr>
@@ -45,13 +77,14 @@ class ItemEdit extends Component {
           <tbody>
             <TableRow>
               <td>
-                <TextInput placeHolder="Item Name" />
+                <TextInput name='name' placeHolder="Item Name" />
               </td>
               <td>
-                <TextInput placeHolder="Item Code" />
+                <TextInput name='code' placeHolder="Item Code" />
               </td>
               <td>
-                <Select placeHolder='Category'
+                <Select name='category'
+                        placeHolder='Category'
                         inline={false}
                         multiple={false}
                         onSearch={true}
@@ -80,7 +113,8 @@ class ItemEdit extends Component {
           <tbody>
             <TableRow>
               <td>
-                <Select placeHolder='Supplier'
+                <Select name='supplier'
+                        placeHolder='Supplier'
                         inline={false}
                         multiple={false}
                         onSearch={true}
@@ -90,10 +124,10 @@ class ItemEdit extends Component {
                       />
               </td>
               <td>
-                <TextInput placeHolder="Unit" />
+                <TextInput name='unit' placeHolder="Unit" />
               </td>
               <td>
-                <TextInput placeHolder="Cost" />
+                <TextInput name='cost' placeHolder="Cost" />
               </td>
             </TableRow>
           </tbody>
@@ -112,22 +146,25 @@ class ItemEdit extends Component {
           <tbody>
             <TableRow>
               <td>
-                <NumberInput value={1}
+                <NumberInput name='quantity'
+                             value={1}
                              step={1}
                              min={0}
                 />
               </td>
               <td>
-                <TextInput placeHolder="Par Level" />
+                <TextInput name='parLevel'
+                           placeHolder="Par Level" />
               </td>
             </TableRow>
           </tbody>
         </Table>
         <hr />
         <Box className='ItemEditButtons' direction='row' align='stretch'>
-          <Button className='modalButton1' primary='true' label='Submit' fill='true'/>
+          <Button type='submit' className='modalButton1' primary='true' label='Submit' fill='true' />
           <Button className='modelButton2' accent='true' label='Cancel' fill='true'/>
         </Box>
+      </Form>
     </App>)
   }
 }

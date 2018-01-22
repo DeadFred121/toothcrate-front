@@ -28,21 +28,21 @@ import FooterBar from './components/FooterBar'
 import NewItem from './components/NewItem'
 import LoginForm from 'grommet/components/LoginForm';
 
-
 // API/Axios
 import { api, setJwt } from './api/init';
-
 
 class App extends Component {
 
 state = {
   inventory: [],
+  selectItem: null,
+  inventoryItem: [],
   token: null
 }
 
   render() {
 
-    const { inventory } = this.state
+    const { inventory, selectItem, inventoryItem } = this.state
 
     return (
       <Router>
@@ -63,9 +63,16 @@ state = {
             }} align='start'/> :
               <Switch>
               <Route exact path="/" component={ ModeSelect }/>
-              <Route path="/newitem" component={ NewItem }/>
-              <Route path="/itemedit" component={() => <ItemEdit inventory={inventory} />} />
-              <Route path="/inventory" component={ Inventory }/>
+              <Route path="/newitem" component={() => <NewItem
+                          updateInventory={ this.updateInventory } />} />
+              <Route path="/itemedit" component={ ItemEdit } />
+              <Route path="/inventory" component={() => <Inventory
+                inventory={ inventory }
+                selectItem={ selectItem }
+                inventoryItem={ inventoryItem }
+                displayModal={ this.displayModal }
+                hideModal={ this.hideModal }
+                 />} />
               <Route path="/procshow" component={ ProcShow }/>
               <Route path="/procedit" component={ ProcEdit }/>
               <Route path="/order" component={ Order }/>
@@ -77,6 +84,20 @@ state = {
           </div>
         </Router>
     );
+  }
+
+  updateInventory = (invItem) => {
+    const inventory = [...this.state.inventory]
+    inventory.push(invItem)
+    this.setState({ inventory })
+  }
+
+  displayModal = (item) => {
+    this.setState({selectItem: item._id, inventoryItem: item})
+  }
+
+  hideModal = () => {
+    this.setState({selectItem: null})
   }
 
   // Rendering API Inventory request.
