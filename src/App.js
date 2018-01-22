@@ -42,6 +42,7 @@ import { api, setJwt } from './api/init';
 class App extends Component {
 
 state = {
+  loggedIn: false
 }
 
   render() {
@@ -51,16 +52,18 @@ state = {
         <div className='App' centered='true' inline={true}>
           <NavBar />
           <Box className='Contents'>
-            <Switch>
-              <Route exact path="/" component={ ModeSelect }/>
-              <Route path="/itemedit" component={ ItemEdit }/>
-              <Route path="/inventory" component={ Inventory }/>
-              <Route path="/procshow" component={ ProcShow }/>
-              <Route path="/procedit" component={ ProcEdit }/>
-              <Route path="/order" component={ Order }/>
-              <Route path="/stock" component={ Stock }/>
-            </Switch>
-          </Box>
+            { !this.state.loggedIn ? <p>Log In Form</p> :
+              <Switch>
+                <Route exact path="/" component={ ModeSelect }/>
+                <Route path="/itemedit" component={ ItemEdit }/>
+                <Route path="/inventory" component={ Inventory }/>
+                <Route path="/procshow" component={ ProcShow }/>
+                <Route path="/procedit" component={ ProcEdit }/>
+                <Route path="/order" component={ Order }/>
+                <Route path="/stock" component={ Stock }/>
+              </Switch>
+            }
+            </Box>
           <FooterBar />
           </div>
         </Router>
