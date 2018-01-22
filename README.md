@@ -14,13 +14,12 @@
 * [Stacks Used](#stacks-used)
 * [Solution](#solution)
 * [User Stories](#user-stories)
-* [Design And Solution](#wireframes)
+* [Design](#wireframes)
+  ####
 
 ## Project Brief
 
 ---
-
-####
 
 This project was a Term-3 assignment for Coder Academy. The project brief was as
 follows:
@@ -32,11 +31,11 @@ Meet with the business owner or organisation manager to find out what challenges
 they face. Find a problem that you can solve with an application and present
 your ideas to the client".
 
-##Problem
+####
+
+## Problem
 
 ---
-
-####
 
 Inventory management is one of the key pillars to business success. However
 without a dedicated system, things have the potential to quickly spiral out of
@@ -52,19 +51,17 @@ dropped below, a minimum amount. This has the added benefit of being able to
 simplify the ordering process by generating a comprehensive list of all items in
 the “danger zone”, which can in turn be organized by supplier.
 
----
+####
 
 ## Stacks Used
 
 ---
 
-####
-
 ![tech stack](./documentation/node_mongo.png)
 
-* Client Technology and Development Tools:
+### Client Technology and Development Tools:
 
-  \*[ReactJS](https://facebook.github.io/react/): Client side: a javascript
+* [ReactJS](https://facebook.github.io/react/): Client side: a javascript
   library for building user interfaces that respond in an asynchronous manner.
   This is very appropriate for the landing page as it has many components that
   need to refresh at different points which makes it so the whole page doesn’t
@@ -86,13 +83,16 @@ the “danger zone”, which can in turn be organized by supplier.
 * [Grommet](http://grommet.io): A component and design resources you need to
   take your ideas from concept to a real application.
 
-* Passport.js Sign-in and authentication - this is authentication middleware for
-  Node.js. It is flexible and can be used to connect with the client side
-  React.js and server side Node.js for secure user signup and login. It can also
-  use strategies for social media sites such as Facebook, Google, Instagram, etc
+* [Passport.js](http://www.passportjs.org/) Sign-in and authentication - this is
+  authentication middleware for Node.js. It is flexible and can be used to
+  connect with the client side React.js and server side Node.js for secure user
+  signup and login. It can also use strategies for social media sites such as
+  Facebook and Google etc.
 
-* Github: This was used for version control, feature development, code storage,
-  and project review:
+* [Github](https://github.com/) This was used for version control, feature
+  development, code storage, and project review.
+
+####
 
 ---
 
@@ -118,6 +118,18 @@ item basis.
    flagged in the system. These items can then be viewed in a list, which can be
    organized by supplier for ease of ordering.
 
+####
+
 ---
 
+## User Stories
+
+![Trello User Stories](./documentation/userStories.png)
+
 ####
+
+---
+
+## Wire Frames
+
+![Wire Frames](./documentation/wireFrames.png)
