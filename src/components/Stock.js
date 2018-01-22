@@ -10,6 +10,9 @@ import NumberInput from 'grommet/components/NumberInput';
 import Table from 'grommet/components/Table';
 import TableHeader from 'grommet/components/TableHeader';
 import TableRow from 'grommet/components/TableRow';
+import Box from 'grommet/components/Box';
+import Button from 'grommet/components/Button';
+import EditIcon from 'grommet/components/icons/base/Edit';
 
 // Internal Components
 import OptionControls from './OptionControls';
@@ -25,6 +28,7 @@ state = {
       <App>
         <Headline>Stock Update</Headline>
         <SearchInput
+          id='StockSearchBar'
           placeHolder='Search Supplier'
           suggestions={this.state.suppliers}
         />
@@ -43,14 +47,21 @@ state = {
                     {item.category}
                   </td>
                   <td>
-                    <NumberInput defaultValue={item.quantity} />
+                    <NumberInput defaultValue={1}
+                                 min={0}
+                                 step={1} />
                   </td>
                 </TableRow>))
               }
             </tbody>
         </Table>
         <hr />
-        <OptionControls />
+        <Box className='StockButtons' direction='row' align='center'>
+          <Button path='/order' className='modalButton1' primary='true' label='Update Stock' fill='true'/>
+          <Button  path='/' className='modalButton2' accent='true' label='Cancel' fill='true'/>
+        </Box>
+        {/* <Button path='/itemedit' className='modalEditButton' secondary='true' icon={<EditIcon />} label='Edit Inventory Item' fill='true'/> */}
+        {/* <OptionControls /> */}
       </App>
     )
   }

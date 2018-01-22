@@ -125,10 +125,10 @@ const InvModal = ({ inventoryItem, selectItem }) => {
           </tbody>
         </Table>
         <Box direction='row' align='stretch'>
-          <Button className='modalButton1' primary='true' label='Order' fill='true'/>
+          <Button path='/order' className='modalButton1' primary='true' label='Order' fill='true'/>
           <Button className='modalButton2' accent='true' label='Cancel' fill='true'/>
         </Box>
-        <Button className='modalEditButton' secondary='true' icon={<EditIcon />} label='Edit Inventory Item' fill='true'/>
+        <Button path='/itemedit' className='modalEditButton' secondary='true' icon={<EditIcon />} label='Edit Inventory Item' fill='true'/>
       </Layer>
     </App>)
   }

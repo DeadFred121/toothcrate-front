@@ -31,6 +31,7 @@ import Stock from './components/Stock'
 import ItemEdit from './components/ItemEdit'
 import ProcShow from './components/ProcShow'
 import FooterBar from './components/FooterBar'
+import NewItem from './components/NewItem'
 import LoginForm from 'grommet/components/LoginForm';
 
 // Assets
@@ -43,10 +44,13 @@ import { api, setJwt } from './api/init';
 class App extends Component {
 
 state = {
+  inventory: []
   token: null
 }
 
   render() {
+
+    const { inventory } = this.state
 
     return (
       <Router>
@@ -66,20 +70,29 @@ state = {
               })
             }} align='start'/> :
               <Switch>
-                <Route exact path="/" component={ ModeSelect }/>
-                <Route path="/itemedit" component={ ItemEdit }/>
-                <Route path="/inventory" component={ Inventory }/>
-                <Route path="/procshow" component={ ProcShow }/>
-                <Route path="/procedit" component={ ProcEdit }/>
-                <Route path="/order" component={ Order }/>
-                <Route path="/stock" component={ Stock }/>
-              </Switch>
+              <Route exact path="/" component={ ModeSelect }/>
+              <Route path="/newitem" component={ NewItem }/>
+              <Route path="/itemedit" component={() => <ItemEdit inventory={inventory} />} />
+              <Route path="/inventory" component={ Inventory }/>
+              <Route path="/procshow" component={ ProcShow }/>
+              <Route path="/procedit" component={ ProcEdit }/>
+              <Route path="/order" component={ Order }/>
+              <Route path="/stock" component={ Stock }/>
+            </Switch>
             }
             </Box>
           <FooterBar />
           </div>
         </Router>
     );
+  }
+
+  // Rendering API Inventory request.
+  componentDidMount = () => {
+    api.get('/api/inventory').then(res => {
+      const inventory = res.data
+      this.setState({inventory})
+    })
   }
 }
 
