@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://toothcrate.herokuapp.com'
+  baseURL: 'https://toothcrate.herokuapp.com'
 })
 
 const setJwt = (token) => {
