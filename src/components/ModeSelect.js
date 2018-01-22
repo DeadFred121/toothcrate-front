@@ -52,13 +52,13 @@ class ModeSelect extends Component {
                   keep={true}>
                 <SearchInput id='procSearchBar' placeHolder='Search procedures' suggestions={procedures} size="large"/>
                 <br/>
-                <Button label='Submit' href='/procshow' primary={true}/>
+                <Button label='Submit' path='/procshow' primary={true}/>
               </Animate>
             </Box>
 
         }
         <hr className='hrSearch'/>
-        <Anchor icon={<ClipboardIcon />} href='/inventory' primary={true} disabled={false}>
+        <Anchor icon={<ClipboardIcon />} path='/inventory' primary={true} disabled={false}>
           <Headline className="invTitle" align="center" size="med">Inventory</Headline>
         </Anchor>
     </App>)
