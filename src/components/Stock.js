@@ -12,7 +12,6 @@ import TableHeader from 'grommet/components/TableHeader';
 import TableRow from 'grommet/components/TableRow';
 import Box from 'grommet/components/Box';
 import Button from 'grommet/components/Button';
-import EditIcon from 'grommet/components/icons/base/Edit';
 
 // Internal Components
 import OptionControls from './OptionControls';
