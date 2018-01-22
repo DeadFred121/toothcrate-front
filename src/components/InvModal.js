@@ -1,5 +1,5 @@
 // React Components
-import React, {Component} from 'react';
+import React from 'react';
 
 // Grommet Components
 import App from 'grommet/components/App';
@@ -13,7 +13,6 @@ import Timestamp from 'grommet/components/Timestamp';
 import EditIcon from 'grommet/components/icons/base/Edit';
 
 // Internal Components
-import Inventory from './Inventory'
 
 const InvModal = ({ inventoryItem, selectItem }) => {
 

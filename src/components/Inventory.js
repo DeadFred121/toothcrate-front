@@ -8,12 +8,6 @@ import TableRow from 'grommet/components/TableRow';
 import Table from 'grommet/components/Table';
 import Status from 'grommet/components/icons/Status';
 import Anchor from 'grommet/components/Anchor';
-import Layer from 'grommet/components/Layer';
-import Heading from 'grommet/components/Heading';
-import Timestamp from 'grommet/components/Timestamp';
-import Box from 'grommet/components/Box';
-import Button from 'grommet/components/Button';
-import EditIcon from 'grommet/components/icons/base/Edit';
 import Headline from 'grommet/components/Headline';
 
 // Internal Components
