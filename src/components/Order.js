@@ -23,6 +23,7 @@ class Order extends Component {
       <App>
         <Headline>Orders</Headline>
         <SearchInput
+          id='StockSearchBar'
           placeHolder='Search Suppliers'
           suggestions={this.state.suppliers}
         />

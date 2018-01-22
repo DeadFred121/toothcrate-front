@@ -43,9 +43,12 @@ import { api, setJwt } from './api/init';
 class App extends Component {
 
 state = {
+  inventory: []
 }
 
   render() {
+
+    const { inventory } = this.state
 
     return (
       <Router>
@@ -55,7 +58,7 @@ state = {
             <Switch>
               <Route exact path="/" component={ ModeSelect }/>
               <Route path="/newitem" component={ NewItem }/>
-              <Route path="/itemedit" component={ ItemEdit }/>
+              <Route path="/itemedit" component={() => <ItemEdit inventory={inventory} />} />
               <Route path="/inventory" component={ Inventory }/>
               <Route path="/procshow" component={ ProcShow }/>
               <Route path="/procedit" component={ ProcEdit }/>
@@ -67,6 +70,14 @@ state = {
           </div>
         </Router>
     );
+  }
+
+  // Rendering API Inventory request.
+  componentDidMount = () => {
+    api.get('/api/inventory').then(res => {
+      const inventory = res.data
+      this.setState({inventory})
+    })
   }
 }
 

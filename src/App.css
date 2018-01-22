@@ -28,6 +28,14 @@ html, body {
   padding-right: 100px;
 }
 
+#StockSearchBar {
+  padding-right: 155px;
+}
+
+#OrdersSearchBar {
+  padding-right: 155px;
+}
+
 .hrSearch {
   margin: 20px;
 }
@@ -51,6 +59,11 @@ html, body {
 
 .NewProcNumInput {
   padding: 12px;
+}
+
+.StockButtons {
+  width: 40%;
+  margin: auto;
 }
 
 .FooterBar {
