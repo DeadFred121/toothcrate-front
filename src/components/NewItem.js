@@ -11,23 +11,19 @@ import Headline from 'grommet/components/Headline';
 import Box from 'grommet/components/Box';
 import Button from 'grommet/components/Button';
 import Select from 'grommet/components/Select';
-
-
-// Internal Components
-import OptionControls from './OptionControls';
+import Form from 'grommet/components/Form';
 
 // API/Axios
 import { api, setJwt } from '../api/init';
 
-class ItemEdit extends Component {
+const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal }) => {
 
-  render() {
-    return (
+  return (
       <App className="ItemEdit">
         <Headline>
           New Inventory Item
         </Headline>
-        <Form onSubmit={(event) => {
+        <Box onSubmit={(event) => {
           event.preventDefault()
           const form = event.target
           const elements = form.elements
@@ -53,7 +49,6 @@ class ItemEdit extends Component {
               console.log(res)
               this.props.updateInventory(res)
             })
-
           }} >
         <Table responsive={false}>
           <thead>
@@ -75,7 +70,7 @@ class ItemEdit extends Component {
                 <TextInput name='name' placeHolder="Item Name" />
               </td>
               <td>
-                <TextInput name='code' placeHolder="Item Code" />
+                <TextInput fill={true} name='code' placeHolder="Item Code" />
               </td>
               <td>
                 <Select name='category'
@@ -83,7 +78,9 @@ class ItemEdit extends Component {
                         inline={false}
                         multiple={false}
                         onSearch={true}
-                        options={['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight']}
+                        options={
+                            inventory.map(item => (item.category) )
+                          }
                         // value={undefined}
                         // onChange={...}
                       />
@@ -113,7 +110,9 @@ class ItemEdit extends Component {
                         inline={false}
                         multiple={false}
                         onSearch={true}
-                        options={['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight']}
+                        options={
+                            inventory.map(item => (item.supplier) )
+                          }
                         // value={undefined}
                         // onChange={...}
                       />
@@ -148,8 +147,11 @@ class ItemEdit extends Component {
                 />
               </td>
               <td>
-                <TextInput name='parLevel'
-                           placeHolder="Par Level" />
+                <NumberInput name='parLevel'
+                             value={1}
+                             step={1}
+                             min={0}
+                />
               </td>
             </TableRow>
           </tbody>
@@ -157,11 +159,10 @@ class ItemEdit extends Component {
         <hr />
         <Box className='ItemEditButtons' direction='row' align='stretch'>
           <Button type='submit' className='modalButton1' primary='true' label='Submit' fill='true' />
-          <Button className='modelButton2' accent='true' label='Cancel' fill='true'/>
+          <Button path='/inventory' className='modelButton2' accent='true' label='Cancel' fill='true'/>
         </Box>
-      </Form>
+      </Box>
     </App>)
-  }
 }
 
 export default ItemEdit;

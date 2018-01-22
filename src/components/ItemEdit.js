@@ -12,17 +12,44 @@ import Box from 'grommet/components/Box';
 import Button from 'grommet/components/Button';
 import Select from 'grommet/components/Select';
 
-// Internal Components
-import OptionControls from './OptionControls';
+// API
+import {api} from '../api/init';
 
-class ItemEdit extends Component {
+const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal, displayModal }) => {
 
-  render() {
-    return (
+  return (
       <App className="ItemEdit">
         <Headline>
           Edit Inventory Item
         </Headline>
+        <Box onSubmit={(event) => {
+          event.preventDefault()
+          const form = event.target
+          const elements = form.elements
+          const name = elements.name.value
+          const code = elements.code.value
+          const category = elements.category.value
+          const supplier = elements.supplier.value
+          const unit = elements.unit.value
+          const cost = elements.cost.value
+          const quantity = elements.quantity.value
+          const parLevel = elements.parLevel.value
+
+            api.post('/api/inventory', {
+              name,
+              code,
+              category,
+              supplier,
+              unit,
+              cost,
+              quantity,
+              parLevel
+            }).then(res => {
+              console.log(res)
+              this.props.updateInventory(res)
+            })
+
+          }} >
         <Table responsive={false}>
           <thead>
             <tr>
@@ -40,20 +67,21 @@ class ItemEdit extends Component {
           <tbody>
             <TableRow>
               <td>
-                <TextInput placeHolder="Item Name" />
+                <TextInput defaultValue={ inventoryItem.name } />
               </td>
               <td>
-                <TextInput placeHolder="Item Code" />
+                <TextInput defaultValue={ inventoryItem.code } />
               </td>
               <td>
-                <Select placeHolder='Category'
+                <TextInput defaultValue={ inventoryItem.category } />
+                {/* <Select defaultValue={ inventoryItem.category }
                         inline={false}
                         multiple={false}
                         onSearch={true}
-                        options={['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight']}
+                        options={ inventory.category }
                         // value={undefined}
                         // onChange={...}
-                      />
+                      /> */}
               </td>
             </TableRow>
           </tbody>
@@ -75,20 +103,21 @@ class ItemEdit extends Component {
           <tbody>
             <TableRow>
               <td>
-                <Select placeHolder='Supplier'
+                <TextInput defaultValue={ inventoryItem.supplier } />
+                {/* <Select defaultValue={ inventoryItem.supplier }
                         inline={false}
                         multiple={false}
                         onSearch={true}
-                        options={['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight']}
+                        options={ inventory.supplier }
                         // value={undefined}
                         // onChange={...}
-                      />
+                      /> */}
               </td>
               <td>
-                <TextInput placeHolder="Unit" />
+                <TextInput defaultValue={ inventoryItem.unit } />
               </td>
               <td>
-                <TextInput placeHolder="Cost" />
+                <TextInput defaultValue={ inventoryItem.cost } />
               </td>
             </TableRow>
           </tbody>
@@ -107,24 +136,27 @@ class ItemEdit extends Component {
           <tbody>
             <TableRow>
               <td>
-                <NumberInput value={1}
+                <NumberInput defaultValue={ inventoryItem.quantity }
                              step={1}
                              min={0}
                 />
               </td>
               <td>
-                <TextInput placeHolder="Par Level" />
+                <NumberInput defaultValue={ inventoryItem.parLevel }
+                             step={1}
+                             min={0}
+                />
               </td>
             </TableRow>
           </tbody>
         </Table>
         <hr />
         <Box className='ItemEditButtons' direction='row' align='stretch'>
-          <Button className='modalButton1' primary='true' label='Submit' fill='true'/>
-          <Button className='modelButton2' accent='true' label='Cancel' fill='true'/>
+          <Button type='submit' className='modalButton1' primary='true' label='Submit' fill='true'/>
+          <Button path='/inventory/' className='modelButton2' accent='true' label='Cancel' fill='true'/>
         </Box>
+      </Box>
     </App>)
-  }
 }
 
 export default ItemEdit;

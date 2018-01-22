@@ -14,24 +14,21 @@ import Headline from 'grommet/components/Headline';
 import Select from 'grommet/components/Select';
 import FormCloseIcon from 'grommet/components/icons/base/FormClose';
 
-// Internal Components
-import OptionControls from './OptionControls';
-
-class ProcEdit extends Component {
-  render() {
+const ProcEdit = ({ inventory, handleAddClick }) => {
     return (<App>
       <Headline>Add New Procedure</Headline>
-      <TextInput placeHolder="Procedure Name"/>
+      <TextInput id='NewProcSearchBar' placeHolder="Procedure Name"/>
       <Table>
         <TableHeader labels={['Item Name', 'Quantity', 'Delete Item']} />
         <tbody>
           <TableRow>
             <td>
               <Select placeHolder='Item Name'
-                      inline={false}
-                      multiple={false}
+                      multiple={true}
                       onSearch={true}
-                      options={['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight']}
+                      options={
+                        inventory.map(item => (item.name) )
+                      }
                       // value={undefined}
                       // onChange={...}
               />
@@ -48,15 +45,15 @@ class ProcEdit extends Component {
             </td>
           </TableRow>
         </tbody>
-        <Button accent='true' label='Add Item' fill='false'/>
+        <Button onClick={handleAddClick} accent='true' label='Add Item' fill='false'/>
       </Table>
       <hr />
       <Box className='ItemEditButtons' direction='row' align='stretch'>
-        <Button className='modalButton1' primary='true' label='Submit' fill='true'/>
-        <Button className='modelButton2' accent='true' label='Cancel' fill='true'/>
+        <Button onClick={''} className='modalButton1' primary='true' label='Submit' fill='true'/>
+        <Button path='/' className='modelButton2' accent='true' label='Cancel' fill='true'/>
       </Box>
-    </App>)
-  }
+    </App>
+  )
 }
 
 export default ProcEdit;

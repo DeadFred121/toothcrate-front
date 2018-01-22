@@ -10,52 +10,45 @@ import Table from 'grommet/components/Table';
 import TableHeader from 'grommet/components/TableHeader';
 import TableRow from 'grommet/components/TableRow';
 
-// Internal Components
+const Order = ({ inventory }) => {
 
-class Order extends Component {
-
-  state = {
-    suppliers: ['HSH', 'Horsley', 'Crown', 'Dentists R Us']
-  }
-
-  render() {
-    return (
-      <App>
-        <Headline>Orders</Headline>
-        <SearchInput
-          id='StockSearchBar'
-          placeHolder='Search Suppliers'
-          suggestions={this.state.suppliers}
-        />
-        <Table>
-          <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true}/>
-            <tbody>
-              {
-                this.state.suppliers.map(item => (<TableRow>
-                  <td>
-                    {item.code}
-                  </td>
-                  <td>
-                    {item.name}
-                  </td>
-                  <td>
-                    {item.category}
-                  </td>
-                  <td>
-                    {item.quantity}
-                  </td>
-                  <td>
-                    <Status value='critical' />
-                  </td>
-                </TableRow>))
-              }
-            </tbody>
-        </Table>
-        <hr />
-
-      </App>
-    )
-  }
+  return (
+    <App>
+      <Headline>Orders</Headline>
+      <SearchInput
+        id='StockSearchBar'
+        placeHolder='Search Suppliers'
+        suggestions={
+          inventory.map(item => (item.supplier) )
+        }
+      />
+      <Table>
+        <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true}/>
+          <tbody>
+            {
+              inventory.map(item => (<TableRow>
+                <td>
+                  {item.code}
+                </td>
+                <td>
+                  {item.name}
+                </td>
+                <td>
+                  {item.category}
+                </td>
+                <td>
+                  {item.quantity}
+                </td>
+                <td>
+                  <Status value='critical' />
+                </td>
+              </TableRow>))
+            }
+          </tbody>
+      </Table>
+      <hr />
+    </App>
+  )
 }
 
 export default Order;

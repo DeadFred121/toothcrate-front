@@ -13,20 +13,24 @@ import Headline from 'grommet/components/Headline';
 // Internal Components
 import InvModal from './InvModal'
 
+const Inventory = ({ inventory, selectItem, inventoryItem, displayModal, hideModal }) => {
 
-class Inventory extends Component {
-
-  render() {
-
-    const { inventory, selectItem, inventoryItem, displayModal, hideModal } = this.props
-
-    return (<App>
-      <Headline align="center" size="med">Inventory</Headline>
+  return (
+    <App>
+      <Headline>Inventory</Headline>
+      {
+        selectItem &&
+        <InvModal inventoryItem={inventoryItem}
+                  selectItem={selectItem}
+                  hideModal={hideModal}
+        />
+      }
       <Table responsive={false} >
         <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true}/>
         <tbody>
           {
-            inventory.map(item => (<TableRow>
+            inventory.map(item => (
+              <TableRow>
               <td>
                 <Anchor onClick={() => {
                   displayModal(item)}}>
@@ -49,16 +53,8 @@ class Inventory extends Component {
           }
         </tbody>
       </Table>
-
-      {
-        selectItem &&
-        <InvModal inventoryItem={inventoryItem}
-                  selectItem={selectItem}
-                  hideModal={hideModal}
-        />
-      }
-    </App>)
-  }
+    </App>
+  )
 }
 
 export default Inventory;
