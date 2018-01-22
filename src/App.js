@@ -37,6 +37,7 @@ state = {
   inventory: [],
   selectItem: null,
   inventoryItem: [],
+  selectProc: [],
   token: null
 }
 
@@ -52,7 +53,6 @@ state = {
       setJwt(res.data.token)
     })
   }
-  
 
   render() {
 
@@ -66,20 +66,39 @@ state = {
             { !this.state.token ? <LoginForm onSubmit={this.onLoginSubmitHandler} align='start'/> :
               <Switch>
               <Route exact path="/" component={ ModeSelect }/>
-              <Route path="/newitem" component={() => <NewItem
-                          updateInventory={ this.updateInventory } />} />
-              <Route path="/itemedit" component={ ItemEdit } />
+              <Route path="/newitem"
+                     component={() => <NewItem
+                     updateInventory={ this.updateInventory }
+                     inventory={ inventory }
+                     /> }
+              />
+              <Route path="/itemedit" component={() => <ItemEdit
+                     inventoryItem={ inventoryItem }
+                     inventory={ inventory }
+                     displayModal= { this.displayModal }
+                     /> }
+              />
               <Route path="/inventory" component={() => <Inventory
-                inventory={ inventory }
-                selectItem={ selectItem }
-                inventoryItem={ inventoryItem }
-                displayModal={ this.displayModal }
-                hideModal={ this.hideModal }
-                 />} />
+                     inventory={ inventory }
+                     selectItem={ selectItem }
+                     inventoryItem={ inventoryItem }
+                     displayModal={ this.displayModal }
+                     hideModal={ this.hideModal }
+                     /> }
+              />
               <Route path="/procshow" component={ ProcShow }/>
-              <Route path="/procedit" component={ ProcEdit }/>
-              <Route path="/order" component={ Order }/>
-              <Route path="/stock" component={ Stock }/>
+              <Route path="/procedit" component={() => <ProcEdit
+                     inventory={ inventory }
+                     /> }
+              />
+              <Route path="/order" component={() => <Order
+                     inventory={ inventory }
+                     /> }
+              />
+              <Route path="/stock" component={() => <Stock
+                     inventory={ inventory }
+                     /> }
+              />
             </Switch>
             }
             </Box>
@@ -95,17 +114,18 @@ state = {
     this.setState({ inventory })
   }
 
+  // Function
   displayModal = (item) => {
     this.setState({selectItem: item._id, inventoryItem: item})
   }
 
+  // onClose function to close Inventory Item modal
   hideModal = () => {
     this.setState({selectItem: null})
   }
 
   // Rendering API Inventory request.
   componentDidMount = () => {
-
     const token = localStorage.getItem('token');
     if (token) {
       this.setState({
@@ -115,8 +135,14 @@ state = {
 
     api.get('/api/inventory').then(res => {
       const inventory = res.data
-      console.log(res)
       this.setState({inventory})
+    })
+
+    api.get('/api/procedure').then(res => {
+      const procedures = res.data.map(procedure => {
+        return procedure.name
+      })
+      this.setState({procedures})
     })
   }
 }

@@ -10,14 +10,12 @@ import Layer from 'grommet/components/Layer';
 import Table from 'grommet/components/Table';
 import TableRow from 'grommet/components/TableRow';
 import Timestamp from 'grommet/components/Timestamp';
+import Form from 'grommet/components/Form';
 import EditIcon from 'grommet/components/icons/base/Edit';
-
-// Internal Components
 
 const InvModal = ({ inventoryItem, selectItem, hideModal }) => {
 
   return (
-    <App className="InvModal">
       <Layer closer={true} onClose={ hideModal }>
         <Heading className='modalHeading' tag='h2' truncate={true}>
           {inventoryItem.name}
@@ -124,11 +122,11 @@ const InvModal = ({ inventoryItem, selectItem, hideModal }) => {
         </Table>
         <Box direction='row' align='stretch'>
           <Button path='/order' className='modalButton1' primary='true' label='Order' fill='true'/>
-          <Button className='modalButton2' accent='true' label='Cancel' fill='true'/>
+          <Button onClick={ hideModal } className='modalButton2' accent='true' label='Cancel' fill='true'/>
         </Box>
         <Button path='/itemedit' className='modalEditButton' secondary='true' icon={<EditIcon />} label='Edit Inventory Item' fill='true'/>
       </Layer>
-    </App>)
+    )
   }
 
 export default InvModal;

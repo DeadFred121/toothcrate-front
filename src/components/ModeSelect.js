@@ -38,10 +38,22 @@ class ModeSelect extends Component {
 
     return (
       <App>
-        <Image src={logo} size='med' />
-        <Headline className='ProcHeader' align="center" size="med" onClick={this.showSearch}>
+        <Animate enter={{
+            "animation" : "fade",
+            "duration" : 5000,
+            "delay" : 0 }}
+            keep={true}>
+        <Image id='mainlogo' src={logo} size='med' />
+      </Animate>
+      <Animate enter={{
+          "animation" : "fade",
+          "duration" : 1000,
+          "delay" : 0 }}
+          keep={true}>
+        <Headline className='ProcHeader'onClick={this.showSearch}>
           Procedures
         </Headline>
+
         {
           procSelect && <Box pad={{"between" : "small"}}
                              align='center'>
@@ -58,9 +70,12 @@ class ModeSelect extends Component {
 
         }
         <hr className='hrSearch'/>
-        <Anchor icon={<ClipboardIcon />} path='/inventory' primary={true} disabled={false}>
-          <Headline className="invTitle" align="center" size="med">Inventory</Headline>
+        <Headline className="invTitle">
+          Inventory
+        </Headline>
+        <Anchor icon={<ClipboardIcon />} path='/inventory/' primary={true} disabled={false} label='Show complete list of inventory items'>
         </Anchor>
+      </Animate>
     </App>)
   }
 
