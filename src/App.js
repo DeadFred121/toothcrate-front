@@ -2,13 +2,7 @@
 import React, { Component } from 'react';
 
 // Grommet Components
-import Image from 'grommet/components/Image'
-import Footer from 'grommet/components/Footer'
 import Box from 'grommet/components/Box'
-import Paragraph from 'grommet/components/Paragraph'
-import Menu from 'grommet/components/Menu'
-import Anchor from 'grommet/components/Anchor'
-import Article from 'grommet/components/Article'
 
 // Styles
 import './App.css';
@@ -33,8 +27,6 @@ import ProcShow from './components/ProcShow'
 import FooterBar from './components/FooterBar'
 import LoginForm from 'grommet/components/LoginForm';
 
-// Assets
-import logo from './images/TCLogo.png'
 
 // API/Axios
 import { api, setJwt } from './api/init';
