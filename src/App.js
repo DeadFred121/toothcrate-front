@@ -31,6 +31,7 @@ import Stock from './components/Stock'
 import ItemEdit from './components/ItemEdit'
 import ProcShow from './components/ProcShow'
 import FooterBar from './components/FooterBar'
+import LoginForm from 'grommet/components/LoginForm';
 
 // Assets
 import logo from './images/TCLogo.png'
@@ -42,17 +43,28 @@ import { api, setJwt } from './api/init';
 class App extends Component {
 
 state = {
-  loggedIn: false
+  token: null
 }
 
   render() {
 
     return (
       <Router>
-        <div className='App' centered='true' inline={true}>
+        <div className='App'>
           <NavBar />
           <Box className='Contents'>
-            { !this.state.loggedIn ? <p>Log In Form</p> :
+            { !this.state.token ? <LoginForm onSubmit={({ username, password }) => {
+              api.post('/auth', {
+                email: username,
+                password
+              }
+              ).then(res => {
+                this.setState({
+                  token: res.data.token
+                })
+                setJwt(res.data.token)
+              })
+            }} align='start'/> :
               <Switch>
                 <Route exact path="/" component={ ModeSelect }/>
                 <Route path="/itemedit" component={ ItemEdit }/>
