@@ -24,7 +24,7 @@ class NavBar extends Component {
         <Title>
           <Anchor icon={<LinkPreviousIcon />}
                   label='Home'
-                  href='/'
+                  path='/'
                   primary={true}
                   reverse={false} />
         </Title>
@@ -32,16 +32,16 @@ class NavBar extends Component {
           <Menu icon={<MenuIcon />} dropAlign={{
               "right" : "right"
             }}>
-            <Anchor href='/procedit'>
+            <Anchor path='/procedit'>
               + New Procedure
             </Anchor>
-            <Anchor href='/itemedit'>
+            <Anchor path='/itemedit'>
               + New Inventory Item
             </Anchor>
-            <Anchor href='/order'>
+            <Anchor path='/order'>
               + Orders
             </Anchor>
-            <Anchor href='/stock'>
+            <Anchor path='/stock'>
               + Stock Update
             </Anchor>
           </Menu>

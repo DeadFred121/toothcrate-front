@@ -32,6 +32,7 @@ import ItemEdit from './components/ItemEdit'
 import ProcShow from './components/ProcShow'
 import FooterBar from './components/FooterBar'
 import NewItem from './components/NewItem'
+import LoginForm from 'grommet/components/LoginForm';
 
 // Assets
 import logo from './images/TCLogo.png'
@@ -44,6 +45,7 @@ class App extends Component {
 
 state = {
   inventory: []
+  token: null
 }
 
   render() {
@@ -52,10 +54,22 @@ state = {
 
     return (
       <Router>
-        <div className='App' centered='true' inline={true}>
+        <div className='App'>
           <NavBar />
           <Box className='Contents'>
-            <Switch>
+            { !this.state.token ? <LoginForm onSubmit={({ username, password }) => {
+              api.post('/auth', {
+                email: username,
+                password
+              }
+              ).then(res => {
+                this.setState({
+                  token: res.data.token
+                })
+                setJwt(res.data.token)
+              })
+            }} align='start'/> :
+              <Switch>
               <Route exact path="/" component={ ModeSelect }/>
               <Route path="/newitem" component={ NewItem }/>
               <Route path="/itemedit" component={() => <ItemEdit inventory={inventory} />} />
@@ -65,7 +79,8 @@ state = {
               <Route path="/order" component={ Order }/>
               <Route path="/stock" component={ Stock }/>
             </Switch>
-          </Box>
+            }
+            </Box>
           <FooterBar />
           </div>
         </Router>
