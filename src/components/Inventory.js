@@ -36,6 +36,36 @@ class Inventory extends Component {
     const { inventory, selectItem } = this.state
 
     return (<App>
+      <Headline align="center" size="med">Inventory</Headline>
+      <Table responsive={false} >
+        <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true}/>
+        <tbody>
+          {
+            this.state.inventory.map(item => (<TableRow>
+              <td>
+                <Anchor onClick={() => {
+                    this.setState({selectItem: item._id, InventoryItem: item})
+                  }}>
+                  {item.code}
+                </Anchor>
+              </td>
+              <td>
+                {item.name}
+              </td>
+              <td>
+                {item.category}
+              </td>
+              <td>
+                {item.quantity}
+              </td>
+              <td>
+                <Status value='ok'/>
+              </td>
+            </TableRow>))
+          }
+        </tbody>
+      </Table>
+
       {
         this.state.selectItem &&
         // <InvModal />
@@ -151,35 +181,7 @@ class Inventory extends Component {
           <Button className='modalEditButton' secondary='true' icon={<EditIcon />} label='Edit Inventory Item' fill='true'/>
         </Layer>
       }
-      <Headline align="center" size="med">Inventory</Headline>
-      <Table responsive={false} >
-        <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true}/>
-        <tbody>
-          {
-            this.state.inventory.map(item => (<TableRow>
-              <td>
-                <Anchor onClick={() => {
-                    this.setState({selectItem: item._id, InventoryItem: item})
-                  }}>
-                  {item.code}
-                </Anchor>
-              </td>
-              <td>
-                {item.name}
-              </td>
-              <td>
-                {item.category}
-              </td>
-              <td>
-                {item.quantity}
-              </td>
-              <td>
-                <Status value='ok'/>
-              </td>
-            </TableRow>))
-          }
-        </tbody>
-      </Table>
+      
     </App>)
   }
 
