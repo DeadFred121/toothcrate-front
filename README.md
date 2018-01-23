@@ -142,7 +142,7 @@ item basis.
 
 ## Design
 
-![mockups](./documentation/1mock_Landing.png)(./documentation/2procedure.png)(./documentation/3order.png)(./documentation/4inventory.png)(./documentation/5template.png)
+![mockups](./documentation/1mock_Landing.png)![mockups](./documentation/2procedure.png)![mockups](./documentation/3order.png)![mockups](./documentation/4inventory.png)![mockups](./documentation/5template.png)
 
 ![Figma designed Wire Frames](./documentation/wireFrames.png)
 [Click through each wire frame here](https://www.figma.com/proto/fvrA6xFB2o54G53IxiYeYahw/Toothcrate?scaling=contain&redirected=1&node-id=4%3A3)
