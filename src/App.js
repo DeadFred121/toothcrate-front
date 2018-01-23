@@ -27,6 +27,7 @@ import ProcShow from './components/ProcShow'
 import FooterBar from './components/FooterBar'
 import NewItem from './components/NewItem'
 import Login from './components/Login'
+import NotFound from './components/NotFound'
 
 // API/Axios
 import { api, setJwt } from './api/init';
@@ -52,12 +53,12 @@ state = {
     const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures } = this.state
 
     return (
-      
+
         <div className='App'>
           <NavBar />
           <Box className='Contents'>
             { !this.state.token ? <Login onLoginSubmitHandler={this.onLoginSubmitHandler} align='center'/> :
-              <Switch>
+            <Switch>
               <Route exact path="/" component={() => <ModeSelect
                      procedureNames={ procedureNames }
                      procSelect={ procSelect }
@@ -110,12 +111,13 @@ state = {
                      inventory={ inventory }
                      /> }
               />
+              <Route component={NotFound} />
             </Switch>
             }
             </Box>
           <FooterBar />
           </div>
-        
+
     );
   }
 

@@ -26,7 +26,7 @@ const ModeSelect = ({ showSearch, procSelect, procedureNames, procSearchValue, u
       {
         redirect && <Redirect to={ redirect } />
       }
-      <Image id='mainlogo' src={logo} size='med' />
+      <Image id='mainlogo' src={logo} size='small' />
       <Headline className='ProcHeader' onClick={ showSearch }>
         Procedures
       </Headline>
