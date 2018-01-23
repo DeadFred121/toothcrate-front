@@ -2,7 +2,7 @@
 
 ### Frontend half (React) for a dental practice inventory system.
 
-[Project Link](http://toothcrate.netlify.com)
+[Website Link](http://toothcrate.netlify.com)
 
 * Please see [this repo](https://github.com/FilipMaslovaric/Toothcrate-backend)
   for details of the back-end.
@@ -103,7 +103,8 @@ the “danger zone”, which can in turn be organised by supplier.
 - Mongoose: a schema based solution to model application data. Creates an easy
   to use object reference when interacting with MongoDb.
 - Axios: promise based HTTP client for the browser and node.js.
-- ![AGILE: A Kanban board was set up and used to track process: this was kept in the office](./documentation/kanban.jpg)
+- AGILE: A Kanban board was set up and used to track process: this was kept in
+  the office] ![Kanban](./documentation/kanban.jpg)
 
 ####
 
@@ -132,7 +133,7 @@ item basis.
    organized by supplier for ease of ordering.
 
 ![Project Charter](./documentation/projectCharter.png)
-![You can find the Project Proposal here](https://docs.google.com/document/d/1pdoN4UE5g30YLsrNOMslnSK6HuheVS5Hx_v3YwlpPKY/edit?usp=sharing)
+![Project Proposal](https://docs.google.com/document/d/1pdoN4UE5g30YLsrNOMslnSK6HuheVS5Hx_v3YwlpPKY/edit?usp=sharing)
 
 ####
 
