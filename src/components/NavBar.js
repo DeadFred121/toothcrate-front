@@ -32,7 +32,7 @@ class NavBar extends Component {
           <Menu icon={<MenuIcon />} dropAlign={{
               "right" : "right"
             }}>
-            <Anchor path='/procedit'>
+            <Anchor path='/newproc'>
               + New Procedure
             </Anchor>
             <Anchor path='/newitem'>
