@@ -56,7 +56,20 @@ state = {
                   {item.quantity}
                 </td>
                 <td>
-                  <Status value={item.quantity > item.parLevel ? 'ok' : 'warning'}/>
+                 <Status value={item.quantity > item.parLevel ? 'ok' : 'warning'}/>
+
+                {/* //
+                //     {(e) => { */
+                //     if (e.item.parLevel <= (5 / 100) * e.item.quantity) {
+                //       'critical';
+                //     } else if (e.item.parLevel <= (15 / 100) * e.item.quantity) {
+                //       'warning';
+                //     } else {
+                //     'ok';
+                //     }
+                //   }
+                // }
+                }
                 </td>
               </TableRow>))
             }
