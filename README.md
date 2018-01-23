@@ -92,54 +92,16 @@ the “danger zone”, which can in turn be organized by supplier.
 * [Github](https://github.com/) This was used for version control, feature
   development, code storage, and project review.
 
-####
-
-## Solution
-
----
-
-Basic Inventory management. Shopping-cart based system with modifiable
-templates. Customisable Items, Procedures and Procedure Templates as well as
-Suppliers and their corresponding stock. Warning system for par-levels on a per
-item basis.
-
-1. Creating an intuitive, easy to use inventory management system that keeps
-   track of stock levels for the surgery.
-2. Allowing the user to enter items used on a procedure by procedure basis using
-   a template-based system that preselects items and quantities based on the
-   type of procedure being undertaken. This is also fully customizable to allow
-   the user to tailor the template’s items to the procedure.
-3. Providing tools for the user to add new procedure templates to the system, as
-   well as new items and suppliers. This allows for continued growth of the
-   platform.
-4. Creating an automated warning system by setting minimal levels for each item,
-   referred to as par-levels. When the quantity of an item reaches or drops
-   below the par-level, an alert is displayed to the user and the item is
-   flagged in the system. These items can then be viewed in a list, which can be
-   organized by supplier for ease of ordering.
-
-![Project Charter](./documentation/projectCharter.png)
-![You can find the Project Proposal here](https://docs.google.com/document/d/1pdoN4UE5g30YLsrNOMslnSK6HuheVS5Hx_v3YwlpPKY/edit?usp=sharing)
 
 ####
 
 ---
 
-## User Stories
+## Project Schedule
 
-![Trello User Stories](./documentation/userStories.png)
-
-####
-
----
-
-## Design
-
-![All the Wire Frames](./documentation/wireFrames.png)
-[Click through each wireframe here](https://www.figma.com/proto/fvrA6xFB2o54G53IxiYeYahw/Toothcrate?scaling=contain&redirected=1&node-id=4%3A3)
-
-####
-
----
-
-##
+Due to the limitations in time the scope of the project is broken up into MVP
+and extra features. The core features will be the first to be implemented while
+the extra features will be implemented based on the available time. The
+estimation is based upon on 14 day period working 8 hours a day each day for a
+total of 112 hours. It is broken down into user story points based on Agile
+methodology with a production potential to complete 20 points in a week.
