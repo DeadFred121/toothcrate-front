@@ -3,6 +3,7 @@ import React from 'react';
 
 // Routing Components
 import {
+  withRouter,
   Redirect
 } from 'react-router-dom';
 
@@ -19,7 +20,7 @@ import Anchor from 'grommet/components/Anchor';
 // Assets
 import logo from '../images/TCLogo.png'
 
-const ModeSelect = ({ showSearch, procSelect, procedureNames, procSearchValue, updateProcSearchId, procSelectId, redirect }) => {
+const ModeSelect = ({ showSearch, procSelect, procedureNames, procSearchValue, updateProcSearchId, procSelectId, redirect, handleClickInventoryRedirect }) => {
 
   return (
     <App>
@@ -46,7 +47,7 @@ const ModeSelect = ({ showSearch, procSelect, procedureNames, procSearchValue, u
       }
       <hr className='hrSearch'/>
       <Box>
-        <Headline className="invTitle">
+        <Headline className="invTitle" onClick={handleClickInventoryRedirect}>
           Inventory
         </Headline>
         <Anchor icon={<ClipboardIcon />} path='/inventory/' primary={true} label='Show complete list of inventory items'>
@@ -55,4 +56,4 @@ const ModeSelect = ({ showSearch, procSelect, procedureNames, procSearchValue, u
   </App>)
 }
 
-export default ModeSelect;
+export default withRouter(ModeSelect);

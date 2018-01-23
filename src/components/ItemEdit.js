@@ -21,7 +21,7 @@ import {
 import {api} from '../api/init';
 
 class ItemEdit extends Component {
-  
+
   render() {
 
   const { inventory, inventoryItem, selectItem, hideModal, displayModal, updateExistingInventory, handleDelete } = this.props
@@ -31,7 +31,7 @@ class ItemEdit extends Component {
         <Headline>
           Edit Inventory Item
         </Headline>
-        <Form onSubmit={(event) => {
+        <Box onSubmit={(event) => {
           event.preventDefault()
           const form = event.target
           const elements = form.elements
@@ -165,12 +165,11 @@ class ItemEdit extends Component {
         <hr />
         <Box className='ItemEditButtons' direction='row' align='stretch'>
           <Button type='submit' className='modalButton1' primary='true' label='Submit' fill='true'/>
-          <Button path='/inventory/' className='modelButton2' accent='true' label='Cancel' fill='true'/><br />
-          <Button onClick={() => handleDelete(inventoryItem._id) } critical='true' label='Delete' fill='true'/>
-          
+          <Button path='/inventory/' className='modelButton2' accent='true' label='Cancel' fill='true'/>
         </Box>
+        <Button id='deleteButton' hoverIndicator='accent' onClick={() => handleDelete(inventoryItem._id) } critical='true' label='Delete' fill='true'/>
       </Box>
-    </Form>
+    </Box>
   </App>)
 }}
 
