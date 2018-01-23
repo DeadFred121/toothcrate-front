@@ -26,7 +26,7 @@ import ItemEdit from './components/ItemEdit'
 import ProcShow from './components/ProcShow'
 import FooterBar from './components/FooterBar'
 import NewItem from './components/NewItem'
-import LoginForm from 'grommet/components/LoginForm';
+import Login from './components/Login'
 
 // API/Axios
 import { api, setJwt } from './api/init';
@@ -56,7 +56,7 @@ state = {
         <div className='App'>
           <NavBar />
           <Box className='Contents'>
-            { !this.state.token ? <LoginForm onSubmit={this.onLoginSubmitHandler} align='center'/> :
+            { !this.state.token ? <Login onLoginSubmitHandler={this.onLoginSubmitHandler} align='center'/> :
               <Switch>
               <Route exact path="/" component={() => <ModeSelect
                      procedureNames={ procedureNames }
