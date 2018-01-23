@@ -1,5 +1,5 @@
 // React Components
-import React, {Component} from 'react';
+import React from 'react';
 
 // Grommet Components
 import TableHeader from 'grommet/components/TableHeader';

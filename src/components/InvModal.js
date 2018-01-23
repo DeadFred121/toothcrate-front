@@ -2,7 +2,6 @@
 import React from 'react';
 
 // Grommet Components
-import App from 'grommet/components/App';
 import Box from 'grommet/components/Box';
 import Button from 'grommet/components/Button';
 import Heading from 'grommet/components/Heading';
@@ -10,7 +9,6 @@ import Layer from 'grommet/components/Layer';
 import Table from 'grommet/components/Table';
 import TableRow from 'grommet/components/TableRow';
 import Timestamp from 'grommet/components/Timestamp';
-import Form from 'grommet/components/Form';
 import EditIcon from 'grommet/components/icons/base/Edit';
 
 const InvModal = ({ inventoryItem, selectItem, hideModal }) => {

@@ -49,7 +49,7 @@ from day to day, procedure to procedure. To be included in the product is an
 automatic warning system to alert the practice when an item is reaching, or has
 dropped below, a minimum amount. This has the added benefit of being able to
 simplify the ordering process by generating a comprehensive list of all items in
-the “danger zone”, which can in turn be organized by supplier.
+the “danger zone”, which can in turn be organised by supplier.
 
 ####
 
@@ -90,23 +90,25 @@ the “danger zone”, which can in turn be organized by supplier.
   Facebook and Google etc.
 
 * [Github](https://github.com/) This was used for version control, feature
-  development, code storage, and project review.
+  development, code storage, and project review. Code climate - this is a code
+  quality tool that picks up on any issues within the code to be fixed. We
+  mainly used it when I was merging a branch to the master to check the code
+  quality of the branch. If there were issues we could fix them and then merge
+  once they were confirmed fixed.
 
-- Code climate: this is a code quality tool that picks up on any issues within
-  the code to be fixed. I mainly used it when I was merging a branch to the
-  master to check the code quality of the branch. If there were issues I could
-  fix them and then merge once they were confirmed fixed. Other libraries used:
+  Other libraries used:
+
 - Morgan: HTTP request logger middleware for node.js.
 - Mongoose: a schema based solution to model application data. Creates an easy
   to use object reference when interacting with MongoDb.
 - Axios: promise based HTTP client for the browser and node.js.
-- ![AGILE: A Kanban board was set up and used to track process.](./documentation/kanban.JPG)
-
+- AGILE: A Kanban board was set up and used to track process: this was done in
+  the office (./documentation/kanban.jpg)
   ####
 
-  ## Solution
+## Solution
 
-  ***
+---
 
 Basic Inventory management. Shopping-cart based system with modifiable
 templates. Customisable Items, Procedures and Procedure Templates as well as
@@ -130,14 +132,6 @@ item basis.
 
 ![Project Charter](./documentation/projectCharter.png)
 ![You can find the Project Proposal here](https://docs.google.com/document/d/1pdoN4UE5g30YLsrNOMslnSK6HuheVS5Hx_v3YwlpPKY/edit?usp=sharing)
-
-####
-
----
-
-## User Stories
-
-![Trello User Stories](./documentation/userStories.png)
 
 ####
 
