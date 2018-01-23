@@ -1,5 +1,5 @@
 // React Components
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 // Grommet Components
 import App from 'grommet/components/App';
@@ -13,10 +13,19 @@ import Button from 'grommet/components/Button';
 import Select from 'grommet/components/Select';
 import Form from 'grommet/components/Form';
 
+// Routing Components
+import {
+  Redirect
+} from 'react-router-dom';
+
 // API
 import {api} from '../api/init';
 
-const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal, displayModal, updateExistingInventory, handleDelete }) => {
+class ItemEdit extends Component {
+  
+  render() {
+
+  const { inventory, inventoryItem, selectItem, hideModal, displayModal, updateExistingInventory, handleDelete } = this.props
 
   return (
       <App className="ItemEdit">
@@ -159,10 +168,11 @@ const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal, displayModa
           <Button type='submit' className='modalButton1' primary='true' label='Submit' fill='true'/>
           <Button path='/inventory/' className='modelButton2' accent='true' label='Cancel' fill='true'/><br />
           <Button onClick={() => handleDelete(inventoryItem._id) } critical='true' label='Delete' fill='true'/>
+          
         </Box>
       </Box>
     </Form>
   </App>)
-}
+}}
 
 export default ItemEdit;
