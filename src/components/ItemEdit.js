@@ -11,21 +11,23 @@ import Headline from 'grommet/components/Headline';
 import Box from 'grommet/components/Box';
 import Button from 'grommet/components/Button';
 import Select from 'grommet/components/Select';
+import Form from 'grommet/components/Form';
 
 // API
 import {api} from '../api/init';
 
-const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal, displayModal }) => {
+const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal, displayModal, updateExistingInventory, handleDelete }) => {
 
   return (
       <App className="ItemEdit">
         <Headline>
           Edit Inventory Item
         </Headline>
-        <Box onSubmit={(event) => {
+        <Form onSubmit={(event) => {
           event.preventDefault()
           const form = event.target
           const elements = form.elements
+          console.log(elements)
           const name = elements.name.value
           const code = elements.code.value
           const category = elements.category.value
@@ -35,21 +37,21 @@ const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal, displayModa
           const quantity = elements.quantity.value
           const parLevel = elements.parLevel.value
 
-            api.post('/api/inventory', {
-              name,
-              code,
-              category,
-              supplier,
-              unit,
-              cost,
-              quantity,
-              parLevel
-            }).then(res => {
-              console.log(res)
-              this.props.updateInventory(res)
-            })
+          api.put(`/api/inventory/${inventoryItem._id}`, {
+            name,
+            code,
+            category,
+            supplier,
+            unit,
+            cost,
+            quantity,
+            parLevel
+          }).then(res => {
+            updateExistingInventory(res.data)
+          })
 
           }} >
+          <Box>
         <Table responsive={false}>
           <thead>
             <tr>
@@ -67,13 +69,13 @@ const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal, displayModa
           <tbody>
             <TableRow>
               <td>
-                <TextInput defaultValue={ inventoryItem.name } />
+                <TextInput name='name' defaultValue={ inventoryItem.name } />
               </td>
               <td>
-                <TextInput defaultValue={ inventoryItem.code } />
+                <TextInput name='code' defaultValue={ inventoryItem.code } />
               </td>
               <td>
-                <TextInput defaultValue={ inventoryItem.category } />
+                <TextInput name='category' defaultValue={ inventoryItem.category } />
                 {/* <Select defaultValue={ inventoryItem.category }
                         inline={false}
                         multiple={false}
@@ -103,7 +105,7 @@ const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal, displayModa
           <tbody>
             <TableRow>
               <td>
-                <TextInput defaultValue={ inventoryItem.supplier } />
+                <TextInput name='supplier' defaultValue={ inventoryItem.supplier } />
                 {/* <Select defaultValue={ inventoryItem.supplier }
                         inline={false}
                         multiple={false}
@@ -114,10 +116,10 @@ const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal, displayModa
                       /> */}
               </td>
               <td>
-                <TextInput defaultValue={ inventoryItem.unit } />
+                <TextInput name='unit' defaultValue={ inventoryItem.unit } />
               </td>
               <td>
-                <TextInput defaultValue={ inventoryItem.cost } />
+                <TextInput name='cost' defaultValue={ inventoryItem.cost } />
               </td>
             </TableRow>
           </tbody>
@@ -136,13 +138,15 @@ const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal, displayModa
           <tbody>
             <TableRow>
               <td>
-                <NumberInput defaultValue={ inventoryItem.quantity }
+                <NumberInput name='quantity'
+                             defaultValue={ inventoryItem.quantity }
                              step={1}
                              min={0}
                 />
               </td>
               <td>
-                <NumberInput defaultValue={ inventoryItem.parLevel }
+                <NumberInput name='parLevel'
+                             defaultValue={ inventoryItem.parLevel }
                              step={1}
                              min={0}
                 />
@@ -153,10 +157,12 @@ const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal, displayModa
         <hr />
         <Box className='ItemEditButtons' direction='row' align='stretch'>
           <Button type='submit' className='modalButton1' primary='true' label='Submit' fill='true'/>
-          <Button path='/inventory/' className='modelButton2' accent='true' label='Cancel' fill='true'/>
+          <Button path='/inventory/' className='modelButton2' accent='true' label='Cancel' fill='true'/><br />
+          <Button onClick={() => handleDelete(inventoryItem._id) } critical='true' label='Delete' fill='true'/>
         </Box>
       </Box>
-    </App>)
+    </Form>
+  </App>)
 }
 
 export default ItemEdit;
