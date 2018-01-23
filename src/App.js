@@ -10,10 +10,10 @@ import '../node_modules/grommet/grommet-hpinc.min.css'
 
 // Routing Components
 import {
-  BrowserRouter as Router,
   Route,
   Switch
 } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 // Internal Components
 import Inventory from './components/Inventory'
@@ -52,7 +52,7 @@ state = {
     const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures } = this.state
 
     return (
-      <Router>
+      
         <div className='App'>
           <NavBar />
           <Box className='Contents'>
@@ -115,13 +115,22 @@ state = {
             </Box>
           <FooterBar />
           </div>
-        </Router>
+        
     );
   }
 
   handleDelete = (item_id) => {
-    console.log('sadksa')
     api.delete(`/api/inventory/${item_id}`)
+      .then(() => {
+        this.setState({
+          selectItem: null
+        })
+        this.props.history.push('/inventory')
+        this.loadInventory();
+      })
+      .catch((err) => {
+        console.log('An error ocurred while deleting the item')
+      })
   }
 
   cancelRedirect = () => {
@@ -175,6 +184,22 @@ state = {
     this.setState({selectItem: null})
   }
 
+  loadInventory = () => {
+    api.get('/api/inventory').then(res => {
+      const inventory = res.data
+      this.setState({ inventory })
+    })
+  }
+
+  loadProcedures = () => {
+    api.get('/api/procedure').then(res => {
+      const procedureNames = res.data.map(procedure => {
+        return { value: procedure._id, label: procedure.name }
+      })
+      this.setState({ procedureNames, procedures: res.data })
+    })
+  }
+
   // Rendering API Inventory request.
   componentDidMount = () => {
     const token = localStorage.getItem('token');
@@ -184,18 +209,10 @@ state = {
       });
     }
 
-    api.get('/api/inventory').then(res => {
-      const inventory = res.data
-      this.setState({inventory})
-    })
+    this.loadInventory();
 
-    api.get('/api/procedure').then(res => {
-      const procedureNames = res.data.map(procedure => {
-        return {value: procedure._id, label: procedure.name}
-      })
-      this.setState({procedureNames, procedures: res.data})
-    })
+    this.loadProcedures();
   }
 }
 
-export default App;
+export default withRouter(App);
