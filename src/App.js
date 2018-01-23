@@ -38,34 +38,35 @@ state = {
   selectItem: null,
   inventoryItem: [],
   selectProc: [],
-  token: null
+  token: null,
+  procedureNames: [],
+  procSelect: false,
+  procSelectId: null,
+  redirect: null,
+  procedures: []
 }
-
-  onLoginSubmitHandler = ({ username, password }) => {
-    api.post('/auth', {
-      email: username,
-      password
-    }
-    ).then(res => {
-      this.setState({
-        token: res.data.token
-      })
-      setJwt(res.data.token)
-    })
-  }
 
   render() {
 
-    const { inventory, selectItem, inventoryItem } = this.state
+    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures } = this.state
 
     return (
       <Router>
         <div className='App'>
           <NavBar />
           <Box className='Contents'>
-            { !this.state.token ? <LoginForm onSubmit={this.onLoginSubmitHandler} align='start'/> :
+            { !this.state.token ? <LoginForm onSubmit={this.onLoginSubmitHandler} align='center'/> :
               <Switch>
-              <Route exact path="/" component={ ModeSelect }/>
+              <Route exact path="/" component={() => <ModeSelect
+                     procedureNames={ procedureNames }
+                     procSelect={ procSelect }
+                     selectProc={ selectProc}
+                     showSearch={ this.showSearch }
+                     updateProcSearchId={ this.updateProcSearchId }
+                     procSelectId={ procSelectId }
+                     redirect={ redirect }
+                     /> }
+              />
               <Route path="/newitem"
                      component={() => <NewItem
                      updateInventory={ this.updateInventory }
@@ -86,7 +87,13 @@ state = {
                      hideModal={ this.hideModal }
                      /> }
               />
-              <Route path="/procshow" component={ ProcShow }/>
+              <Route path="/procshow" component={() => <ProcShow
+                     procSelectId={ procSelectId }
+                     cancelRedirect={ this.cancelRedirect }
+                     procedures={ procedures }
+                     inventory={ inventory }
+                     /> }
+              />
               <Route path="/procedit" component={() => <ProcEdit
                      inventory={ inventory }
                      /> }
@@ -106,6 +113,33 @@ state = {
           </div>
         </Router>
     );
+  }
+
+  cancelRedirect = () => {
+    this.state.redirect && this.setState({redirect: null})
+  }
+
+  updateProcSearchId = ({ suggestion }) => {
+    this.setState({procSelectId: suggestion.value, redirect: '/procshow'})
+  }
+
+  onLoginSubmitHandler = ({ username, password }) => {
+    api.post('/auth', {
+      email: username,
+      password
+    }
+    ).then(res => {
+      this.setState({
+        token: res.data.token
+      })
+      setJwt(res.data.token)
+    })
+  }
+
+  showSearch = () => {
+    this.setState(prevState => ({
+      procSelect: !prevState.procSelect
+    }))
   }
 
   updateInventory = (invItem) => {
@@ -139,10 +173,10 @@ state = {
     })
 
     api.get('/api/procedure').then(res => {
-      const procedures = res.data.map(procedure => {
-        return procedure.name
+      const procedureNames = res.data.map(procedure => {
+        return {value: procedure._id, label: procedure.name}
       })
-      this.setState({procedures})
+      this.setState({procedureNames, procedures: res.data})
     })
   }
 }

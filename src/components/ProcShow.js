@@ -8,90 +8,72 @@ import TableRow from 'grommet/components/TableRow';
 import Table from 'grommet/components/Table';
 import Status from 'grommet/components/icons/Status';
 import Headline from 'grommet/components/Headline';
+import Anchor from 'grommet/components/Anchor';
+import Box from 'grommet/components/Box';
+import Button from 'grommet/components/Button';
+import EditIcon from 'grommet/components/icons/base/Edit';
 
-// Internal Components
-import OptionControls from './OptionControls';
+// Routing Components
+import {
+  Redirect
+} from 'react-router-dom';
 
 // API
 import {api} from '../api/init';
 
 class ProcShow extends Component {
-  render() {
+
+state = {
+}
+
+  render () {
+
+  const { procedureNames, cancelRedirect, procedures, procSelectId, inventory } = this.props
+
+  cancelRedirect()
+
+  const procedure = procedures.find(proc => proc._id === procSelectId)
+  if (!procedure) return ( <Redirect to='/' /> )
+
+  const procedureItems = procedure.items.map(item => {
+    return inventory.find(inventoryItem => inventoryItem._id === item.item)
+  })
+
     return (
       <App>
-        <Headline align="center" size="med">Procedure Title</Headline>
-        <Table>
-          <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Status']} sortIndex={0} sortAscending={true} />
+        <Headline>{ procedure.name }</Headline>
+        <Table responsive={false} >
+          <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true}/>
           <tbody>
-            <TableRow>
-              <td>
-                XL-421
-              </td>
-              <td>
-                Toothbrush
-              </td>
-              <td>
-                Essentials
-              </td>
-              <td>
-                2
-              </td>
-              <td>
-                <Status value='critical' />
-              </td>
-            </TableRow>
-            <TableRow>
-              <td>
-                XL-422
-              </td>
-              <td>
-                Toothbrush 2
-              </td>
-              <td>
-                Essentials
-              </td>
-              <td>
-                188
-              </td>
-              <td>
-                <Status value='ok' />
-              </td>
-            </TableRow>
-            <TableRow>
-              <td>
-                XL-423
-              </td>
-              <td>
-                Toothbrush 3
-              </td>
-              <td>
-                Essentials
-              </td>
-              <td>
-                300
-              </td>
-              <td>
-                <Status value='warning' />
-              </td>
-            </TableRow>
+            {
+              procedureItems.map(item => (
+                <TableRow>
+                <td>
+                  {item.code}
+                </td>
+                <td>
+                  {item.name}
+                </td>
+                <td>
+                  {item.category}
+                </td>
+                <td>
+                  {item.quantity}
+                </td>
+                <td>
+                  <Status value='ok'/>
+                </td>
+              </TableRow>))
+            }
           </tbody>
         </Table>
-        <OptionControls />
+        <Box className='ItemEditButtons' direction='row' align='stretch'>
+          <Button type='submit' className='modalButton1' primary='true' label='Submit' fill='true' />
+          <Button path='/' className='modelButton2' accent='true' label='Cancel' fill='true'/>
+        </Box>
       </App>
     )
   }
-
-  componentDidMount = () => {
-    api.get('/api/procedure').then(res => {
-      const procedures = res.data.map(procedure => {
-        return procedure.name
-      })
-      this.setState({
-        procedures
-      })
-    })
-  }
-
 }
 
 export default ProcShow;
