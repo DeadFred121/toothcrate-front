@@ -10,6 +10,14 @@ html, body {
   padding: 0 1rem;
 }
 
+.mainlogo Image {
+  margin-bottom: 40px;
+}
+
+.ProcHeader {
+margin-top: 3rem;
+}
+
 .ProcHeader:Hover {
   cursor: pointer;
   user-select: none;
@@ -28,8 +36,25 @@ html, body {
   padding-right: 100px;
 }
 
+#StockSearchBar {
+  padding-right: 155px;
+}
+
+#OrdersSearchBar {
+  padding-right: 155px;
+}
+
+#NewProcSearchBar {
+  padding-right: 155px;
+}
+
 .hrSearch {
   margin: 20px;
+}
+
+.invTitle:Hover {
+  cursor: pointer;
+  user-select: none;
 }
 
 .modalButton1 {
@@ -51,6 +76,11 @@ html, body {
 
 .NewProcNumInput {
   padding: 12px;
+}
+
+.StockButtons {
+  width: 40%;
+  margin: auto;
 }
 
 .FooterBar {

@@ -1,8 +1,7 @@
 // React Components
-import React, {Component} from 'react';
+import React from 'react';
 
 // Grommet Components
-import App from 'grommet/components/App';
 import Box from 'grommet/components/Box';
 import Button from 'grommet/components/Button';
 import Heading from 'grommet/components/Heading';
@@ -12,15 +11,10 @@ import TableRow from 'grommet/components/TableRow';
 import Timestamp from 'grommet/components/Timestamp';
 import EditIcon from 'grommet/components/icons/base/Edit';
 
-// Internal Components
-import Inventory from './Inventory'
-
-const InvModal = ({ inventoryItem, selectItem }) => {
+const InvModal = ({ inventoryItem, selectItem, hideModal }) => {
 
   return (
-    <App className="InvModal">
-      <Layer closer={true} onClose={() => {
-            this.setState({selectItem: null}) }}>
+      <Layer closer={true} onClose={ hideModal }>
         <Heading className='modalHeading' tag='h2' truncate={true}>
           {inventoryItem.name}
         </Heading>
@@ -62,7 +56,7 @@ const InvModal = ({ inventoryItem, selectItem }) => {
                 Unit
               </th>
               <th>
-                Price
+                Cost
               </th>
             </tr>
           </thead>
@@ -75,7 +69,7 @@ const InvModal = ({ inventoryItem, selectItem }) => {
                 {inventoryItem.unit}
               </td>
               <td>
-                {inventoryItem.price}
+                ${inventoryItem.cost}
               </td>
             </TableRow>
           </tbody>
@@ -125,12 +119,12 @@ const InvModal = ({ inventoryItem, selectItem }) => {
           </tbody>
         </Table>
         <Box direction='row' align='stretch'>
-          <Button className='modalButton1' primary='true' label='Order' fill='true'/>
-          <Button className='modalButton2' accent='true' label='Cancel' fill='true'/>
+          <Button path='/order' className='modalButton1' primary='true' label='Order' fill='true'/>
+          <Button onClick={ hideModal } className='modalButton2' accent='true' label='Cancel' fill='true'/>
         </Box>
-        <Button className='modalEditButton' secondary='true' icon={<EditIcon />} label='Edit Inventory Item' fill='true'/>
+        <Button path='/itemedit' className='modalEditButton' secondary='true' icon={<EditIcon />} label='Edit Inventory Item' fill='true'/>
       </Layer>
-    </App>)
+    )
   }
 
 export default InvModal;

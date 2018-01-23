@@ -1,5 +1,5 @@
 // React Components
-import React, {Component} from 'react';
+import React from 'react';
 
 // Grommet Components
 import TableHeader from 'grommet/components/TableHeader';
@@ -8,44 +8,32 @@ import TableRow from 'grommet/components/TableRow';
 import Table from 'grommet/components/Table';
 import Status from 'grommet/components/icons/Status';
 import Anchor from 'grommet/components/Anchor';
-import Layer from 'grommet/components/Layer';
-import Heading from 'grommet/components/Heading';
-import Timestamp from 'grommet/components/Timestamp';
-import Box from 'grommet/components/Box';
-import Button from 'grommet/components/Button';
-import EditIcon from 'grommet/components/icons/base/Edit';
 import Headline from 'grommet/components/Headline';
 
 // Internal Components
 import InvModal from './InvModal'
 
-// API
-import {api} from '../api/init';
+const Inventory = ({ inventory, selectItem, inventoryItem, displayModal, hideModal }) => {
 
-class Inventory extends Component {
-
-  state = {
-    inventory: [],
-    selectItem: null,
-    InventoryItem: [],
-    edit: false
-  }
-
-  render() {
-
-    const { inventory, selectItem, inventoryItem } = this.state
-
-    return (<App>
-      <Headline align="center" size="med">Inventory</Headline>
+  return (
+    <App>
+      <Headline>Inventory</Headline>
+      {
+        selectItem &&
+        <InvModal inventoryItem={inventoryItem}
+                  selectItem={selectItem}
+                  hideModal={hideModal}
+        />
+      }
       <Table responsive={false} >
         <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true}/>
         <tbody>
           {
-            this.state.inventory.map(item => (<TableRow>
+            inventory.map(item => (
+              <TableRow>
               <td>
                 <Anchor onClick={() => {
-                    this.setState({selectItem: item._id, inventoryItem: item})
-                  }}>
+                  displayModal(item)}}>
                   {item.code}
                 </Anchor>
               </td>
@@ -65,21 +53,8 @@ class Inventory extends Component {
           }
         </tbody>
       </Table>
-
-      {
-        this.state.selectItem &&
-        <InvModal inventoryItem={inventoryItem} selectItem={selectItem} />
-      }
-    </App>)
-  }
-
-  // Rendering API Inventory request.
-  componentDidMount = () => {
-    api.get('/api/inventory').then(res => {
-      const inventory = res.data
-      this.setState({inventory})
-    })
-  }
+    </App>
+  )
 }
 
 export default Inventory;

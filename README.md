@@ -2,7 +2,7 @@
 
 ### Frontend half (React) for a dental practice inventory system.
 
-[Project Link](http://toothcrate.netlify.com)
+[Toothcrate Inventory Website](http://toothcrate.netlify.com)
 
 * Please see [this repo](https://github.com/FilipMaslovaric/Toothcrate-backend)
   for details of the back-end.
@@ -92,62 +92,6 @@ the “danger zone”, which can in turn be organized by supplier.
 * [Github](https://github.com/) This was used for version control, feature
   development, code storage, and project review.
 
-- Code climate: this is a code quality tool that picks up on any issues within
-  the code to be fixed. I mainly used it when I was merging a branch to the
-  master to check the code quality of the branch. If there were issues I could
-  fix them and then merge once they were confirmed fixed. Other libraries used:
-- Morgan: HTTP request logger middleware for node.js.
-- Mongoose: a schema based solution to model application data. Creates an easy
-  to use object reference when interacting with MongoDb.
-- Axios: promise based HTTP client for the browser and node.js.
-- AGILE: A Kanban board was set up and used to track process: this was done in
-  situ at my office as I was the only person working on the program.
-
-  ####
-
-  ## Solution
-
-  ***
-
-Basic Inventory management. Shopping-cart based system with modifiable
-templates. Customisable Items, Procedures and Procedure Templates as well as
-Suppliers and their corresponding stock. Warning system for par-levels on a per
-item basis.
-
-1. Creating an intuitive, easy to use inventory management system that keeps
-   track of stock levels for the surgery.
-2. Allowing the user to enter items used on a procedure by procedure basis using
-   a template-based system that preselects items and quantities based on the
-   type of procedure being undertaken. This is also fully customizable to allow
-   the user to tailor the template’s items to the procedure.
-3. Providing tools for the user to add new procedure templates to the system, as
-   well as new items and suppliers. This allows for continued growth of the
-   platform.
-4. Creating an automated warning system by setting minimal levels for each item,
-   referred to as par-levels. When the quantity of an item reaches or drops
-   below the par-level, an alert is displayed to the user and the item is
-   flagged in the system. These items can then be viewed in a list, which can be
-   organized by supplier for ease of ordering.
-
-![Project Charter](./documentation/projectCharter.png)
-![You can find the Project Proposal here](https://docs.google.com/document/d/1pdoN4UE5g30YLsrNOMslnSK6HuheVS5Hx_v3YwlpPKY/edit?usp=sharing)
-
-####
-
----
-
-## User Stories
-
-![Trello User Stories](./documentation/userStories.png)
-
-####
-
----
-
-## Design
-
-![Wire Frames](./documentation/wireFrames.png)
-[Click through each one here](https://www.figma.com/proto/fvrA6xFB2o54G53IxiYeYahw/Toothcrate?scaling=contain&redirected=1&node-id=4%3A3)
 
 ####
 
