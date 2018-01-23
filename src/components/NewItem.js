@@ -1,5 +1,5 @@
 // React Components
-import React, {Component} from 'react';
+import React from 'react';
 
 // Grommet Components
 import App from 'grommet/components/App';
@@ -14,7 +14,7 @@ import Select from 'grommet/components/Select';
 import Form from 'grommet/components/Form';
 
 // API/Axios
-import { api, setJwt } from '../api/init';
+import { api } from '../api/init';
 
 const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal, updateNewInventory }) => {
 
