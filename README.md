@@ -142,7 +142,9 @@ item basis.
 
 ## Design
 
-![Wire Frames](./documentation/wireFrames.png)
+![mockups](./documentation/1mock_Landing.png)(./documentation/2procedure.png)(./documentation/3order.png)(./documentation/4inventory.png)(./documentation/5template.png)
+
+![Figma designed Wire Frames](./documentation/wireFrames.png)
 [Click through each wire frame here](https://www.figma.com/proto/fvrA6xFB2o54G53IxiYeYahw/Toothcrate?scaling=contain&redirected=1&node-id=4%3A3)
 
 ####
@@ -158,6 +160,8 @@ estimation is based upon on 14 day period working 8 hours a day each day for a
 total of 112 hours. It is broken down into user story points based on Agile
 methodology with a production potential to complete 20 points in a week.
 ![Gantt Chart](./documentation/ganttchart.png)
+
+## Testing
 
 ## Reflections
 
