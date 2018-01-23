@@ -1,6 +1,6 @@
 # Toothcrate-Frontend Coder Academy Term 3 Project -
 
-### Frontend half (React) for a dental practice inventory system.
+### Frontend (React) for a dental practice inventory system.
 
 [Website Link](http://toothcrate.netlify.com)
 
@@ -15,7 +15,8 @@
 * [Solution](#solution)
 * [User Stories](#user-stories)
 * [Design](#wireframes)
-* [Project Schedule](#project-solution)
+* [Project Schedule](#project-schedule)
+
   ####
 
 ## Project Brief
@@ -156,3 +157,16 @@ the extra features will be implemented based on the available time. The
 estimation is based upon on 14 day period working 8 hours a day each day for a
 total of 112 hours. It is broken down into user story points based on Agile
 methodology with a production potential to complete 20 points in a week.
+![Gantt Chart](./documentation/ganttchart.png)
+
+## Reflections
+
+1. It was great to create an app to solve a real world problem.
+2. Great to refresh what we have learned and to apply it to the project.
+3. Nice to work on new things and discuss our individual strengths .
+4. Prioritise features rather than styling.
+5. The whole team should have worked on the backend and then the frontend. This
+   would have helped to equip the whole team to be productive on both stacks.
+6. As a team we should be more open with our questions and seek help.
+7. Focus on getting functionality out
+8. Be careful about how much we promise to stakeholders.
