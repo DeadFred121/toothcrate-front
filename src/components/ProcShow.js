@@ -8,18 +8,13 @@ import TableRow from 'grommet/components/TableRow';
 import Table from 'grommet/components/Table';
 import Status from 'grommet/components/icons/Status';
 import Headline from 'grommet/components/Headline';
-import Anchor from 'grommet/components/Anchor';
 import Box from 'grommet/components/Box';
 import Button from 'grommet/components/Button';
-import EditIcon from 'grommet/components/icons/base/Edit';
 
 // Routing Components
 import {
   Redirect
 } from 'react-router-dom';
-
-// API
-import {api} from '../api/init';
 
 class ProcShow extends Component {
 
@@ -28,7 +23,7 @@ state = {
 
   render () {
 
-  const { procedureNames, cancelRedirect, procedures, procSelectId, inventory } = this.props
+  const { cancelRedirect, procedures, procSelectId, inventory } = this.props
 
   cancelRedirect()
 
