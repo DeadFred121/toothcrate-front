@@ -11,7 +11,7 @@ import '../node_modules/grommet/grommet-hpinc.min.css'
 // Routing Components
 import {
   Route,
-  Switch
+  Switch,
 } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
@@ -28,6 +28,7 @@ import FooterBar from './components/FooterBar'
 import NewItem from './components/NewItem'
 import Login from './components/Login'
 import NotFound from './components/NotFound'
+import NewProc from './components/NewProc'
 
 // API/Axios
 import { api, setJwt } from './api/init';
@@ -67,6 +68,7 @@ state = {
                      updateProcSearchId={ this.updateProcSearchId }
                      procSelectId={ procSelectId }
                      redirect={ redirect }
+                     handleClickInventoryRedirect={ this.handleClickInventoryRedirect }
                      /> }
               />
               <Route path="/newitem"
@@ -98,6 +100,10 @@ state = {
                      inventory={ inventory }
                      /> }
               />
+              <Route path="/newproc" component={() => <NewProc
+                     inventory={ inventory }
+                     /> }
+              />
               <Route path="/procedit" component={() => <ProcEdit
                      inventory={ inventory }
                      /> }
@@ -119,6 +125,16 @@ state = {
           </div>
 
     );
+  }
+
+  handleClickInventoryRedirect = () => {
+      this.props.history.push('/inventory');
+  };
+
+  handleAddItemClick () {
+    this.setState(prevState => ({
+      content: [...prevState.content, `More sample content ${prevState.content.length}`]
+    }));
   }
 
   handleDelete = (item_id) => {

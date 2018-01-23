@@ -16,7 +16,7 @@ import FormCloseIcon from 'grommet/components/icons/base/FormClose';
 
 const ProcEdit = ({ inventory, handleAddClick }) => {
     return (<App>
-      <Headline>Add New Procedure</Headline>
+      <Headline>Edit Procedure</Headline>
       <TextInput id='NewProcSearchBar' placeHolder="Procedure Name"/>
       <Table>
         <TableHeader labels={['Item Name', 'Quantity', 'Delete Item']} />
