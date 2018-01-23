@@ -56,7 +56,7 @@ state = {
                   {item.quantity}
                 </td>
                 <td>
-                  <Status value='ok'/>
+                  <Status value={item.quantity > item.parLevel ? 'ok' : 'warning'}/>
                 </td>
               </TableRow>))
             }

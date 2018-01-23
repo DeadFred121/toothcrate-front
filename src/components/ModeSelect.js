@@ -43,14 +43,15 @@ const ModeSelect = ({ showSearch, procSelect, procedureNames, procSearchValue, u
               <br/>
             </Animate>
           </Box>
-
       }
       <hr className='hrSearch'/>
-      <Headline className="invTitle">
-        Inventory
-      </Headline>
-      <Anchor icon={<ClipboardIcon />} path='/inventory/' primary={true} disabled={false} label='Show complete list of inventory items'>
-      </Anchor>
+      <Box>
+        <Headline className="invTitle">
+          Inventory
+        </Headline>
+        <Anchor icon={<ClipboardIcon />} path='/inventory/' primary={true} label='Show complete list of inventory items'>
+        </Anchor>
+      </Box>
   </App>)
 }
 

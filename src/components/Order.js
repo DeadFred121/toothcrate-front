@@ -10,7 +10,7 @@ import Table from 'grommet/components/Table';
 import TableHeader from 'grommet/components/TableHeader';
 import TableRow from 'grommet/components/TableRow';
 
-const Order = ({ inventory }) => {
+const Order = ({ inventory, updateSupplierSearchId }) => {
 
   return (
     <App>
