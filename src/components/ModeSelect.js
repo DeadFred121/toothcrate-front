@@ -1,6 +1,11 @@
 // React Components
 import React, {Component} from 'react';
 
+// Routing Components
+import {
+  Redirect
+} from 'react-router-dom';
+
 // Grommet Components
 import Headline from 'grommet/components/Headline';
 import SearchInput from 'grommet/components/SearchInput';
@@ -15,80 +20,51 @@ import Anchor from 'grommet/components/Anchor';
 // Assets
 import logo from '../images/TCLogo.png'
 
-// API
-import {api} from '../api/init';
+const ModeSelect = ({ showSearch, procSelect, procedureNames, procSearchValue, updateProcSearchId, procSelectId, redirect }) => {
 
-class ModeSelect extends Component {
-
-  state = {
-    // procedure search enable/disable
-    procSelect: false,
-    procedures: []
-  }
-
-  showSearch = () => {
-    this.setState(prevState => ({
-      procSelect: !prevState.procSelect
-    }))
-  }
-
-  render() {
-
-    const {procSelect, procedures} = this.state
-
-    return (
-      <App>
-        <Animate enter={{
-            "animation" : "fade",
-            "duration" : 5000,
-            "delay" : 0 }}
-            keep={true}>
-        <Image id='mainlogo' src={logo} size='med' />
-      </Animate>
+  return (
+    <App>
+      {
+        redirect && <Redirect to={ redirect } />
+      }
       <Animate enter={{
           "animation" : "fade",
-          "duration" : 1000,
+          "duration" : 5000,
           "delay" : 0 }}
           keep={true}>
-        <Headline className='ProcHeader'onClick={this.showSearch}>
-          Procedures
-        </Headline>
+      <Image id='mainlogo' src={logo} size='med' />
+    </Animate>
+    <Animate enter={{
+        "animation" : "fade",
+        "duration" : 1000,
+        "delay" : 0 }}
+        keep={true}>
+      <Headline className='ProcHeader' onClick={ showSearch }>
+        Procedures
+      </Headline>
 
-        {
-          procSelect && <Box pad={{"between" : "small"}}
-                             align='center'>
-              <Animate enter={{
-                  "animation" : "fade",
-                  "duration" : 750,
-                  "delay" : 0 }}
-                  keep={true}>
-                <SearchInput id='procSearchBar' placeHolder='Search procedures' suggestions={procedures} size="large"/>
-                <br/>
-                <Button label='Submit' path='/procshow' primary={true}/>
-              </Animate>
-            </Box>
+      {
+        procSelect && <Box pad={{"between" : "small"}}
+                           align='center'>
+            <Animate enter={{
+                "animation" : "fade",
+                "duration" : 750,
+                "delay" : 0 }}
+                keep={true}>
+              <SearchInput onSelect={ updateProcSearchId } id='procSearchBar' placeHolder='Search procedures' suggestions={ procedureNames } />
+              <br/>
+            </Animate>
+          </Box>
 
-        }
-        <hr className='hrSearch'/>
-        <Headline className="invTitle">
-          Inventory
-        </Headline>
-        <Anchor icon={<ClipboardIcon />} path='/inventory/' primary={true} disabled={false} label='Show complete list of inventory items'>
-        </Anchor>
-      </Animate>
-    </App>)
-  }
-
-  // Mapping through Procedures returned from API
-  componentDidMount = () => {
-    api.get('/api/procedure').then(res => {
-      const procedures = res.data.map(procedure => {
-        return procedure.name
-      })
-      this.setState({procedures})
-    })
-  }
-
+      }
+      <hr className='hrSearch'/>
+      <Headline className="invTitle">
+        Inventory
+      </Headline>
+      <Anchor icon={<ClipboardIcon />} path='/inventory/' primary={true} disabled={false} label='Show complete list of inventory items'>
+      </Anchor>
+    </Animate>
+  </App>)
 }
 
 export default ModeSelect;
