@@ -103,7 +103,7 @@ the “danger zone”, which can in turn be organised by supplier.
 - Mongoose: a schema based solution to model application data. Creates an easy
   to use object reference when interacting with MongoDb.
 - Axios: promise based HTTP client for the browser and node.js.
-- [AGILE: A Kanban board was set up and used to track process: this was kept in the office](./documentation/kanban.jpg)
+- ![AGILE: A Kanban board was set up and used to track process: this was kept in the office](./documentation/kanban.jpg)
 
 ####
 
@@ -140,8 +140,7 @@ item basis.
 
 ## Design
 
-![Wire Frames](./documentation/wireFrames.png)
-[Click through each one here](https://www.figma.com/proto/fvrA6xFB2o54G53IxiYeYahw/Toothcrate?scaling=contain&redirected=1&node-id=4%3A3)
+![Wire Frames](./documentation/wireFrames.png) ###[Click through each wire frame here](https://www.figma.com/proto/fvrA6xFB2o54G53IxiYeYahw/Toothcrate?scaling=contain&redirected=1&node-id=4%3A3)
 
 ####
 
