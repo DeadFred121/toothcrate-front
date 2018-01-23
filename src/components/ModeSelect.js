@@ -26,7 +26,7 @@ const ModeSelect = ({ showSearch, procSelect, procedureNames, procSearchValue, u
       {
         redirect && <Redirect to={ redirect } />
       }
-      <Image id='mainlogo' src={logo} size='med' />
+      <Image id='mainlogo' src={logo} size='small' />
       <Headline className='ProcHeader' onClick={ showSearch }>
         Procedures
       </Headline>
@@ -43,14 +43,15 @@ const ModeSelect = ({ showSearch, procSelect, procedureNames, procSearchValue, u
               <br/>
             </Animate>
           </Box>
-
       }
       <hr className='hrSearch'/>
-      <Headline className="invTitle">
-        Inventory
-      </Headline>
-      <Anchor icon={<ClipboardIcon />} path='/inventory/' primary={true} disabled={false} label='Show complete list of inventory items'>
-      </Anchor>
+      <Box>
+        <Headline className="invTitle">
+          Inventory
+        </Headline>
+        <Anchor icon={<ClipboardIcon />} path='/inventory/' primary={true} label='Show complete list of inventory items'>
+        </Anchor>
+      </Box>
   </App>)
 }
 

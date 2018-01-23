@@ -11,7 +11,6 @@ import Headline from 'grommet/components/Headline';
 import Box from 'grommet/components/Box';
 import Button from 'grommet/components/Button';
 import Select from 'grommet/components/Select';
-import Form from 'grommet/components/Form';
 
 // API/Axios
 import { api } from '../api/init';
@@ -23,7 +22,7 @@ const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal, updateNewIn
         <Headline>
           New Inventory Item
         </Headline>
-        <Form onSubmit={(event) => {
+        <Box onSubmit={(event) => {
           event.preventDefault()
           const form = event.target
           const elements = form.elements
@@ -158,9 +157,9 @@ const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal, updateNewIn
         <hr />
         <Box className='ItemEditButtons' direction='row' align='stretch'>
           <Button type='submit' className='modalButton1' primary='true' label='Submit' fill='true' />
-          <Button path='/inventory' className='modelButton2' accent='true' label='Cancel' fill='true'/>
+          <Button path='/' className='modelButton2' accent='true' label='Cancel' fill='true'/>
         </Box>
-      </Form>
+      </Box>
     </App>)
 }
 

@@ -10,10 +10,10 @@ import '../node_modules/grommet/grommet-hpinc.min.css'
 
 // Routing Components
 import {
-  BrowserRouter as Router,
   Route,
   Switch
 } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 // Internal Components
 import Inventory from './components/Inventory'
@@ -26,7 +26,8 @@ import ItemEdit from './components/ItemEdit'
 import ProcShow from './components/ProcShow'
 import FooterBar from './components/FooterBar'
 import NewItem from './components/NewItem'
-import LoginForm from 'grommet/components/LoginForm';
+import Login from './components/Login'
+import NotFound from './components/NotFound'
 
 // API/Axios
 import { api, setJwt } from './api/init';
@@ -43,7 +44,8 @@ state = {
   procSelect: false,
   procSelectId: null,
   redirect: null,
-  procedures: []
+  procedures: [],
+  supplierSelectId: null
 }
 
   render() {
@@ -51,12 +53,12 @@ state = {
     const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures } = this.state
 
     return (
-      <Router>
+
         <div className='App'>
           <NavBar />
           <Box className='Contents'>
-            { !this.state.token ? <LoginForm onSubmit={this.onLoginSubmitHandler} align='center'/> :
-              <Switch>
+            { !this.state.token ? <Login onLoginSubmitHandler={this.onLoginSubmitHandler} align='center'/> :
+            <Switch>
               <Route exact path="/" component={() => <ModeSelect
                      procedureNames={ procedureNames }
                      procSelect={ procSelect }
@@ -102,24 +104,35 @@ state = {
               />
               <Route path="/order" component={() => <Order
                      inventory={ inventory }
+                     updateSupplierSearchId={ this.updateSupplierSearchId }
                      /> }
               />
               <Route path="/stock" component={() => <Stock
                      inventory={ inventory }
                      /> }
               />
+              <Route component={NotFound} />
             </Switch>
             }
             </Box>
           <FooterBar />
           </div>
-        </Router>
+
     );
   }
 
   handleDelete = (item_id) => {
-    console.log('sadksa')
     api.delete(`/api/inventory/${item_id}`)
+      .then(() => {
+        this.setState({
+          selectItem: null
+        })
+        this.props.history.push('/inventory')
+        this.loadInventory();
+      })
+      .catch((err) => {
+        console.log('An error ocurred while deleting the item')
+      })
   }
 
   cancelRedirect = () => {
@@ -130,12 +143,13 @@ state = {
     this.setState({procSelectId: suggestion.value, redirect: '/procshow'})
   }
 
+  updateSupplierSearchId = ({ suggestion }) => {
+    console.log(suggestion)
+    this.setState({supplierSelectId: suggestion.value, redirect: '/suppliershow'})
+  }
+
   onLoginSubmitHandler = ({ username, password }) => {
-    api.post('/auth', {
-      email: username,
-      password
-    }
-    ).then(res => {
+    api.post('/auth', { email: username, password }).then(res => {
       this.setState({
         token: res.data.token
       })
@@ -151,19 +165,14 @@ state = {
 
   updateNewInventory = (invItem) => {
     const inventory = [...this.state.inventory]
-
     inventory.push(invItem)
     this.setState({ inventory })
   }
 
   updateExistingInventory = (invItem) => {
-    console.log(invItem)
     const inventory = [...this.state.inventory]
     const itemIndex = inventory.findIndex(item => item._id === invItem._id)
-    console.log(itemIndex)
     inventory[itemIndex] = invItem
-    console.log(inventory[itemIndex])
-    console.log(inventory)
     this.setState({ inventory, inventoryItem: invItem })
   }
 
@@ -177,6 +186,22 @@ state = {
     this.setState({selectItem: null})
   }
 
+  loadInventory = () => {
+    api.get('/api/inventory').then(res => {
+      const inventory = res.data
+      this.setState({ inventory })
+    })
+  }
+
+  loadProcedures = () => {
+    api.get('/api/procedure').then(res => {
+      const procedureNames = res.data.map(procedure => {
+        return { value: procedure._id, label: procedure.name }
+      })
+      this.setState({ procedureNames, procedures: res.data })
+    })
+  }
+
   // Rendering API Inventory request.
   componentDidMount = () => {
     const token = localStorage.getItem('token');
@@ -186,18 +211,10 @@ state = {
       });
     }
 
-    api.get('/api/inventory').then(res => {
-      const inventory = res.data
-      this.setState({inventory})
-    })
+    this.loadInventory();
 
-    api.get('/api/procedure').then(res => {
-      const procedureNames = res.data.map(procedure => {
-        return {value: procedure._id, label: procedure.name}
-      })
-      this.setState({procedureNames, procedures: res.data})
-    })
+    this.loadProcedures();
   }
 }
 
-export default App;
+export default withRouter(App);
