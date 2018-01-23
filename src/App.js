@@ -69,14 +69,16 @@ state = {
               />
               <Route path="/newitem"
                      component={() => <NewItem
-                     updateInventory={ this.updateInventory }
+                     updateNewInventory={ this.updateInventory }
                      inventory={ inventory }
-                     /> }
+                   /> }// IDEA: inventoryItem
               />
               <Route path="/itemedit" component={() => <ItemEdit
                      inventoryItem={ inventoryItem }
                      inventory={ inventory }
                      displayModal= { this.displayModal }
+                     updateExistingInventory={ this.updateExistingInventory }
+                     handleDelete={ this.handleDelete }
                      /> }
               />
               <Route path="/inventory" component={() => <Inventory
@@ -115,6 +117,11 @@ state = {
     );
   }
 
+  handleDelete = (item_id) => {
+    console.log('sadksa')
+    api.delete(`/api/inventory/${item_id}`)
+  }
+
   cancelRedirect = () => {
     this.state.redirect && this.setState({redirect: null})
   }
@@ -142,10 +149,22 @@ state = {
     }))
   }
 
-  updateInventory = (invItem) => {
+  updateNewInventory = (invItem) => {
     const inventory = [...this.state.inventory]
+
     inventory.push(invItem)
     this.setState({ inventory })
+  }
+
+  updateExistingInventory = (invItem) => {
+    console.log(invItem)
+    const inventory = [...this.state.inventory]
+    const itemIndex = inventory.findIndex(item => item._id === invItem._id)
+    console.log(itemIndex)
+    inventory[itemIndex] = invItem
+    console.log(inventory[itemIndex])
+    console.log(inventory)
+    this.setState({ inventory, inventoryItem: invItem })
   }
 
   // Function

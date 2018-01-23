@@ -16,14 +16,14 @@ import Form from 'grommet/components/Form';
 // API/Axios
 import { api, setJwt } from '../api/init';
 
-const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal }) => {
+const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal, updateNewInventory }) => {
 
   return (
       <App className="ItemEdit">
         <Headline>
           New Inventory Item
         </Headline>
-        <Box onSubmit={(event) => {
+        <Form onSubmit={(event) => {
           event.preventDefault()
           const form = event.target
           const elements = form.elements
@@ -36,19 +36,18 @@ const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal }) => {
           const quantity = elements.quantity.value
           const parLevel = elements.parLevel.value
 
-            api.post('/api/inventory', {
-              name,
-              code,
-              category,
-              supplier,
-              unit,
-              cost,
-              quantity,
-              parLevel
-            }).then(res => {
-              console.log(res)
-              this.props.updateInventory(res)
-            })
+          api.post('/api/inventory', {
+            name,
+            code,
+            category,
+            supplier,
+            unit,
+            cost,
+            quantity,
+            parLevel
+          }).then(res => {
+            updateNewInventory(res)
+          })
           }} >
         <Table responsive={false}>
           <thead>
@@ -161,7 +160,7 @@ const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal }) => {
           <Button type='submit' className='modalButton1' primary='true' label='Submit' fill='true' />
           <Button path='/inventory' className='modelButton2' accent='true' label='Cancel' fill='true'/>
         </Box>
-      </Box>
+      </Form>
     </App>)
 }
 

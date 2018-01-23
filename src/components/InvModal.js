@@ -58,7 +58,7 @@ const InvModal = ({ inventoryItem, selectItem, hideModal }) => {
                 Unit
               </th>
               <th>
-                Price
+                Cost
               </th>
             </tr>
           </thead>
@@ -71,7 +71,7 @@ const InvModal = ({ inventoryItem, selectItem, hideModal }) => {
                 {inventoryItem.unit}
               </td>
               <td>
-                {inventoryItem.price}
+                ${inventoryItem.cost}
               </td>
             </TableRow>
           </tbody>
