@@ -16,8 +16,10 @@
 * [User Stories](#user-stories)
 * [Design](#wireframes)
 * [Project Schedule](#project-schedule)
+* [Testing](#testing)
+* [Reflections](#reflections)
 
-  ####
+####
 
 ## Project Brief
 
@@ -134,6 +136,9 @@ item basis.
    organized by supplier for ease of ordering.
 
 ![Project Charter](./documentation/projectCharter.png)
+![Project Proposal](./documentation/projectPropsal1.png)
+![Project Proposal](./documentation/projectPropsal2.png)
+
 ![Project Proposal](https://docs.google.com/document/d/1pdoN4UE5g30YLsrNOMslnSK6HuheVS5Hx_v3YwlpPKY/edit?usp=sharing)
 
 ####
@@ -144,8 +149,11 @@ item basis.
 
 Wireframe mockups and user journey ![mockups](./documentation/userJourney.png)!
 
+Figma designed Wire Frames
 ![Figma designed Wire Frames](./documentation/wireFrames.png)
 [Click through each wire frame here](https://www.figma.com/proto/fvrA6xFB2o54G53IxiYeYahw/Toothcrate?scaling=contain&redirected=1&node-id=4%3A3)
+
+Entity Relationship Diagram (ERD).
 
 ####
 
@@ -163,14 +171,25 @@ methodology with a production potential to complete 20 points in a week.
 
 ## Testing
 
+Due to the limited time and resources available the following system testing was
+performed:
+
+1. Used Postman to test GET, Post, Put, Delete request to the database.
+2. Used debugging Tools in the console to check the messages in the application.
+3. Used Code linting pluggable
+4. Used the network tab to check communication with the server.
+5. Used react developer tools to see the current JSX and key, ref, its state and
+   props.
+6. Using logs in Heroku.
+
 ## Reflections
 
-1. It was great to create an app to solve a real world problem.
-2. Great to refresh what we have learned and to apply it to the project.
-3. Nice to work on new things and discuss our individual strengths .
-4. Prioritise features rather than styling.
-5. The whole team should have worked on the backend and then the frontend. This
+3. It was great to create an app to solve a real world problem.
+4. Great to refresh what we have learned and to apply it to the project.
+5. Nice to work on new things and discuss our individual strengths .
+6. Prioritise features rather than styling.
+7. The whole team should have worked on the backend and then the frontend. This
    would have helped to equip the whole team to be productive on both stacks.
-6. As a team we should be more open with our questions and seek help.
-7. Focus on getting functionality out
-8. Be careful about how much we promise to stakeholders.
+8. As a team we should be more open with our questions and seek help.
+9. Focus on getting functionality out
+10. Be careful about how much we promise to stakeholders.
