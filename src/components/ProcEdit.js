@@ -15,44 +15,45 @@ import Select from 'grommet/components/Select';
 import FormCloseIcon from 'grommet/components/icons/base/FormClose';
 
 const ProcEdit = ({ inventory, handleAddClick }) => {
-    return (<App>
-      <Headline>Edit Procedure</Headline>
-      <TextInput id='NewProcSearchBar' placeHolder="Procedure Name"/>
-      <Table>
-        <TableHeader labels={['Item Name', 'Quantity', 'Delete Item']} />
-        <tbody>
-          <TableRow>
-            <td>
-              <Select placeHolder='Item Name'
-                      multiple={true}
-                      onSearch={true}
-                      options={
-                        inventory.map(item => (item.name) )
-                      }
-                      // value={undefined}
-                      // onChange={...}
-              />
-            </td>
-            <td>
-              <NumberInput className='NewProcNumInput'
-                           defaultValue={1}
-                           step={1}
-                           min={0}
-                         />
-            </td>
-            <td>
-              <Button className='NewProcAddItem' icon={<FormCloseIcon colorIndex='light-1' />} accent="true"/>
-            </td>
-          </TableRow>
-        </tbody>
-        <Button onClick={handleAddClick} accent='true' label='Add Item' fill='false'/>
-      </Table>
-      <hr />
-      <Box className='ItemEditButtons' direction='row' align='stretch'>
-        <Button onClick={''} className='modalButton1' primary='true' label='Submit' fill='true'/>
-        <Button path='/' className='modelButton2' accent='true' label='Cancel' fill='true'/>
-      </Box>
-    </App>
+    return (
+      <App>
+        <Headline>Edit Procedure</Headline>
+        <TextInput id='NewProcSearchBar' placeHolder="Procedure Name"/>
+        <Table>
+          <TableHeader labels={['Item Name', 'Quantity', 'Delete Item']} />
+          <tbody>
+            <TableRow>
+              <td>
+                <Select placeHolder='Item Name'
+                        multiple={true}
+                        onSearch={true}
+                        options={
+                          inventory.map(item => (item.name) )
+                        }
+                        // value={undefined}
+                        // onChange={...}
+                />
+              </td>
+              <td>
+                <NumberInput className='NewProcNumInput'
+                            defaultValue={1}
+                            step={1}
+                            min={0}
+                          />
+              </td>
+              <td>
+                <Button className='NewProcAddItem' icon={<FormCloseIcon colorIndex='light-1' />} accent="true"/>
+              </td>
+            </TableRow>
+          </tbody>
+          <Button onClick={handleAddClick} accent='true' label='Add Item' fill='false'/>
+        </Table>
+        <hr />
+        <Box className='ItemEditButtons' direction='row' align='stretch'>
+          <Button onClick={''} className='modalButton1' primary='true' label='Submit' fill='true'/>
+          <Button path='/' className='modelButton2' accent='true' label='Cancel' fill='true'/>
+        </Box>
+      </App>
   )
 }
 
