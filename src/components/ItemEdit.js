@@ -10,7 +10,6 @@ import Table from 'grommet/components/Table';
 import Headline from 'grommet/components/Headline';
 import Box from 'grommet/components/Box';
 import Button from 'grommet/components/Button';
-import Select from 'grommet/components/Select';
 import Form from 'grommet/components/Form';
 
 // Routing Components

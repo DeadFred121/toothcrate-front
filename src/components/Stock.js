@@ -1,6 +1,5 @@
-
 // React Components
-import React, { Component } from 'react';
+import React from 'react';
 
 // Grommet Components
 import SearchInput from 'grommet/components/SearchInput';

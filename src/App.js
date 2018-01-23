@@ -43,8 +43,8 @@ state = {
   procSelect: false,
   procSelectId: null,
   redirect: null,
-  isRedirecting: false,
-  procedures: []
+  procedures: [],
+  supplierSelectId: null
 }
 
   render() {
@@ -103,6 +103,7 @@ state = {
               />
               <Route path="/order" component={() => <Order
                      inventory={ inventory }
+                     updateSupplierSearchId={ this.updateSupplierSearchId }
                      /> }
               />
               <Route path="/stock" component={() => <Stock
@@ -140,12 +141,13 @@ state = {
     this.setState({procSelectId: suggestion.value, redirect: '/procshow'})
   }
 
+  updateSupplierSearchId = ({ suggestion }) => {
+    console.log(suggestion)
+    this.setState({supplierSelectId: suggestion.value, redirect: '/suppliershow'})
+  }
+
   onLoginSubmitHandler = ({ username, password }) => {
-    api.post('/auth', {
-      email: username,
-      password
-    }
-    ).then(res => {
+    api.post('/auth', { email: username, password }).then(res => {
       this.setState({
         token: res.data.token
       })
@@ -161,19 +163,14 @@ state = {
 
   updateNewInventory = (invItem) => {
     const inventory = [...this.state.inventory]
-
     inventory.push(invItem)
     this.setState({ inventory })
   }
 
   updateExistingInventory = (invItem) => {
-    console.log(invItem)
     const inventory = [...this.state.inventory]
     const itemIndex = inventory.findIndex(item => item._id === invItem._id)
-    console.log(itemIndex)
     inventory[itemIndex] = invItem
-    console.log(inventory[itemIndex])
-    console.log(inventory)
     this.setState({ inventory, inventoryItem: invItem })
   }
 

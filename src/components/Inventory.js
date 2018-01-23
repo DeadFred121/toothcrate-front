@@ -1,5 +1,5 @@
 // React Components
-import React, {Component} from 'react';
+import React from 'react';
 
 // Grommet Components
 import TableHeader from 'grommet/components/TableHeader';
@@ -47,7 +47,7 @@ const Inventory = ({ inventory, selectItem, inventoryItem, displayModal, hideMod
                 {item.quantity}
               </td>
               <td>
-                <Status value='ok'/>
+                <Status value={item.quantity > item.parLevel ? 'ok' : 'warning'}/>
               </td>
             </TableRow>))
           }

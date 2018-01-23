@@ -1,5 +1,5 @@
 // React Components
-import React, { Component } from 'react';
+import React from 'react';
 
 // Grommet Components
 import SearchInput from 'grommet/components/SearchInput';
@@ -10,7 +10,7 @@ import Table from 'grommet/components/Table';
 import TableHeader from 'grommet/components/TableHeader';
 import TableRow from 'grommet/components/TableRow';
 
-const Order = ({ inventory }) => {
+const Order = ({ inventory, updateSupplierSearchId }) => {
 
   return (
     <App>
