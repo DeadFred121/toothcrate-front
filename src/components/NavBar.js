@@ -11,12 +11,13 @@ import Menu from 'grommet/components/Menu';
 import MenuIcon from 'grommet/components/icons/base/Menu';
 import LinkPreviousIcon from 'grommet/components/icons/base/LinkPrevious';
 import Toast from 'grommet/components/Toast';
+import Label from 'grommet/components/Label';
 
 class NavBar extends Component {
 
   render() {
 
-    const { handleToastClose, newItemAlert, newItemAlertText } = this.props
+    const { handleToastClose, newItemAlert, newItemAlertText, deleteItemAlert, deleteItemAlertText } = this.props
 
     return (
       <App className="NavBar">
@@ -27,8 +28,16 @@ class NavBar extends Component {
           {
             newItemAlert &&
             <Toast status='ok'
-              onClose={handleToastClose}>
-              {newItemAlertText}
+                   onClose={handleToastClose}>
+              <Label>{newItemAlertText}</Label>
+            </Toast>
+          }
+          {
+            deleteItemAlert &&
+            <Toast status='critical'
+                   onClose={handleToastClose}
+                   size='large'>
+              <Label>{deleteItemAlertText}</Label>
             </Toast>
           }
           <Title>
