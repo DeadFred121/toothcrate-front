@@ -48,7 +48,7 @@ state = {
   redirect: null,
   procedures: [],
   supplierSelectId: null,
-  loaded: 0
+  loaded: 0,
   currentSupplierValue: {}
 }
 
