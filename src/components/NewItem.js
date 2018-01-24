@@ -18,49 +18,20 @@ import { api } from '../api/init';
 
 class NewItem extends Component {
 
-handleNewItemSubmit = (event) => {
-  event.preventDefault()
-  const form = event.target
-  const elements = form.elements
-  const name = elements.name.value
-  const code = elements.code.value
-  const category = elements.category.value
-  const supplier = elements.supplier.value
-  const unit = elements.unit.value
-  const cost = elements.cost.value
-  const quantity = elements.quantity.value
-  const parLevel = elements.parLevel.value
-
-  api.post('/api/inventory', {
-    name,
-    code,
-    category,
-    supplier,
-    unit,
-    cost,
-    quantity,
-    parLevel
-  }).then(res => {
-    this.props.updateNewInventory(res.data);
-    this.props.history.push('/inventory');
-  })
-}
- 
-
 render () {
 
-const { inventory, inventoryItem, selectItem, hideModal, updateNewInventory, currentValue, selectInput } = this.props
-// Mapping through the Inventory by Supplier and setting as an Array
-const itemSupplier = Array.from(new Set(inventory.map(item => (item.supplier))))
-// Mapping through the Inventory by Category and setting as an Array
-const itemCategory = Array.from(new Set(inventory.map(item => (item.category))))
+  const { inventory, inventoryItem, selectItem, hideModal, updateNewInventory, currentValue, selectInput, handleNewItemSubmit } = this.props
+  // Mapping through the Inventory by Supplier and setting as an Array
+  const itemSupplier = Array.from(new Set(inventory.map(item => (item.supplier))))
+  // Mapping through the Inventory by Category and setting as an Array
+  const itemCategory = Array.from(new Set(inventory.map(item => (item.category))))
 
   return (
     <App className="ItemEdit">
       <Headline>
         New Inventory Item
       </Headline>
-      <form onSubmit={this.handleNewItemSubmit} >
+      <form onSubmit={handleNewItemSubmit} >
         <Box>
           <Table responsive={false}>
             <thead>
