@@ -15,46 +15,46 @@ import Button from 'grommet/components/Button';
 const Stock = ({ inventory }) => {
 
   return (
-          <App className="ItemEdit">
-    <Headline>Stock Update</Headline>
-    <SearchInput
-      id='StockSearchBar'
-      placeHolder='Search Supplier'
-      suggestions={
-        inventory.map(item => (item.supplier) )
-      }
-    />
-    <Table>
-      <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity']} sortIndex={0} sortAscending={true}/>
-        <tbody>
-          {
-            inventory.map(item => (
-              <TableRow>
-              <td>
-                {item.code}
-              </td>
-              <td>
-                {item.name}
-              </td>
-              <td>
-                {item.category}
-              </td>
-              <td>
-                <NumberInput defaultValue={0}
-                             min={0}
-                             step={1} />
-              </td>
-            </TableRow>))
-          }
-        </tbody>
-    </Table>
-    <hr />
-    <Box className='StockButtons' direction='row' align='center'>
-      <Button path='/order' className='modalButton1' primary='true' label='Update Stock' fill='true'/>
-      <Button  path='/' className='modalButton2' accent='true' label='Cancel' fill='true'/>
-    </Box>
-  </App>
-    )
-  }
+    <App className="ItemEdit">
+      <Headline>Stock Update</Headline>
+      <SearchInput
+        id='StockSearchBar'
+        placeHolder='Search Supplier'
+        suggestions={
+          inventory.map(item => (item.supplier) )
+        }
+      />
+      <Table>
+        <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity']} sortIndex={0} sortAscending={true}/>
+          <tbody>
+            {
+              inventory.map(item => (
+                <TableRow>
+                <td>
+                  {item.code}
+                </td>
+                <td>
+                  {item.name}
+                </td>
+                <td>
+                  {item.category}
+                </td>
+                <td>
+                  <NumberInput defaultValue={0}
+                              min={0}
+                              step={1} />
+                </td>
+              </TableRow>))
+            }
+          </tbody>
+      </Table>
+      <hr />
+      <Box className='StockButtons' direction='row' align='center'>
+        <Button path='/order' className='modalButton1' primary='true' label='Update Stock' fill='true'/>
+        <Button  path='/' className='modalButton2' accent='true' label='Cancel' fill='true'/>
+      </Box>
+    </App>
+  )
+}
 
 export default Stock;

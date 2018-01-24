@@ -17,10 +17,41 @@ import {
   Redirect
 } from 'react-router-dom';
 
+import { withRouter } from 'react-router';
+
 // API
 import {api} from '../api/init';
 
 class ItemEdit extends Component {
+
+  handleItemSubmit = (event) => {
+    event.preventDefault()
+    const form = event.target
+    const elements = form.elements
+    console.log(elements)
+    const name = elements.name.value
+    const code = elements.code.value
+    const category = elements.category.value
+    const supplier = elements.supplier.value
+    const unit = elements.unit.value
+    const cost = elements.cost.value
+    const quantity = elements.quantity.value
+    const parLevel = elements.parLevel.value
+
+    api.put(`/api/inventory/${this.props.inventoryItem._id}`, {
+      name,
+      code,
+      category,
+      supplier,
+      unit,
+      cost,
+      quantity,
+      parLevel
+    }).then(res => {
+      this.props.updateExistingInventory(res.data);
+      this.props.history.push('/inventory');
+    })
+  }
 
   render() {
 
@@ -32,148 +63,121 @@ class ItemEdit extends Component {
         <Headline>
           Edit Inventory Item
         </Headline>
-      <form onSubmit={(event) => {
-        event.preventDefault()
-        const form = event.target
-        const elements = form.elements
-        console.log(elements)
-        const name = elements.name.value
-        const code = elements.code.value
-        const category = elements.category.value
-        const supplier = elements.supplier.value
-        const unit = elements.unit.value
-        const cost = elements.cost.value
-        const quantity = elements.quantity.value
-        const parLevel = elements.parLevel.value
-
-        api.put(`/api/inventory/${inventoryItem._id}`, {
-          name,
-          code,
-          category,
-          supplier,
-          unit,
-          cost,
-          quantity,
-          parLevel
-        }).then(res => {
-          updateExistingInventory(res.data)
-        })
-
-      }}>
-        <Box>
+        <form onSubmit={this.handleItemSubmit}>
           <Box>
-        <Table responsive={false}>
-          <thead>
-            <tr>
-              <th>
-                Name
-              </th>
-              <th>
-                Code
-              </th>
-              <th>
-                Category
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <TableRow>
-              <td>
-                <TextInput name='name' defaultValue={ inventoryItem.name } />
-              </td>
-              <td>
-                <TextInput name='code' defaultValue={ inventoryItem.code } />
-              </td>
-              <td>
-                <TextInput name='category' defaultValue={ inventoryItem.category } />
-                {/* <Select defaultValue={ inventoryItem.category }
-                        inline={false}
-                        multiple={false}
-                        onSearch={true}
-                        options={ inventory.category }
-                        // value={undefined}
-                        // onChange={...}
-                      /> */}
-              </td>
-            </TableRow>
-          </tbody>
-        </Table>
-        <Table responsive={false}>
-          <thead>
-            <tr>
-              <th>
-                Supplier
-              </th>
-              <th>
-                Unit
-              </th>
-              <th>
-                Cost
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <TableRow>
-              <td>
-                <TextInput name='supplier' defaultValue={ inventoryItem.supplier } />
-                {/* <Select defaultValue={ inventoryItem.supplier }
-                        inline={false}
-                        multiple={false}
-                        onSearch={true}
-                        options={ inventory.supplier }
-                        // value={undefined}
-                        // onChange={...}
-                      /> */}
-              </td>
-              <td>
-                <TextInput name='unit' defaultValue={ inventoryItem.unit } />
-              </td>
-              <td>
-                <TextInput name='cost' defaultValue={ inventoryItem.cost } />
-              </td>
-            </TableRow>
-          </tbody>
-        </Table>
-        <Table responsive={false}>
-          <thead>
-            <tr>
-              <th>
-                Quantity
-              </th>
-              <th>
-                Par Level
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <TableRow>
-              <td>
-                <NumberInput name='quantity'
-                             defaultValue={ inventoryItem.quantity }
-                             step={1}
-                             min={0}
-                />
-              </td>
-              <td>
-                <NumberInput name='parLevel'
-                             defaultValue={ inventoryItem.parLevel }
-                             step={1}
-                             min={0}
-                />
-              </td>
-            </TableRow>
-          </tbody>
-        </Table>
-        <hr />
-        <Box className='ItemEditButtons' direction='row' align='stretch'>
-          <Button type='submit' className='modalButton1' primary='true' label='Submit' fill='true'/>
-          <Button path='/inventory/' className='modelButton2' accent='true' label='Cancel' fill='true'/>
+            <Box>
+            <Table responsive={false}>
+              <thead>
+                <tr>
+                  <th>
+                    Name
+                  </th>
+                  <th>
+                    Code
+                  </th>
+                  <th>
+                    Category
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <TableRow>
+                  <td>
+                    <TextInput name='name' defaultValue={ inventoryItem.name } />
+                  </td>
+                  <td>
+                    <TextInput name='code' defaultValue={ inventoryItem.code } />
+                  </td>
+                  <td>
+                    <TextInput name='category' defaultValue={ inventoryItem.category } />
+                    {/* <Select defaultValue={ inventoryItem.category }
+                            inline={false}
+                            multiple={false}
+                            onSearch={true}
+                            options={ inventory.category }
+                            // value={undefined}
+                            // onChange={...}
+                          /> */}
+                  </td>
+                </TableRow>
+              </tbody>
+            </Table>
+            <Table responsive={false}>
+              <thead>
+                <tr>
+                  <th>
+                    Supplier
+                  </th>
+                  <th>
+                    Unit
+                  </th>
+                  <th>
+                    Cost
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <TableRow>
+                  <td>
+                    <TextInput name='supplier' defaultValue={ inventoryItem.supplier } />
+                    {/* <Select defaultValue={ inventoryItem.supplier }
+                            inline={false}
+                            multiple={false}
+                            onSearch={true}
+                            options={ inventory.supplier }
+                            // value={undefined}
+                            // onChange={...}
+                          /> */}
+                  </td>
+                  <td>
+                    <TextInput name='unit' defaultValue={ inventoryItem.unit } />
+                  </td>
+                  <td>
+                    <TextInput name='cost' defaultValue={ inventoryItem.cost } />
+                  </td>
+                </TableRow>
+              </tbody>
+            </Table>
+            <Table responsive={false}>
+              <thead>
+                <tr>
+                  <th>
+                    Quantity
+                  </th>
+                  <th>
+                    Par Level
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <TableRow>
+                  <td>
+                    <NumberInput name='quantity'
+                                defaultValue={ inventoryItem.quantity }
+                                step={1}
+                                min={0}
+                    />
+                  </td>
+                  <td>
+                    <NumberInput name='parLevel'
+                                defaultValue={ inventoryItem.parLevel }
+                                step={1}
+                                min={0}
+                    />
+                  </td>
+                </TableRow>
+              </tbody>
+            </Table>
+            <hr />
+          <Box className='ItemEditButtons' direction='row' align='stretch'>
+            <Button type='submit' className='modalButton1' primary='true' label='Submit' fill='true'/>
+            <Button path='/inventory/' className='modelButton2' accent='true' label='Cancel' fill='true'/>
+          </Box>
+          <Button id='deleteButton' hoverIndicator='accent' onClick={() => handleDelete(inventoryItem._id) } critical='true' label='Delete Item' fill='true'/>
         </Box>
-        <Button id='deleteButton' hoverIndicator='accent' onClick={() => handleDelete(inventoryItem._id) } critical='true' label='Delete' fill='true'/>
       </Box>
-    </Box>
-  </form>
+    </form>
   </App>)
 }}
 
-export default ItemEdit;
+export default withRouter(ItemEdit);
