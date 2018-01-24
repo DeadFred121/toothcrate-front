@@ -14,9 +14,11 @@
 * [Stacks Used](#stacks-used)
 * [Solution](#solution)
 * [User Stories](#user-stories)
-* [Design](#wireframes)
+* [Design](#design)
 * [Project Schedule](#project-schedule)
 * [Testing](#testing)
+* [Minutes](#minutes)
+* [Client feedback](#feedback)
 * [Reflections](#reflections)
 
 ####
@@ -106,8 +108,23 @@ the “danger zone”, which can in turn be organised by supplier.
 - Mongoose: a schema based solution to model application data. Creates an easy
   to use object reference when interacting with MongoDb.
 - Axios: promise based HTTP client for the browser and node.js.
-- AGILE: A Kanban board was set up and used to track process: this was kept in
-  the office] ![Kanban](./documentation/kanban.png)
+
+  #### Dependencies
+
+  | Front-end     |        Back -end        |
+  | :------------ | :---------------------: |
+  | axios         |       passportjs        |
+  | react         |          cors           |
+  | grommet-css   |         morgan          |
+  | react-scripts |         express         |
+  | lodash        |        mongoose         |
+  | react-router  |       bodyParser        |
+  | grommet-css   |         dotenv          |
+  | react-dom     |      jsonwebtoken       |
+  | axios         |      passport-jwt       |
+  | passportjs    | passport-local-mongoose |
+  | lodash        |     passport-oauth2     |
+  | react-router  |                         |
 
 ####
 
@@ -139,37 +156,52 @@ item basis.
 ![Project Proposal](./documentation/projectPropsal1.png)
 ![Project Proposal](./documentation/projectPropsal2.png)
 
-![Project Proposal](https://docs.google.com/document/d/1pdoN4UE5g30YLsrNOMslnSK6HuheVS5Hx_v3YwlpPKY/edit?usp=sharing)
+## User Stories
+
+![User Stories](./documentation/userStories.png)
 
 ####
 
----
-
 ## Design
 
-Wireframe mockups and user journey ![mockups](./documentation/userJourney.png)!
+---
+
+Wireframe mockups and user journey ![mockups](./documentation/userJourney.png)
 
 Figma designed Wire Frames
 ![Figma designed Wire Frames](./documentation/wireFrames.png)
 [Click through each wire frame here](https://www.figma.com/proto/fvrA6xFB2o54G53IxiYeYahw/Toothcrate?scaling=contain&redirected=1&node-id=4%3A3)
 
-Entity Relationship Diagram (ERD).
+![Entity Relationship Diagram](./documentation/ERD.png)
 
 ####
 
----
-
 ## Project Schedule
 
-Due to the limitations in time the scope of the project is broken up into MVP
+---
+
+\*Due to the limitations in time the scope of the project is broken up into MVP
 and extra features. The core features will be the first to be implemented while
 the extra features will be implemented based on the available time. The
 estimation is based upon on 14 day period working 8 hours a day each day for a
 total of 112 hours. It is broken down into user story points based on Agile
 methodology with a production potential to complete 20 points in a week.
+
+\*Budget The total cost will be based on MVP points. Break down of production
+costs: Developers @ 20 points per week: $4,000. Total developer costs: $13,200.
+Production costs (+10%): $145200. Business running costs (+30%): $18876. User
+acceptance testing (+ 20 points): $22,876. Value adding costs (40%): $32026.40
+
 ![Gantt Chart](./documentation/ganttchart.png)
 
+AGILE: A Kanban board was set up and used to track process: this was kept in the
+office] ![Kanban](./documentation/kanban.png)
+
+####
+
 ## Testing
+
+---
 
 Due to the limited time and resources available the following system testing was
 performed:
@@ -180,16 +212,58 @@ performed:
 4. Used the network tab to check communication with the server.
 5. Used react developer tools to see the current JSX and key, ref, its state and
    props.
-6. Using logs in Heroku.
+6. Using logs in Heroku and Netlify.
+
+####
+
+## Future Developments
+
+---
+
+* Ordering Sheets to Email The order sheet functionality could be expanded to
+  actually create an email template with items to be ordered.
+* Image Hosting Future plans could include item images hosted in AWS and loaded
+  dynamically as necessary. Locations
+* Future additions could see the scope of the stock control system become
+  scalable from practice-wide down to individual surgery stock therefore
+  increasing platform flexibility within the workplace. The modular nature of
+  this platform could also be expanded for use in a large number of other
+  industries.
+* Mobile Application Future additions could see React Native mobile app
+  development of the platform.
+* Autofill for Orders If the client specifies, a system could be implemented
+  that would autofill the quantity of the items on the order view, up to their
+  par levels. This would make it easier to see where the overall stock levels
+  will be after the order is placed.
+
+####
+
+## Team Minutes
+
+---
+
+####
+
+## Client feedback
+
+---
+
+![Feedback](./documentation/feedback1.png)
+![Feedback](./documentation/feedback2.png)
+
+####
 
 ## Reflections
 
-3. It was great to create an app to solve a real world problem.
-4. Great to refresh what we have learned and to apply it to the project.
-5. Nice to work on new things and discuss our individual strengths .
-6. Prioritise features rather than styling.
-7. The whole team should have worked on the backend and then the frontend. This
+---
+
+1. It was great to create an app to solve a real world problem.
+2. Great to refresh what we have learned and to apply it to the project.
+3. Nice to work on new things and discuss our individual strengths .
+4. WE learned to prioritise features rather than styling.
+5. The whole team should have worked on the backend and then the frontend. This
    would have helped to equip the whole team to be productive on both stacks.
-8. As a team we should be more open with our questions and seek help.
-9. Focus on getting functionality out
-10. Be careful about how much we promise to stakeholders.
+6. As a team we should be more open with our questions and seek help.
+7. Focus on getting functionality out
+8. Be careful about how much we promise to stakeholders.
+9. Working through road blocks as a team.
