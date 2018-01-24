@@ -109,17 +109,19 @@ the “danger zone”, which can in turn be organised by supplier.
 
   #### Dependencies
 
-  Dependencies to install:
+  | Front-end    |        Back -end        |
+  | :----------- | :---------------------: |
+  | axios        |                         |
+  | passportjs   |                         |
+  | lodash       |                         |
+  | react-router | yarn add 'react-router' |
+  | grommet-css  |   yarn add 'grommet'    |
 
-  | npm          |            Installation |             Usage             |
-  | :----------- | ----------------------: | :---------------------------: |
-  | axios        |        yarn add 'axios' | creates http request/response |
-  | passportjs   |     yarn add 'passport' |        authentication         |
-  | express      |      yarn add 'express' |         database api          |
-  | react-router | yarn add 'react-router' |         database api          |
-  | grommet      |      yarn add 'grommet' |    component UX framework     |
+  "axios": "^0.17.1", "grommet-css": "^1.6.0", "lodash": "^4.17.4",
+  "lodash.uniq": "^4.5.0", "react": "^16.2.0", "react-dom": "^16.2.0",
+  "react-router-dom": "^4.2.2", "react-scripts": "1.1.0", "uniq": "^1.0.1"
 
-####
+  ####
 
 ## Solution
 
@@ -149,7 +151,9 @@ item basis.
 ![Project Proposal](./documentation/projectPropsal1.png)
 ![Project Proposal](./documentation/projectPropsal2.png)
 
-![Project Proposal](https://docs.google.com/document/d/1pdoN4UE5g30YLsrNOMslnSK6HuheVS5Hx_v3YwlpPKY/edit?usp=sharing)
+## User Stories
+
+![User Stories](./documentation/userStories.png)
 
 ####
 
@@ -157,13 +161,13 @@ item basis.
 
 ## Design
 
-Wireframe mockups and user journey ![mockups](./documentation/userJourney.png)!
+Wireframe mockups and user journey ![mockups](./documentation/userJourney.png)
 
 Figma designed Wire Frames
 ![Figma designed Wire Frames](./documentation/wireFrames.png)
 [Click through each wire frame here](https://www.figma.com/proto/fvrA6xFB2o54G53IxiYeYahw/Toothcrate?scaling=contain&redirected=1&node-id=4%3A3)
 
-![Entity Relationship Diagram](ERD)(./documentation/ERD.png)
+![Entity Relationship Diagram](./documentation/ERD.png)
 
 ####
 
@@ -171,12 +175,18 @@ Figma designed Wire Frames
 
 ## Project Schedule
 
-Due to the limitations in time the scope of the project is broken up into MVP
+\*Due to the limitations in time the scope of the project is broken up into MVP
 and extra features. The core features will be the first to be implemented while
 the extra features will be implemented based on the available time. The
 estimation is based upon on 14 day period working 8 hours a day each day for a
 total of 112 hours. It is broken down into user story points based on Agile
-methodology with a production potential to complete 20 points in a week. Costing
+methodology with a production potential to complete 20 points in a week.
+
+\*Budget The total cost will be based on MVP points. Break down of production
+costs: Developers @ 20 points per week: $4,000. Total developer costs: $13,200.
+Production costs (+10%): $145200. Business running costs (+30%): $18876. User
+acceptance testing (+ 20 points): $22,876. Value adding costs (40%): $32026.40
+
 ![Gantt Chart](./documentation/ganttchart.png)
 
 AGILE: A Kanban board was set up and used to track process: this was kept in the
@@ -193,7 +203,25 @@ performed:
 4. Used the network tab to check communication with the server.
 5. Used react developer tools to see the current JSX and key, ref, its state and
    props.
-6. Using logs in Heroku .
+6. Using logs in Heroku and Netlify.
+
+## Future Developments
+
+* Ordering Sheets to Email The order sheet functionality could be expanded to
+  actually create an email template with items to be ordered.
+* Image Hosting Future plans could include item images hosted in AWS and loaded
+  dynamically as necessary. Locations
+* Future additions could see the scope of the stock control system become
+  scalable from practice-wide down to individual surgery stock therefore
+  increasing platform flexibility within the workplace. The modular nature of
+  this platform could also be expanded for use in a large number of other
+  industries.
+* Mobile Application Future additions could see React Native mobile app
+  development of the platform.
+* Autofill for Orders If the client specifies, a system could be implemented
+  that would autofill the quantity of the items on the order view, up to their
+  par levels. This would make it easier to see where the overall stock levels
+  will be after the order is placed.
 
 ## Reflections
 
