@@ -17,6 +17,8 @@
 * [Design](#design)
 * [Project Schedule](#project-schedule)
 * [Testing](#testing)
+* [Minutes](#minutes)
+* [Client feedback](#feedback)
 * [Reflections](#reflections)
 
 ####
@@ -109,19 +111,22 @@ the “danger zone”, which can in turn be organised by supplier.
 
   #### Dependencies
 
-  | Front-end    |        Back -end        |
-  | :----------- | :---------------------: |
-  | axios        |                         |
-  | passportjs   |                         |
-  | lodash       |                         |
-  | react-router | yarn add 'react-router' |
-  | grommet-css  |   yarn add 'grommet'    |
+  | Front-end     |        Back -end        |
+  | :------------ | :---------------------: |
+  | axios         |       passportjs        |
+  | react         |          cors           |
+  | grommet-css   |         morgan          |
+  | react-scripts |         express         |
+  | lodash        |        mongoose         |
+  | react-router  |       bodyParser        |
+  | grommet-css   |         dotenv          |
+  | react-dom     |      jsonwebtoken       |
+  | axios         |      passport-jwt       |
+  | passportjs    | passport-local-mongoose |
+  | lodash        |     passport-oauth2     |
+  | react-router  |                         |
 
-  "axios": "^0.17.1", "grommet-css": "^1.6.0", "lodash": "^4.17.4",
-  "lodash.uniq": "^4.5.0", "react": "^16.2.0", "react-dom": "^16.2.0",
-  "react-router-dom": "^4.2.2", "react-scripts": "1.1.0", "uniq": "^1.0.1"
-
-  ####
+####
 
 ## Solution
 
@@ -157,9 +162,9 @@ item basis.
 
 ####
 
----
-
 ## Design
+
+---
 
 Wireframe mockups and user journey ![mockups](./documentation/userJourney.png)
 
@@ -171,9 +176,9 @@ Figma designed Wire Frames
 
 ####
 
----
-
 ## Project Schedule
+
+---
 
 \*Due to the limitations in time the scope of the project is broken up into MVP
 and extra features. The core features will be the first to be implemented while
@@ -192,7 +197,11 @@ acceptance testing (+ 20 points): $22,876. Value adding costs (40%): $32026.40
 AGILE: A Kanban board was set up and used to track process: this was kept in the
 office] ![Kanban](./documentation/kanban.png)
 
+####
+
 ## Testing
+
+---
 
 Due to the limited time and resources available the following system testing was
 performed:
@@ -205,7 +214,11 @@ performed:
    props.
 6. Using logs in Heroku and Netlify.
 
+####
+
 ## Future Developments
+
+---
 
 * Ordering Sheets to Email The order sheet functionality could be expanded to
   actually create an email template with items to be ordered.
@@ -223,7 +236,26 @@ performed:
   par levels. This would make it easier to see where the overall stock levels
   will be after the order is placed.
 
+####
+
+## Team Minutes
+
+---
+
+####
+
+## Client feedback
+
+---
+
+![Feedback](./documentation/feedback1.png)
+![Feedback](./documentation/feedback2.png)
+
+####
+
 ## Reflections
+
+---
 
 1. It was great to create an app to solve a real world problem.
 2. Great to refresh what we have learned and to apply it to the project.
