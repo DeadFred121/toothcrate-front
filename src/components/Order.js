@@ -31,14 +31,14 @@ class Order extends Component {
     return (
       <App>
         <Headline>Orders</Headline>
-        <Box>
-          <Select name='supplier'
-                  placeHolder='Supplier'
-                  options={itemSupplier}
-                  onChange={this.handleFilterChange}
-                  value={this.state.filterValue}
-          />
-        </Box>
+        <Select 
+          name='supplier'
+          placeHolder='Supplier'
+          options={itemSupplier}
+          onChange={this.handleFilterChange}
+          value={this.state.filterValue}
+        />
+        <hr />
         <Table>
           <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true} />
             <tbody>

@@ -10,6 +10,8 @@ import Status from 'grommet/components/icons/Status';
 import Headline from 'grommet/components/Headline';
 import Box from 'grommet/components/Box';
 import Button from 'grommet/components/Button';
+import FormField from 'grommet/components/FormField';
+import TextInput from 'grommet/components/TextInput';
 
 // Routing Components
 import {
@@ -23,7 +25,7 @@ state = {
 
   render () {
 
-  const { cancelRedirect, procedures, procSelectId, inventory } = this.props
+  const { cancelRedirect, procedures, procSelectId, inventory, handleSubmitProcedureHistory, dentist, location, handleChange } = this.props
 
   cancelRedirect()
 
@@ -71,8 +73,22 @@ state = {
             }
           </tbody>
         </Table>
+        <FormField>
+          <TextInput
+            name='dentist'
+            value={undefined}
+            placeHolder='Dentist Name'
+            onDOMChange={ handleChange }
+            />
+          <TextInput
+            name='location'
+            value={undefined}
+            placeHolder='Location for Procedure'
+            onDOMChange={ handleChange }
+          />
+        </FormField>
         <Box className='ItemEditButtons' direction='row' align='stretch'>
-          <Button type='submit' className='modalButton1' primary='true' label='Submit' fill='true' />
+          <Button onClick={() => handleSubmitProcedureHistory(procedure, dentist, location) } type='submit' className='modalButton1' primary='true' label='Submit' fill='true' />
           <Button path='/' className='modelButton2' accent='true' label='Cancel' fill='true'/>
         </Box>
       </App>

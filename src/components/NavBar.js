@@ -60,9 +60,9 @@ class NavBar extends Component {
               <Anchor path='/order'>
                 + Orders
               </Anchor>
-              {/* <Anchor path='/stock'>
+              <Anchor path='/stock'>
                 + Stock Update
-              </Anchor> */}
+              </Anchor>
             </Menu>
           </Box>
         </Header>
