@@ -51,22 +51,26 @@ state = {
   loaded: 0,
   currentSupplierValue: {},
   newItemAlert: false,
-  newItemAlertText: ''
+  newItemAlertText: '',
+  deleteItemAlert: false,
+  deleteItemAlertText: ''
 }
 
   render() {
 
-    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures, loaded, currentSupplierValue, newItemAlert, newItemAlertText } = this.state
+    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures, loaded, currentSupplierValue, newItemAlert, newItemAlertText, deleteItemAlert, deleteItemAlertText } = this.state
 
     if (loaded < 2) return <LoadingPage />
 
     return (
 
         <div className='App'>
-          <NavBar 
+          <NavBar
             newItemAlert={newItemAlert}
             newItemAlertText={newItemAlertText}
-            handleToastClose={this.handleToastClose} 
+            handleToastClose={this.handleToastClose}
+            deleteItemAlert={deleteItemAlert}
+            deleteItemAlertText={deleteItemAlertText}
           />
           <Box className='Contents'>
             { !this.state.token ? <Login onLoginSubmitHandler={this.onLoginSubmitHandler} align='center'/> :
@@ -149,7 +153,9 @@ state = {
   handleToastClose = () => {
     this.setState({
       newItemAlert: false,
-      newItemAlertText: ''
+      newItemAlertText: '',
+      deleteItemAlert: false,
+      deleteItemAlertText: '',
     })
   }
 
@@ -225,7 +231,11 @@ state = {
         })
         this.props.history.push('/inventory')
         this.loadInventory();
+        this.setState({
+        deleteItemAlert: true,
+        deleteItemAlertText: 'The item has been deleted.'
       })
+    })
       .catch((err) => {
         console.log('An error ocurred while deleting the item')
       })

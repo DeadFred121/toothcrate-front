@@ -16,7 +16,7 @@ class NavBar extends Component {
 
   render() {
 
-    const { handleToastClose, newItemAlert, newItemAlertText } = this.props
+    const { handleToastClose, newItemAlert, newItemAlertText, deleteItemAlert, deleteItemAlertText } = this.props
 
     return (
       <App className="NavBar">
@@ -27,8 +27,17 @@ class NavBar extends Component {
           {
             newItemAlert &&
             <Toast status='ok'
-              onClose={handleToastClose}>
+                   onClose={handleToastClose}
+                   size='large'>
               {newItemAlertText}
+            </Toast>
+          }
+          {
+            deleteItemAlert &&
+            <Toast status='critical'
+                   onClose={handleToastClose}
+                   size='large'>
+              {deleteItemAlertText}
             </Toast>
           }
           <Title>
