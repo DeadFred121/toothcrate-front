@@ -130,8 +130,7 @@ state = {
             }
             </Box>
           <FooterBar />
-          </div>
-
+        </div>
     );
   }
 

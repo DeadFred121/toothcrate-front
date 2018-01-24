@@ -10,10 +10,6 @@ html, body {
   padding: 0 1rem;
 }
 
-.mainlogo Image {
-  margin-bottom: 40px;
-}
-
 .ProcHeader {
   margin-top: 2rem;
 }
@@ -30,6 +26,10 @@ html, body {
 
 .Contents {
   flex: 1;
+}
+
+#mainlogo {
+  margin-top: 5vh;
 }
 
 #procSearchBar {
@@ -106,13 +106,12 @@ html, body {
 }
 
 .LoadingPage {
-  align-items: center;
+  margin-top: 33%;
   display: flex;
-  height: 100vh;
+  align-items: center;
   justify-content: center;
-  width: 100vw;
 }
 
-.NotfoundPage {
-  margin-top: 20%;
+.NotFoundPage {
+  margin-top: 25%;
 }

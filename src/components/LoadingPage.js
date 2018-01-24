@@ -11,7 +11,7 @@ const LoadingPage = () => {
 
     <App>
       <Box className='LoadingPage'>
-        <Spinning className='LoadingImage' size='medium' />
+        <Spinning className='LoadingImage' size='large' />
         <Label size='medium'>
           Loading...
         </Label>
