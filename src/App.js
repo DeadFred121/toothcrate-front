@@ -165,7 +165,7 @@ state = {
 
   updateSupplierSearchId = ({ suggestion }) => {
     console.log(suggestion)
-    this.setState({supplierSelectId: suggestion.value, redirect: '/suppliershow'})
+    this.setState({supplierSelectId: suggestion.value })
   }
 
   onLoginSubmitHandler = ({ username, password }) => {

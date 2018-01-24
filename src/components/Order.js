@@ -12,21 +12,35 @@ import TableRow from 'grommet/components/TableRow';
 
 const Order = ({ inventory, updateSupplierSearchId }) => {
 
+const itemCategory = Array.from(new Set(inventory.map(item => (item.category))))
+
+const itemSupplier = Array.from(new Set(inventory.map(item => (item.supplier))))
+
   return (
     <App>
       <Headline>Orders</Headline>
       <SearchInput
+        onSelect={updateSupplierSearchId}
         id='StockSearchBar'
         placeHolder='Search Suppliers'
-        suggestions={
-          inventory.map(item => (item.supplier) )
-        }
+        suggestions={ itemSupplier }
       />
       <Table>
         <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true}/>
           <tbody>
             {
-              inventory.map(item => (<TableRow>
+              inventory.map(item => {
+                const parPercent = (item.quantity / item.parLevel) * 100
+                let statusIcon
+                if (parPercent > 200) {
+                  statusIcon = 'ok'
+                } else if (parPercent > 150) {
+                  statusIcon = 'warning'
+                } else {
+                  statusIcon = 'critical'
+                }
+                return (
+                <TableRow>
                 <td>
                   {item.code}
                 </td>
@@ -40,9 +54,10 @@ const Order = ({ inventory, updateSupplierSearchId }) => {
                   {item.quantity}
                 </td>
                 <td>
-                  <Status value='critical' />
+                  <Status value={statusIcon} />
                 </td>
-              </TableRow>))
+              </TableRow>)
+              })
             }
           </tbody>
       </Table>

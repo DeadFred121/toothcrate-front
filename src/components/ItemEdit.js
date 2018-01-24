@@ -11,6 +11,7 @@ import Headline from 'grommet/components/Headline';
 import Box from 'grommet/components/Box';
 import Button from 'grommet/components/Button';
 import Form from 'grommet/components/Form';
+import Select from 'grommet/components/Select';
 
 // Routing Components
 import {
@@ -22,9 +23,18 @@ import {api} from '../api/init';
 
 class ItemEdit extends Component {
 
+  state = {
+    supplierSelect: null,
+    categorySelect: null
+  }
+
   render() {
 
   const { inventory, inventoryItem, selectItem, hideModal, displayModal, updateExistingInventory, handleDelete } = this.props
+
+  const itemCategory = Array.from(new Set(inventory.map(item => (item.category))))
+
+  const itemSupplier = Array.from(new Set(inventory.map(item => (item.supplier))))
 
   return (
       <App className="ItemEdit">
@@ -83,15 +93,15 @@ class ItemEdit extends Component {
                 <TextInput name='code' defaultValue={ inventoryItem.code } />
               </td>
               <td>
-                <TextInput name='category' defaultValue={ inventoryItem.category } />
-                {/* <Select defaultValue={ inventoryItem.category }
+                {/* <TextInput name='category' defaultValue={ inventoryItem.category } /> */}
+                <Select defaultValue={ inventoryItem.category }
                         inline={false}
                         multiple={false}
                         onSearch={true}
-                        options={ inventory.category }
-                        // value={undefined}
+                        options={ itemCategory }
+                        value={undefined}
                         // onChange={...}
-                      /> */}
+                      />
               </td>
             </TableRow>
           </tbody>
@@ -113,15 +123,15 @@ class ItemEdit extends Component {
           <tbody>
             <TableRow>
               <td>
-                <TextInput name='supplier' defaultValue={ inventoryItem.supplier } />
-                {/* <Select defaultValue={ inventoryItem.supplier }
+                {/* <TextInput name='supplier' defaultValue={ inventoryItem.supplier } /> */}
+                <Select defaultValue={ inventoryItem.supplier }
                         inline={false}
                         multiple={false}
                         onSearch={true}
-                        options={ inventory.supplier }
-                        // value={undefined}
+                        options={ itemSupplier }
+                        value={undefined}
                         // onChange={...}
-                      /> */}
+                      />
               </td>
               <td>
                 <TextInput name='unit' defaultValue={ inventoryItem.unit } />

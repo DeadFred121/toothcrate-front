@@ -41,7 +41,17 @@ state = {
           <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true}/>
           <tbody>
             {
-              procedureItems.map(item => (
+              procedureItems.map(item => {
+                const parPercent = (item.quantity / item.parLevel) * 100
+                let statusIcon
+                if (parPercent > 200) {
+                  statusIcon = 'ok'
+                } else if (parPercent > 150) {
+                  statusIcon = 'warning'
+                } else {
+                  statusIcon = 'critical'
+                }
+                return (
                 <TableRow>
                 <td>
                   {item.code}
@@ -56,22 +66,10 @@ state = {
                   {item.quantity}
                 </td>
                 <td>
-                 <Status value={item.quantity > item.parLevel ? 'ok' : 'warning'}/>
-
-                {/* //
-                //     {(e) => { */
-                //     if (e.item.parLevel <= (5 / 100) * e.item.quantity) {
-                //       'critical';
-                //     } else if (e.item.parLevel <= (15 / 100) * e.item.quantity) {
-                //       'warning';
-                //     } else {
-                //     'ok';
-                //     }
-                //   }
-                // }
-                }
+                 <Status value={statusIcon}/>
                 </td>
-              </TableRow>))
+              </TableRow>)}
+            )
             }
           </tbody>
         </Table>
