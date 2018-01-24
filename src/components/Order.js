@@ -12,8 +12,6 @@ import TableRow from 'grommet/components/TableRow';
 
 const Order = ({ inventory, updateSupplierSearchId }) => {
 
-const itemCategory = Array.from(new Set(inventory.map(item => (item.category))))
-
 const itemSupplier = Array.from(new Set(inventory.map(item => (item.supplier))))
 
   return (

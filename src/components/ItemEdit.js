@@ -93,14 +93,10 @@ class ItemEdit extends Component {
                 <TextInput name='code' defaultValue={ inventoryItem.code } />
               </td>
               <td>
-                {/* <TextInput name='category' defaultValue={ inventoryItem.category } /> */}
                 <Select defaultValue={ inventoryItem.category }
                         inline={false}
                         multiple={false}
-                        onSearch={true}
                         options={ itemCategory }
-                        value={undefined}
-                        // onChange={...}
                       />
               </td>
             </TableRow>
@@ -123,14 +119,10 @@ class ItemEdit extends Component {
           <tbody>
             <TableRow>
               <td>
-                {/* <TextInput name='supplier' defaultValue={ inventoryItem.supplier } /> */}
                 <Select defaultValue={ inventoryItem.supplier }
                         inline={false}
                         multiple={false}
-                        onSearch={true}
                         options={ itemSupplier }
-                        value={undefined}
-                        // onChange={...}
                       />
               </td>
               <td>
