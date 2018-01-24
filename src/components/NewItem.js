@@ -17,6 +17,10 @@ import { api } from '../api/init';
 
 const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal, updateNewInventory }) => {
 
+const itemCategory = Array.from(new Set(inventory.map(item => (item.category))))
+
+const itemSupplier = Array.from(new Set(inventory.map(item => (item.supplier))))
+
   return (
       <App className="ItemEdit">
         <Headline>
@@ -76,9 +80,7 @@ const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal, updateNewIn
                         inline={false}
                         multiple={false}
                         onSearch={true}
-                        options={
-                            inventory.map(item => (item.category) )
-                          }
+                        options={ itemCategory }
                         // value={undefined}
                         // onChange={...}
                       />
@@ -108,9 +110,7 @@ const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal, updateNewIn
                         inline={false}
                         multiple={false}
                         onSearch={false}
-                        options={
-                            inventory.map(item => (item.supplier) )
-                          }
+                        options={ itemSupplier }
                         // value={undefined}
                         // onChange={...}
                       />
