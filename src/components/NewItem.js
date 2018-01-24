@@ -139,14 +139,14 @@ const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal, updateNewIn
             <TableRow>
               <td>
                 <NumberInput name='quantity'
-                             value={1}
+                             defaultValue={1}
                              step={1}
                              min={0}
                 />
               </td>
               <td>
                 <NumberInput name='parLevel'
-                             value={1}
+                             defaultValue={1}
                              step={1}
                              min={0}
                 />

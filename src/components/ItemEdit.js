@@ -24,41 +24,43 @@ class ItemEdit extends Component {
 
   render() {
 
-  const { inventory, inventoryItem, selectItem, hideModal, displayModal, updateExistingInventory, handleDelete } = this.props
+    const { inventory, inventoryItem, selectItem, hideModal, displayModal, updateExistingInventory, handleDelete } = this.props
+
 
   return (
       <App className="ItemEdit">
         <Headline>
           Edit Inventory Item
         </Headline>
-        <Box onSubmit={(event) => {
-          event.preventDefault()
-          const form = event.target
-          const elements = form.elements
-          console.log(elements)
-          const name = elements.name.value
-          const code = elements.code.value
-          const category = elements.category.value
-          const supplier = elements.supplier.value
-          const unit = elements.unit.value
-          const cost = elements.cost.value
-          const quantity = elements.quantity.value
-          const parLevel = elements.parLevel.value
+      <form onSubmit={(event) => {
+        event.preventDefault()
+        const form = event.target
+        const elements = form.elements
+        console.log(elements)
+        const name = elements.name.value
+        const code = elements.code.value
+        const category = elements.category.value
+        const supplier = elements.supplier.value
+        const unit = elements.unit.value
+        const cost = elements.cost.value
+        const quantity = elements.quantity.value
+        const parLevel = elements.parLevel.value
 
-          api.put(`/api/inventory/${inventoryItem._id}`, {
-            name,
-            code,
-            category,
-            supplier,
-            unit,
-            cost,
-            quantity,
-            parLevel
-          }).then(res => {
-            updateExistingInventory(res.data)
-          })
+        api.put(`/api/inventory/${inventoryItem._id}`, {
+          name,
+          code,
+          category,
+          supplier,
+          unit,
+          cost,
+          quantity,
+          parLevel
+        }).then(res => {
+          updateExistingInventory(res.data)
+        })
 
-          }} >
+      }}>
+        <Box>
           <Box>
         <Table responsive={false}>
           <thead>
@@ -170,6 +172,7 @@ class ItemEdit extends Component {
         <Button id='deleteButton' hoverIndicator='accent' onClick={() => handleDelete(inventoryItem._id) } critical='true' label='Delete' fill='true'/>
       </Box>
     </Box>
+  </form>
   </App>)
 }}
 
