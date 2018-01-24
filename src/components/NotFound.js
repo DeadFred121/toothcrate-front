@@ -4,12 +4,14 @@ import Box from 'grommet/components/Box';
 import Headline from 'grommet/components/Headline';
 import Heading from 'grommet/components/Heading';
 import Paragraph from 'grommet/components/Paragraph';
+import App from 'grommet/components/App';
 
 class NotFound extends Component {
 
   render() {
     return (
-      <Box full={true} align='center' justify='center'>
+    <App>
+      <Box className='NotFoundPage' full={false} align='center' justify='center'>
         <Headline strong={true}>404</Headline>
         <Heading>Oops...</Heading>
         <Paragraph size='large' align='center'>
@@ -17,6 +19,7 @@ class NotFound extends Component {
           try again.
         </Paragraph>
       </Box>
+    </App>
     );
   }
 }

@@ -29,7 +29,17 @@ const Inventory = ({ inventory, selectItem, inventoryItem, displayModal, hideMod
         <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true}/>
         <tbody>
           {
-            inventory.map(item => (
+            inventory.map(item => {
+              const parPercent = (item.quantity / item.parLevel) * 100
+              let statusIcon
+              if (parPercent > 200) {
+                statusIcon = 'ok'
+              } else if (parPercent > 150) {
+                statusIcon = 'warning'
+              } else {
+                statusIcon = 'critical'
+              }
+              return (
               <TableRow>
               <td>
                 <Anchor onClick={() => {
@@ -47,9 +57,10 @@ const Inventory = ({ inventory, selectItem, inventoryItem, displayModal, hideMod
                 {item.quantity}
               </td>
               <td>
-                <Status value={item.quantity > item.parLevel ? 'ok' : 'warning'}/>
+                <Status value={statusIcon} />
               </td>
-            </TableRow>))
+            </TableRow>)
+            })
           }
         </tbody>
       </Table>

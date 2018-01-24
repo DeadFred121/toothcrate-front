@@ -15,10 +15,11 @@ const NewProc = ({ inventory, handleAddClick }) => {
       <Headline>Add New Procedure</Headline>
       <TextInput id='NewProcSearchBar' placeHolder="Procedure Name"/>
       <NewProcAddItem inventory={inventory} />
-      <Button id='newProcAddItemButton' onClick={handleAddClick} accent='true' label='Add Item' fill={false} />
-      <br />
+    <Box className='newProcButton'>
+      <Button className='newProcAddItemButton' onClick={handleAddClick} accent='true' label='Add Item' fill={false} />
+    </Box>
       <Box className='ItemEditButtons' direction='row' align='stretch'>
-        <Button onClick={''} className='modalButton1' primary='true' label='Submit' fill='true'/>
+        <Button type='submit' onClick={''} className='modalButton1' primary='true' label='Submit' fill='true'/>
         <Button path='/' className='modalButton2' accent='true' label='Cancel' fill='true'/>
       </Box>
     </App>

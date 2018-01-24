@@ -29,6 +29,7 @@ import NewItem from './components/NewItem'
 import Login from './components/Login'
 import NotFound from './components/NotFound'
 import NewProc from './components/NewProc'
+import LoadingPage from './components/LoadingPage'
 
 // API/Axios
 import { api, setJwt } from './api/init';
@@ -46,12 +47,15 @@ state = {
   procSelectId: null,
   redirect: null,
   procedures: [],
-  supplierSelectId: null
+  supplierSelectId: null,
+  loaded: 0
 }
 
   render() {
 
-    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures } = this.state
+    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures, loaded } = this.state
+
+     if (loaded < 2) return <LoadingPage />
 
     return (
 
@@ -205,7 +209,7 @@ state = {
   loadInventory = () => {
     api.get('/api/inventory').then(res => {
       const inventory = res.data
-      this.setState({ inventory })
+      this.setState({ inventory, loaded: this.state.loaded + 1 })
     })
   }
 
@@ -214,7 +218,7 @@ state = {
       const procedureNames = res.data.map(procedure => {
         return { value: procedure._id, label: procedure.name }
       })
-      this.setState({ procedureNames, procedures: res.data })
+      this.setState({ procedureNames, procedures: res.data, loaded: this.state.loaded + 1 })
     })
   }
 
