@@ -138,12 +138,6 @@ state = {
       this.props.history.push('/inventory');
   };
 
-  handleAddItemClick () {
-    this.setState(prevState => ({
-      content: [...prevState.content, `More sample content ${prevState.content.length}`]
-    }));
-  }
-
   handleItemSubmit = (event) => {
     event.preventDefault()
     const form = event.target
@@ -194,11 +188,6 @@ state = {
     this.setState({procSelectId: suggestion.value, redirect: '/procshow'})
   }
 
-  updateSupplierSearchId = ({ suggestion }) => {
-    console.log(suggestion)
-    this.setState({supplierSelectId: suggestion.value, redirect: '/suppliershow'})
-  }
-
   onLoginSubmitHandler = ({ username, password }) => {
     api.post('/auth', { email: username, password }).then(res => {
       this.setState({
@@ -207,7 +196,6 @@ state = {
       setJwt(res.data.token)
     })
   }
-
 
   showSearch = () => {
     this.setState(prevState => ({
