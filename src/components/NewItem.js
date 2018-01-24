@@ -107,7 +107,7 @@ const ItemEdit = ({ inventory, inventoryItem, selectItem, hideModal, updateNewIn
                         placeHolder='Supplier'
                         inline={false}
                         multiple={false}
-                        onSearch={true}
+                        onSearch={false}
                         options={
                             inventory.map(item => (item.supplier) )
                           }
