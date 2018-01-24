@@ -1,5 +1,5 @@
 // React Components
-import React from 'react';
+import React, { Component } from 'react';
 
 // Grommet Components
 import Box from 'grommet/components/Box';
@@ -11,9 +11,17 @@ import TableRow from 'grommet/components/TableRow';
 import Timestamp from 'grommet/components/Timestamp';
 import EditIcon from 'grommet/components/icons/base/Edit';
 
-const InvModal = ({ inventoryItem, selectItem, hideModal }) => {
+class InvModal extends Component {
 
-  return (
+  componentWillUnmount() {
+    this.props.hideModal()
+  }
+
+  render() {
+  
+    const { inventoryItem, selectItem, hideModal } = this.props
+
+    return (
       <Layer closer={true} onClose={ hideModal }>
         <Heading className='modalHeading' tag='h2' truncate={true}>
           {inventoryItem.name}
@@ -120,5 +128,6 @@ const InvModal = ({ inventoryItem, selectItem, hideModal }) => {
       </Layer>
     )
   }
+}
 
 export default InvModal;
