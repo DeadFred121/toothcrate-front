@@ -46,12 +46,13 @@ state = {
   procSelectId: null,
   redirect: null,
   procedures: [],
-  supplierSelectId: null
+  supplierSelectId: null,
+  currentSupplierValue: {}
 }
 
   render() {
 
-    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures } = this.state
+    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures, currentSupplierValue } = this.state
 
     return (
 
@@ -75,6 +76,8 @@ state = {
                      component={() => <NewItem
                      updateNewInventory={ this.updateInventory }
                      inventory={ inventory }
+                     currentSupplierValue={ currentSupplierValue }
+                     selectInput={ this.selectInput }
                    /> }// IDEA: inventoryItem
               />
               <Route path="/itemedit" component={() => <ItemEdit
@@ -177,6 +180,10 @@ state = {
     this.setState(prevState => ({
       procSelect: !prevState.procSelect
     }))
+  }
+
+  selectInput = (event) => {
+    this.setState({ currentValue: event.option })
   }
 
   updateNewInventory = (invItem) => {
