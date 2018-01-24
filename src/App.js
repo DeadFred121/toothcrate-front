@@ -49,13 +49,14 @@ state = {
   procedures: [],
   supplierSelectId: null,
   loaded: 0
+  currentSupplierValue: {}
 }
 
   render() {
 
-    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures, loaded } = this.state
+    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures, loaded, currentSupplierValue } = this.state
 
-     if (loaded < 2) return <LoadingPage />
+    if (loaded < 2) return <LoadingPage />
 
     return (
 
@@ -79,6 +80,8 @@ state = {
                      component={() => <NewItem
                      updateNewInventory={ this.updateInventory }
                      inventory={ inventory }
+                     currentSupplierValue={ currentSupplierValue }
+                     selectInput={ this.selectInput }
                    /> }// IDEA: inventoryItem
               />
               <Route path="/itemedit" component={() => <ItemEdit
@@ -177,10 +180,15 @@ state = {
     })
   }
 
+
   showSearch = () => {
     this.setState(prevState => ({
       procSelect: !prevState.procSelect
     }))
+  }
+
+  selectInput = (event) => {
+    this.setState({ currentValue: event.option })
   }
 
   updateNewInventory = (invItem) => {
@@ -229,6 +237,7 @@ state = {
       this.setState({
         token: token
       });
+      setJwt(token)
     }
 
     this.loadInventory();

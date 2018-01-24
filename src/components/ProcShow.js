@@ -30,10 +30,6 @@ state = {
   const procedure = procedures.find(proc => proc._id === procSelectId)
   if (!procedure) return ( <Redirect to='/' /> )
 
-  const procedureItems = procedure.items.map(item => {
-    return inventory.find(inventoryItem => inventoryItem._id === item.item)
-  })
-
     return (
       <App>
         <Headline>{ procedure.name }</Headline>
@@ -41,22 +37,22 @@ state = {
           <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true}/>
           <tbody>
             {
-              procedureItems.map(item => (
+              procedure.items.map(individualItem => (
                 <TableRow>
                 <td>
-                  {item.code}
+                  {individualItem.item.code}
                 </td>
                 <td>
-                  {item.name}
+                  {individualItem.item.name}
                 </td>
                 <td>
-                  {item.category}
+                  {individualItem.item.category}
                 </td>
                 <td>
-                  {item.quantity}
+                  {individualItem.useQuantity}
                 </td>
                 <td>
-                 <Status value={item.quantity > item.parLevel ? 'ok' : 'warning'}/>
+                 <Status value={individualItem.item.quantity > individualItem.item.parLevel ? 'ok' : 'warning'}/>
 
                 {/* //
                 //     {(e) => { */
