@@ -90,6 +90,7 @@ state = {
                      displayModal= { this.displayModal }
                      updateExistingInventory={ this.updateExistingInventory }
                      handleDelete={ this.handleDelete }
+                    handleItemSubmit={ this.handleItemSubmit }
                      /> }
               />
               <Route path="/inventory" component={() => <Inventory
@@ -142,6 +143,34 @@ state = {
     this.setState(prevState => ({
       content: [...prevState.content, `More sample content ${prevState.content.length}`]
     }));
+  }
+
+  handleItemSubmit = (event) => {
+    event.preventDefault()
+    const form = event.target
+    const elements = form.elements
+    const name = elements.name.value
+    const code = elements.code.value
+    const category = elements.category.value
+    const supplier = elements.supplier.value
+    const unit = elements.unit.value
+    const cost = elements.cost.value
+    const quantity = elements.quantity.value
+    const parLevel = elements.parLevel.value
+
+    api.put(`/api/inventory/${this.state.inventoryItem._id}`, {
+      name,
+      code,
+      category,
+      supplier,
+      unit,
+      cost,
+      quantity,
+      parLevel
+    }).then(res => {
+      this.updateExistingInventory(res.data);
+      this.props.history.push('/inventory');
+    })
   }
 
   handleDelete = (item_id) => {

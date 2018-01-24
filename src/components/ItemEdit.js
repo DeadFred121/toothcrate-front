@@ -24,46 +24,16 @@ import {api} from '../api/init';
 
 class ItemEdit extends Component {
 
-  handleItemSubmit = (event) => {
-    event.preventDefault()
-    const form = event.target
-    const elements = form.elements
-    console.log(elements)
-    const name = elements.name.value
-    const code = elements.code.value
-    const category = elements.category.value
-    const supplier = elements.supplier.value
-    const unit = elements.unit.value
-    const cost = elements.cost.value
-    const quantity = elements.quantity.value
-    const parLevel = elements.parLevel.value
-
-    api.put(`/api/inventory/${this.props.inventoryItem._id}`, {
-      name,
-      code,
-      category,
-      supplier,
-      unit,
-      cost,
-      quantity,
-      parLevel
-    }).then(res => {
-      this.props.updateExistingInventory(res.data);
-      this.props.history.push('/inventory');
-    })
-  }
-
   render() {
 
-    const { inventory, inventoryItem, selectItem, hideModal, displayModal, updateExistingInventory, handleDelete } = this.props
-
+    const { inventory, inventoryItem, selectItem, hideModal, displayModal, updateExistingInventory, handleDelete, handleItemSubmit } = this.props
 
   return (
       <App className="ItemEdit">
         <Headline>
           Edit Inventory Item
         </Headline>
-        <form onSubmit={this.handleItemSubmit}>
+        <form onSubmit={handleItemSubmit}>
           <Box>
             <Box>
             <Table responsive={false}>
