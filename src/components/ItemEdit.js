@@ -12,6 +12,9 @@ import Box from 'grommet/components/Box';
 import Button from 'grommet/components/Button';
 import Form from 'grommet/components/Form';
 
+// Internal Components
+import ControlledSelect from '../components/ControlledSelect';
+
 // Routing Components
 import {
   Redirect
@@ -27,15 +30,19 @@ class ItemEdit extends Component {
   render() {
 
     const { inventory, inventoryItem, selectItem, hideModal, displayModal, updateExistingInventory, handleDelete, handleItemSubmit } = this.props
+    
+    // Mapping through the Inventory by Supplier and setting as an Array
+    const itemSupplier = Array.from(new Set(inventory.map(item => (item.supplier))))
+    // Mapping through the Inventory by Category and setting as an Array
+    const itemCategory = Array.from(new Set(inventory.map(item => (item.category))))
 
-  return (
+    return (
       <App className="ItemEdit">
         <Headline>
           Edit Inventory Item
         </Headline>
         <form onSubmit={handleItemSubmit}>
           <Box>
-            <Box>
             <Table responsive={false}>
               <thead>
                 <tr>
@@ -59,15 +66,10 @@ class ItemEdit extends Component {
                     <TextInput name='code' defaultValue={ inventoryItem.code } />
                   </td>
                   <td>
-                    <TextInput name='category' defaultValue={ inventoryItem.category } />
-                    {/* <Select defaultValue={ inventoryItem.category }
-                            inline={false}
-                            multiple={false}
-                            onSearch={true}
-                            options={ inventory.category }
-                            // value={undefined}
-                            // onChange={...}
-                          /> */}
+                    <ControlledSelect name='category'
+                      placeHolder='Category'
+                      options={itemCategory}
+                    />
                   </td>
                 </TableRow>
               </tbody>
@@ -89,15 +91,10 @@ class ItemEdit extends Component {
               <tbody>
                 <TableRow>
                   <td>
-                    <TextInput name='supplier' defaultValue={ inventoryItem.supplier } />
-                    {/* <Select defaultValue={ inventoryItem.supplier }
-                            inline={false}
-                            multiple={false}
-                            onSearch={true}
-                            options={ inventory.supplier }
-                            // value={undefined}
-                            // onChange={...}
-                          /> */}
+                    <ControlledSelect name='category'
+                      placeHolder='Category'
+                      options={itemSupplier}
+                    />
                   </td>
                   <td>
                     <TextInput name='unit' defaultValue={ inventoryItem.unit } />
@@ -122,32 +119,35 @@ class ItemEdit extends Component {
               <tbody>
                 <TableRow>
                   <td>
-                    <NumberInput name='quantity'
-                                defaultValue={ inventoryItem.quantity }
-                                step={1}
-                                min={0}
+                    <NumberInput 
+                      name='quantity'
+                      defaultValue={ inventoryItem.quantity }
+                      step={1}
+                      min={0}
                     />
                   </td>
                   <td>
-                    <NumberInput name='parLevel'
-                                defaultValue={ inventoryItem.parLevel }
-                                step={1}
-                                min={0}
+                    <NumberInput 
+                      name='parLevel'
+                      defaultValue={ inventoryItem.parLevel }
+                      step={1}
+                      min={0}
                     />
                   </td>
                 </TableRow>
               </tbody>
             </Table>
             <hr />
-          <Box className='ItemEditButtons' direction='row' align='stretch'>
-            <Button type='submit' className='modalButton1' primary='true' label='Submit' fill='true'/>
-            <Button path='/inventory/' className='modelButton2' accent='true' label='Cancel' fill='true'/>
+            <Box className='ItemEditButtons' direction='row' align='stretch'>
+              <Button type='submit' className='modalButton1' primary='true' label='Submit' fill='true'/>
+              <Button path='/inventory/' className='modelButton2' accent='true' label='Cancel' fill='true'/>
+            </Box>
+            <Button id='deleteButton' hoverIndicator='accent' onClick={() => handleDelete(inventoryItem._id) } critical='true' label='Delete Item' fill='true'/>
           </Box>
-          <Button id='deleteButton' hoverIndicator='accent' onClick={() => handleDelete(inventoryItem._id) } critical='true' label='Delete Item' fill='true'/>
-        </Box>
-      </Box>
-    </form>
-  </App>)
-}}
+        </form>
+      </App>
+    )
+  }
+}
 
 export default withRouter(ItemEdit);
