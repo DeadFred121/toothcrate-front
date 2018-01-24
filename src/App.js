@@ -29,6 +29,7 @@ import NewItem from './components/NewItem'
 import Login from './components/Login'
 import NotFound from './components/NotFound'
 import NewProc from './components/NewProc'
+import LoadingPage from './components/LoadingPage'
 
 // API/Axios
 import { api, setJwt } from './api/init';
@@ -46,17 +47,27 @@ state = {
   procSelectId: null,
   redirect: null,
   procedures: [],
-  supplierSelectId: null
+  supplierSelectId: null,
+  loaded: 0,
+  currentSupplierValue: {},
+  newItemAlert: false,
+  newItemAlertText: ''
 }
 
   render() {
 
-    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures } = this.state
+    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures, loaded, currentSupplierValue, newItemAlert, newItemAlertText } = this.state
+
+    if (loaded < 2) return <LoadingPage />
 
     return (
 
         <div className='App'>
-          <NavBar />
+          <NavBar 
+            newItemAlert={newItemAlert}
+            newItemAlertText={newItemAlertText}
+            handleToastClose={this.handleToastClose} 
+          />
           <Box className='Contents'>
             { !this.state.token ? <Login onLoginSubmitHandler={this.onLoginSubmitHandler} align='center'/> :
             <Switch>
@@ -75,7 +86,10 @@ state = {
                      component={() => <NewItem
                      updateNewInventory={ this.updateInventory }
                      inventory={ inventory }
-                   /> }// IDEA: inventoryItem
+                     currentSupplierValue={ currentSupplierValue }
+                     selectInput={ this.selectInput }
+                    handleNewItemSubmit={ this.handleNewItemSubmit  }
+                   /> }
               />
               <Route path="/itemedit" component={() => <ItemEdit
                      inventoryItem={ inventoryItem }
@@ -83,6 +97,7 @@ state = {
                      displayModal= { this.displayModal }
                      updateExistingInventory={ this.updateExistingInventory }
                      handleDelete={ this.handleDelete }
+                    handleItemSubmit={ this.handleItemSubmit }
                      /> }
               />
               <Route path="/inventory" component={() => <Inventory
@@ -115,6 +130,7 @@ state = {
               />
               <Route path="/stock" component={() => <Stock
                      inventory={ inventory }
+                     updateItemStock={ this.updateItemStock }
                      /> }
               />
               <Route component={NotFound} />
@@ -122,8 +138,7 @@ state = {
             }
             </Box>
           <FooterBar />
-          </div>
-
+        </div>
     );
   }
 
@@ -131,10 +146,75 @@ state = {
       this.props.history.push('/inventory');
   };
 
-  handleAddItemClick () {
-    this.setState(prevState => ({
-      content: [...prevState.content, `More sample content ${prevState.content.length}`]
-    }));
+  handleToastClose = () => {
+    this.setState({
+      newItemAlert: false,
+      newItemAlertText: ''
+    })
+  }
+
+  handleItemSubmit = (event) => {
+    event.preventDefault()
+    const form = event.target
+    const elements = form.elements
+    const name = elements.name.value
+    const code = elements.code.value
+    const category = elements.category.value
+    const supplier = elements.supplier.value
+    const unit = elements.unit.value
+    const cost = elements.cost.value
+    const quantity = elements.quantity.value
+    const parLevel = elements.parLevel.value
+
+    api.put(`/api/inventory/${this.state.inventoryItem._id}`, {
+      name,
+      code,
+      category,
+      supplier,
+      unit,
+      cost,
+      quantity,
+      parLevel
+    }).then(res => {
+      this.updateExistingInventory(res.data);
+      this.props.history.push('/inventory');
+    })
+  }
+
+  handleNewItemSubmit = (event) => {
+    event.preventDefault()
+    const form = event.target
+    const elements = form.elements
+    const name = elements.name.value
+    const code = elements.code.value
+    const category = elements.category.value
+    const supplier = elements.supplier.value
+    const unit = elements.unit.value
+    const cost = elements.cost.value
+    const quantity = elements.quantity.value
+    const parLevel = elements.parLevel.value
+
+    api.post('/api/inventory', {
+      name,
+      code,
+      category,
+      supplier,
+      unit,
+      cost,
+      quantity,
+      parLevel
+    }).then(res => {
+      this.setState({
+        selectItem: null
+      })
+      this.updateNewInventory(res.data);
+      this.props.history.push('/inventory');
+      this.loadInventory();
+      this.setState({
+        newItemAlert: true,
+        newItemAlertText: 'New Item created!'
+      })
+    })
   }
 
   handleDelete = (item_id) => {
@@ -159,11 +239,6 @@ state = {
     this.setState({procSelectId: suggestion.value, redirect: '/procshow'})
   }
 
-  updateSupplierSearchId = ({ suggestion }) => {
-    console.log(suggestion)
-    this.setState({supplierSelectId: suggestion.value, redirect: '/suppliershow'})
-  }
-
   onLoginSubmitHandler = ({ username, password }) => {
     api.post('/auth', { email: username, password }).then(res => {
       this.setState({
@@ -177,6 +252,19 @@ state = {
     this.setState(prevState => ({
       procSelect: !prevState.procSelect
     }))
+  }
+
+  selectInput = (event) => {
+    this.setState({ currentValue: event.option })
+  }
+
+  updateItemStock = (invItem, quantity) => {
+    console.log(invItem, quantity)
+    const inventory = [...this.state.inventory]
+    const itemIndex = inventory.findIndex(item => item._id === invItem._id)
+    inventory[itemIndex].quantity = quantity
+    this.setState({inventory})
+    api.put(`/api/inventory/${invItem._id}`, inventory[itemIndex])
   }
 
   updateNewInventory = (invItem) => {
@@ -205,7 +293,7 @@ state = {
   loadInventory = () => {
     api.get('/api/inventory').then(res => {
       const inventory = res.data
-      this.setState({ inventory })
+      this.setState({ inventory, loaded: this.state.loaded + 1 })
     })
   }
 
@@ -214,7 +302,7 @@ state = {
       const procedureNames = res.data.map(procedure => {
         return { value: procedure._id, label: procedure.name }
       })
-      this.setState({ procedureNames, procedures: res.data })
+      this.setState({ procedureNames, procedures: res.data, loaded: this.state.loaded + 1 })
     })
   }
 
@@ -225,6 +313,7 @@ state = {
       this.setState({
         token: token
       });
+      setJwt(token)
     }
 
     this.loadInventory();
