@@ -14,7 +14,7 @@
 * [Stacks Used](#stacks-used)
 * [Solution](#solution)
 * [User Stories](#user-stories)
-* [Design](#wireframes)
+* [Design](#design)
 * [Project Schedule](#project-schedule)
 * [Testing](#testing)
 * [Reflections](#reflections)
@@ -106,8 +106,18 @@ the “danger zone”, which can in turn be organised by supplier.
 - Mongoose: a schema based solution to model application data. Creates an easy
   to use object reference when interacting with MongoDb.
 - Axios: promise based HTTP client for the browser and node.js.
-- AGILE: A Kanban board was set up and used to track process: this was kept in
-  the office] ![Kanban](./documentation/kanban.png)
+
+  #### Dependencies
+
+  Dependencies to install:
+
+  | npm          |            Installation |             Usage             |
+  | :----------- | ----------------------: | :---------------------------: |
+  | axios        |        yarn add 'axios' | creates http request/response |
+  | passportjs   |     yarn add 'passport' |        authentication         |
+  | express      |      yarn add 'express' |         database api          |
+  | react-router | yarn add 'react-router' |         database api          |
+  | grommet      |      yarn add 'grommet' |    component UX framework     |
 
 ####
 
@@ -153,7 +163,7 @@ Figma designed Wire Frames
 ![Figma designed Wire Frames](./documentation/wireFrames.png)
 [Click through each wire frame here](https://www.figma.com/proto/fvrA6xFB2o54G53IxiYeYahw/Toothcrate?scaling=contain&redirected=1&node-id=4%3A3)
 
-Entity Relationship Diagram (ERD).
+![Entity Relationship Diagram](ERD)(./documentation/ERD.png)
 
 ####
 
@@ -166,8 +176,11 @@ and extra features. The core features will be the first to be implemented while
 the extra features will be implemented based on the available time. The
 estimation is based upon on 14 day period working 8 hours a day each day for a
 total of 112 hours. It is broken down into user story points based on Agile
-methodology with a production potential to complete 20 points in a week.
+methodology with a production potential to complete 20 points in a week. Costing
 ![Gantt Chart](./documentation/ganttchart.png)
+
+AGILE: A Kanban board was set up and used to track process: this was kept in the
+office] ![Kanban](./documentation/kanban.png)
 
 ## Testing
 
@@ -180,16 +193,17 @@ performed:
 4. Used the network tab to check communication with the server.
 5. Used react developer tools to see the current JSX and key, ref, its state and
    props.
-6. Using logs in Heroku.
+6. Using logs in Heroku .
 
 ## Reflections
 
-3. It was great to create an app to solve a real world problem.
-4. Great to refresh what we have learned and to apply it to the project.
-5. Nice to work on new things and discuss our individual strengths .
-6. Prioritise features rather than styling.
-7. The whole team should have worked on the backend and then the frontend. This
+1. It was great to create an app to solve a real world problem.
+2. Great to refresh what we have learned and to apply it to the project.
+3. Nice to work on new things and discuss our individual strengths .
+4. WE learned to prioritise features rather than styling.
+5. The whole team should have worked on the backend and then the frontend. This
    would have helped to equip the whole team to be productive on both stacks.
-8. As a team we should be more open with our questions and seek help.
-9. Focus on getting functionality out
-10. Be careful about how much we promise to stakeholders.
+6. As a team we should be more open with our questions and seek help.
+7. Focus on getting functionality out
+8. Be careful about how much we promise to stakeholders.
+9. Working through road blocks as a team.
