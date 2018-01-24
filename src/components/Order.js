@@ -16,7 +16,7 @@ class Order extends Component {
   state = {
     filterValue: null
   }
-  
+
   handleFilterChange = ({ value }) => this.setState({ filterValue: value })
   getFilteredItems = () => this.props.inventory.filter((item) => item.supplier === this.state.filterValue && item.quantity <= item.parLevel)
 
@@ -38,7 +38,7 @@ class Order extends Component {
         />
         <hr />
         <Table>
-          <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true}/>
+          <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true} />
             <tbody>
               {
                 this.getFilteredItems().map(item => (
