@@ -23,8 +23,6 @@ const NewProcAddItem = ({ inventory }) => {
                     options={
                       inventory.map(item => (item.name) )
                     }
-                    // value={undefined}
-                    // onChange={...}
             />
           </td>
           <td>

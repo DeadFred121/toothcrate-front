@@ -12,11 +12,11 @@ import Headline from 'grommet/components/Headline';
 
 const NewProc = ({ inventory, handleAddClick }) => {
     return (<App>
-      <Box>
         <Headline>Add New Procedure</Headline>
-        <TextInput id='NewProcSearchBar' placeHolder="Procedure Name"/>
+        <Box align='center'>
+          <TextInput id='NewProcSearchBar' placeHolder="Procedure Name" align='center' />
+        </Box>
         <NewProcAddItem inventory={inventory} />
-      </Box>
       <Box className='newProcButton'>
         <Button className='newProcAddItemButton' onClick={handleAddClick} accent='true' label='Add Item' fill={false} />
       </Box>

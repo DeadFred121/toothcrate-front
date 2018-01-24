@@ -45,7 +45,10 @@ html, body {
 }
 
 #NewProcSearchBar {
-  padding-right: 155px;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  width: 40%;
 }
 
 .hrSearch {
@@ -115,4 +118,10 @@ html, body {
 
 .NotfoundPage {
   margin-top: 20%;
+}
+
+.newProcButton {
+  width: 20%;
+  margin-left: 5vw;
+  margin-bottom: 10vh;
 }

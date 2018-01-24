@@ -41,7 +41,7 @@ class ItemEdit extends Component {
         <Headline>
           Edit Inventory Item
         </Headline>
-        <Box onSubmit={(event) => {
+        <form onSubmit={(event) => {
           event.preventDefault()
           const form = event.target
           const elements = form.elements
@@ -93,7 +93,8 @@ class ItemEdit extends Component {
                 <TextInput name='code' defaultValue={ inventoryItem.code } />
               </td>
               <td>
-                <Select defaultValue={ inventoryItem.category }
+                <Select name='category'
+                        defaultValue={ inventoryItem.category }
                         inline={false}
                         multiple={false}
                         options={ itemCategory }
@@ -119,7 +120,8 @@ class ItemEdit extends Component {
           <tbody>
             <TableRow>
               <td>
-                <Select defaultValue={ inventoryItem.supplier }
+                <Select name='supplier'
+                        defaultValue={ inventoryItem.supplier }
                         inline={false}
                         multiple={false}
                         options={ itemSupplier }
@@ -167,11 +169,11 @@ class ItemEdit extends Component {
         <hr />
         <Box className='ItemEditButtons' direction='row' align='stretch'>
           <Button type='submit' className='modalButton1' primary='true' label='Submit' fill='true'/>
-          <Button path='/inventory/' className='modelButton2' accent='true' label='Cancel' fill='true'/>
+          <Button path='inventory/' className='modelButton2' accent='true' label='Cancel' fill='true'/>
         </Box>
         <Button id='deleteButton' hoverIndicator='accent' onClick={() => handleDelete(inventoryItem._id) } critical='true' label='Delete' fill='true'/>
       </Box>
-    </Box>
+    </form>
   </App>)
 }}
 
