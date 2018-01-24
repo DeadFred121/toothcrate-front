@@ -176,6 +176,7 @@ state = {
     })
   }
 
+
   showSearch = () => {
     this.setState(prevState => ({
       procSelect: !prevState.procSelect
@@ -232,6 +233,7 @@ state = {
       this.setState({
         token: token
       });
+      setJwt(token)
     }
 
     this.loadInventory();

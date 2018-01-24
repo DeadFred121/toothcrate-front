@@ -55,7 +55,8 @@ class ItemEdit extends Component {
 
   render() {
 
-  const { inventory, inventoryItem, selectItem, hideModal, displayModal, updateExistingInventory, handleDelete } = this.props
+    const { inventory, inventoryItem, selectItem, hideModal, displayModal, updateExistingInventory, handleDelete } = this.props
+
 
   return (
       <App className="ItemEdit">

@@ -56,12 +56,12 @@ const itemSupplier = Array.from(new Set(inventory.map(item => (item.supplier))))
 const itemCategory = Array.from(new Set(inventory.map(item => (item.category))))
 
   return (
-      <App className="ItemEdit">
-        <Headline>
-          New Inventory Item
-        </Headline>
-        <form onSubmit={this.handleNewItemSubmit} >
-          <Box>
+    <App className="ItemEdit">
+      <Headline>
+        New Inventory Item
+      </Headline>
+      <form onSubmit={this.handleNewItemSubmit} >
+        <Box>
           <Table responsive={false}>
             <thead>
               <tr>
@@ -168,37 +168,3 @@ const itemCategory = Array.from(new Set(inventory.map(item => (item.category))))
 
 
 export default NewItem;
-
-
-// class ControlledSelect extends Component {
-//   state = {
-//     value: null
-//   }
-
-//   constructor(props) {
-//     super(props);
-
-//     this.setState({
-//       value: props.defaultValue || null
-//     });
-//   }
-
-//   changeHandler = ({ value }) => this.setState({ value });
-
-//   render() {
-//     const { options, defaultValue, name, placeHolder } = this.props;
-//     const { value } = this.state;
-
-//     return (
-//       <Select name={name}
-//         placeHolder={placeHolder}
-//         inline={false}
-//         multiple={false}
-//         onSearch={true}
-//         options={options}
-//         onChange={this.changeHandler}
-//         value={value}
-//       />
-//     );
-//   }
-// }
