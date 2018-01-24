@@ -10,10 +10,13 @@ import Anchor from 'grommet/components/Anchor';
 import Menu from 'grommet/components/Menu';
 import MenuIcon from 'grommet/components/icons/base/Menu';
 import LinkPreviousIcon from 'grommet/components/icons/base/LinkPrevious';
+import Toast from 'grommet/components/Toast';
 
 class NavBar extends Component {
 
   render() {
+
+    const { handleToastClose, newItemAlert, newItemAlertText } = this.props
 
     return (
       <App className="NavBar">
@@ -21,6 +24,13 @@ class NavBar extends Component {
                 float={false}
                 splash={false}
                 size='medium'>
+          {
+            newItemAlert &&
+            <Toast status='ok'
+              onClose={handleToastClose}>
+              {newItemAlertText}
+            </Toast>
+          }
           <Title>
             <Anchor icon={<LinkPreviousIcon />}
                     label='Home'

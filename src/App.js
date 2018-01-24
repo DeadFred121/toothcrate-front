@@ -49,19 +49,25 @@ state = {
   procedures: [],
   supplierSelectId: null,
   loaded: 0,
-  currentSupplierValue: {}
+  currentSupplierValue: {},
+  newItemAlert: false,
+  newItemAlertText: ''
 }
 
   render() {
 
-    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures, loaded, currentSupplierValue } = this.state
+    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures, loaded, currentSupplierValue, newItemAlert, newItemAlertText } = this.state
 
     if (loaded < 2) return <LoadingPage />
 
     return (
 
         <div className='App'>
-          <NavBar />
+          <NavBar 
+            newItemAlert={newItemAlert}
+            newItemAlertText={newItemAlertText}
+            handleToastClose={this.handleToastClose} 
+          />
           <Box className='Contents'>
             { !this.state.token ? <Login onLoginSubmitHandler={this.onLoginSubmitHandler} align='center'/> :
             <Switch>
@@ -82,7 +88,8 @@ state = {
                      inventory={ inventory }
                      currentSupplierValue={ currentSupplierValue }
                      selectInput={ this.selectInput }
-                   /> }// IDEA: inventoryItem
+                    handleNewItemSubmit={ this.handleNewItemSubmit  }
+                   /> }
               />
               <Route path="/itemedit" component={() => <ItemEdit
                      inventoryItem={ inventoryItem }
@@ -139,10 +146,11 @@ state = {
       this.props.history.push('/inventory');
   };
 
-  handleAddItemClick () {
-    this.setState(prevState => ({
-      content: [...prevState.content, `More sample content ${prevState.content.length}`]
-    }));
+  handleToastClose = () => {
+    this.setState({
+      newItemAlert: false,
+      newItemAlertText: ''
+    })
   }
 
   handleItemSubmit = (event) => {
@@ -170,6 +178,42 @@ state = {
     }).then(res => {
       this.updateExistingInventory(res.data);
       this.props.history.push('/inventory');
+    })
+  }
+
+  handleNewItemSubmit = (event) => {
+    event.preventDefault()
+    const form = event.target
+    const elements = form.elements
+    const name = elements.name.value
+    const code = elements.code.value
+    const category = elements.category.value
+    const supplier = elements.supplier.value
+    const unit = elements.unit.value
+    const cost = elements.cost.value
+    const quantity = elements.quantity.value
+    const parLevel = elements.parLevel.value
+
+    api.post('/api/inventory', {
+      name,
+      code,
+      category,
+      supplier,
+      unit,
+      cost,
+      quantity,
+      parLevel
+    }).then(res => {
+      this.setState({
+        selectItem: null
+      })
+      this.updateNewInventory(res.data);
+      this.props.history.push('/inventory');
+      this.loadInventory();
+      this.setState({
+        newItemAlert: true,
+        newItemAlertText: 'New Item created!'
+      })
     })
   }
 
