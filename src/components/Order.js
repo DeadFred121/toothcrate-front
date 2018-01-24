@@ -41,23 +41,25 @@ class Order extends Component {
           <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true}/>
             <tbody>
               {
-                this.getFilteredItems().map(item => (<TableRow>
-                  <td>
-                    {item.code}
-                  </td>
-                  <td>
-                    {item.name}
-                  </td>
-                  <td>
-                    {item.category}
-                  </td>
-                  <td>
-                    {item.quantity}
-                  </td>
-                  <td>
-                    <Status value='critical' />
-                  </td>
-                </TableRow>))
+                this.getFilteredItems().map(item => (
+                  <TableRow>
+                    <td>
+                      {item.code}
+                    </td>
+                    <td>
+                      {item.name}
+                    </td>
+                    <td>
+                      {item.category}
+                    </td>
+                    <td>
+                      {item.quantity}
+                    </td>
+                    <td>
+                      <Status value='critical' />
+                    </td>
+                  </TableRow>)
+                )
               }
             </tbody>
         </Table>
