@@ -30,11 +30,12 @@ class Order extends Component {
     return (
       <App>
         <Headline>Orders</Headline>
-        <Select name='supplier'
-                placeHolder='Supplier'
-                options={itemSupplier}
-                onChange={this.handleFilterChange}
-                value={this.state.filterValue}
+        <Select 
+          name='supplier'
+          placeHolder='Supplier'
+          options={itemSupplier}
+          onChange={this.handleFilterChange}
+          value={this.state.filterValue}
         />
         <hr />
         <Table>

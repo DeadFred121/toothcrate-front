@@ -30,11 +30,11 @@ class StockTableRow extends Component {
         </td>
         <td>
           <NumberInput defaultValue={item.quantity}
-                      min={0}
-                      step={1}
-                      onChange={(event) => {
-                        this.setState({quantity: event.target.value})
-                      }}
+            min={0}
+            step={1}
+            onChange={(event) => {
+              this.setState({quantity: event.target.value})
+            }}
           />
         </td>
         <td>
