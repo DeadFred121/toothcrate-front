@@ -49,12 +49,14 @@ state = {
   newItemAlert: false,
   newItemAlertText: '',
   deleteItemAlert: false,
-  deleteItemAlertText: ''
+  deleteItemAlertText: '',
+  dentist: '',
+  location: ''
 }
 
   render() {
 
-    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures, loaded, currentSupplierValue, newItemAlert, newItemAlertText, deleteItemAlert, deleteItemAlertText } = this.state
+    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures, loaded, currentSupplierValue, newItemAlert, newItemAlertText, deleteItemAlert, deleteItemAlertText, dentist, location } = this.state
 
     if (loaded < 2) return <LoadingPage />
 
@@ -113,6 +115,9 @@ state = {
                    cancelRedirect={ this.cancelRedirect }
                    procedures={ procedures }
                    inventory={ inventory }
+                   handleSubmitProcedureHistory={ this.handleSubmitProcedureHistory }
+                   dentist={ dentist }
+                   location={ location } 
                    /> }
             />
             <Route path="/newproc" component={() => <NewProc
@@ -154,6 +159,57 @@ state = {
       deleteItemAlertText: ''
     })
   }
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+
+  handleSubmitProcedureHistory = (procedure, dentist, location) => {
+    const procedurePackage = {
+      dentist: dentist,
+      procedure:procedure._id,
+      surgery: location
+    };
+    api.post('/api/procedurehistory', procedurePackage)
+      .then(res => {
+        console.log(res);
+        this.updateExistingInventory(res.data);
+        this.props.history.push('/inventory');
+        this.loadInventory();
+        this.setState({
+          newItemAlert: true,
+          newItemAlertText: 'Procedure successfully logged'
+        })
+      })
+      .catch(error => {
+        console.log(procedurePackage)
+        console.log(error);
+      });
+  }
+
+  // handleSubmitProcedure = (procedure) => {
+  //   const procedurePackage = {
+  //     name: procedure.name,
+  //     items: procedure.items.map(item => {
+  //       return {
+  //         item: item._id,
+  //         useQuantity: item.useQuantity
+  //       }
+  //     })
+  //   };
+  //   api.post('/api/procedurehistory', procedurePackage)
+  //     .then(res => {
+  //       console.log(res);
+  //       this.updateExistingInventory(res.data);
+  //       this.props.history.push('/inventory');
+  //     })
+  //     .catch(error => {
+  //       console.log(procedurePackage)
+  //       console.log(error);
+  //     });
+  // }
 
   handleItemSubmit = (event) => {
     event.preventDefault()
