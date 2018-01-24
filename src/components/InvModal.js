@@ -102,18 +102,12 @@ const InvModal = ({ inventoryItem, selectItem, hideModal }) => {
               <th>
                 Last Updated
               </th>
-              <th>
-                By
-              </th>
             </tr>
           </thead>
           <tbody>
             <TableRow>
               <td>
-                <Timestamp value={inventoryItem.updatedAt}/>
-              </td>
-              <td>
-                {inventoryItem.signature}
+                <Timestamp align='center' value={inventoryItem.updatedAt}/>
               </td>
             </TableRow>
           </tbody>
