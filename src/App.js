@@ -9,11 +9,7 @@ import './App.css';
 import '../node_modules/grommet/grommet-hpinc.min.css'
 
 // Routing Components
-import {
-  Route,
-  Switch,
-} from 'react-router-dom';
-import { withRouter } from 'react-router';
+import { Route, Switch, withRouter } from 'react-router';
 
 // Internal Components
 import Inventory from './components/Inventory'
@@ -51,94 +47,98 @@ state = {
   loaded: 0,
   currentSupplierValue: {},
   newItemAlert: false,
-  newItemAlertText: ''
+  newItemAlertText: '',
+  deleteItemAlert: false,
+  deleteItemAlertText: ''
 }
 
   render() {
 
-    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures, loaded, currentSupplierValue, newItemAlert, newItemAlertText } = this.state
+    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures, loaded, currentSupplierValue, newItemAlert, newItemAlertText, deleteItemAlert, deleteItemAlertText } = this.state
 
     if (loaded < 2) return <LoadingPage />
 
     return (
 
-        <div className='App'>
-          <NavBar 
-            newItemAlert={newItemAlert}
-            newItemAlertText={newItemAlertText}
-            handleToastClose={this.handleToastClose} 
-          />
-          <Box className='Contents'>
-            { !this.state.token ? <Login onLoginSubmitHandler={this.onLoginSubmitHandler} align='center'/> :
-            <Switch>
-              <Route exact path="/" component={() => <ModeSelect
-                     procedureNames={ procedureNames }
-                     procSelect={ procSelect }
-                     selectProc={ selectProc}
-                     showSearch={ this.showSearch }
-                     updateProcSearchId={ this.updateProcSearchId }
-                     procSelectId={ procSelectId }
-                     redirect={ redirect }
-                     handleClickInventoryRedirect={ this.handleClickInventoryRedirect }
-                     /> }
-              />
-              <Route path="/newitem"
-                     component={() => <NewItem
-                     updateNewInventory={ this.updateInventory }
-                     inventory={ inventory }
-                     currentSupplierValue={ currentSupplierValue }
-                     selectInput={ this.selectInput }
-                    handleNewItemSubmit={ this.handleNewItemSubmit  }
+      <div className='App'>
+        <NavBar
+          newItemAlert={newItemAlert}
+          newItemAlertText={newItemAlertText}
+          deleteItemAlert={deleteItemAlert}
+          deleteItemAlertText={deleteItemAlertText}
+          handleToastClose={this.handleToastClose}
+        />
+        <Box className='Contents'>
+          { !this.state.token ? <Login onLoginSubmitHandler={this.onLoginSubmitHandler} align='center'/> :
+          <Switch>
+            <Route exact path="/" component={() => <ModeSelect
+                   procedureNames={ procedureNames }
+                   procSelect={ procSelect }
+                   selectProc={ selectProc}
+                   showSearch={ this.showSearch }
+                   updateProcSearchId={ this.updateProcSearchId }
+                   procSelectId={ procSelectId }
+                   redirect={ redirect }
+                   handleClickInventoryRedirect={ this.handleClickInventoryRedirect }
                    /> }
-              />
-              <Route path="/itemedit" component={() => <ItemEdit
-                     inventoryItem={ inventoryItem }
-                     inventory={ inventory }
-                     displayModal= { this.displayModal }
-                     updateExistingInventory={ this.updateExistingInventory }
-                     handleDelete={ this.handleDelete }
-                    handleItemSubmit={ this.handleItemSubmit }
-                     /> }
-              />
-              <Route path="/inventory" component={() => <Inventory
-                     inventory={ inventory }
-                     selectItem={ selectItem }
-                     inventoryItem={ inventoryItem }
-                     displayModal={ this.displayModal }
-                     hideModal={ this.hideModal }
-                     /> }
-              />
-              <Route path="/procshow" component={() => <ProcShow
-                     procSelectId={ procSelectId }
-                     cancelRedirect={ this.cancelRedirect }
-                     procedures={ procedures }
-                     inventory={ inventory }
-                     /> }
-              />
-              <Route path="/newproc" component={() => <NewProc
-                     inventory={ inventory }
-                     /> }
-              />
-              <Route path="/procedit" component={() => <ProcEdit
-                     inventory={ inventory }
-                     /> }
-              />
-              <Route path="/order" component={() => <Order
-                     inventory={ inventory }
-                     updateSupplierSearchId={ this.updateSupplierSearchId }
-                     /> }
-              />
-              <Route path="/stock" component={() => <Stock
-                     inventory={ inventory }
-                     updateItemStock={ this.updateItemStock }
-                     /> }
-              />
-              <Route component={NotFound} />
-            </Switch>
-            }
-            </Box>
-          <FooterBar />
-        </div>
+            />
+            <Route path="/newitem"
+                   component={() => <NewItem
+                   updateNewInventory={ this.updateInventory }
+                   inventory={ inventory }
+                   currentSupplierValue={ currentSupplierValue }
+                   selectInput={ this.selectInput }
+                  handleNewItemSubmit={ this.handleNewItemSubmit  }
+                 /> }
+            />
+            <Route path="/itemedit" component={() => <ItemEdit
+                   inventoryItem={ inventoryItem }
+                   inventory={ inventory }
+                   displayModal= { this.displayModal }
+                   updateExistingInventory={ this.updateExistingInventory }
+                   handleDelete={ this.handleDelete }
+                  handleItemSubmit={ this.handleItemSubmit }
+                   /> }
+            />
+            <Route path="/inventory" component={() => <Inventory
+                   inventory={ inventory }
+                   selectItem={ selectItem }
+                   inventoryItem={ inventoryItem }
+                   displayModal={ this.displayModal }
+                   hideModal={ this.hideModal }
+                   /> }
+            />
+            <Route path="/procshow" component={() => <ProcShow
+                   procSelectId={ procSelectId }
+                   cancelRedirect={ this.cancelRedirect }
+                   procedures={ procedures }
+                   inventory={ inventory }
+                   /> }
+            />
+            <Route path="/newproc" component={() => <NewProc
+                   inventory={ inventory }
+                   /> }
+            />
+            <Route path="/procedit" component={() => <ProcEdit
+                   inventory={ inventory }
+                   /> }
+            />
+            <Route path="/order" component={() => <Order
+                   inventory={ inventory }
+                   updateSupplierSearchId={ this.updateSupplierSearchId }
+                   /> }
+            />
+            <Route path="/stock" component={() => <Stock
+                   inventory={ inventory }
+                   updateItemStock={ this.updateItemStock }
+                   /> }
+            />
+            <Route component={NotFound} />
+          </Switch>
+          }
+          </Box>
+        <FooterBar />
+      </div>
     );
   }
 
@@ -149,7 +149,9 @@ state = {
   handleToastClose = () => {
     this.setState({
       newItemAlert: false,
-      newItemAlertText: ''
+      newItemAlertText: '',
+      deleteItemAlert: false,
+      deleteItemAlertText: ''
     })
   }
 
@@ -225,7 +227,11 @@ state = {
         })
         this.props.history.push('/inventory')
         this.loadInventory();
+        this.setState({
+        deleteItemAlert: true,
+        deleteItemAlertText: 'Item has been deleted from the Inventory.'
       })
+    })
       .catch((err) => {
         console.log('An error ocurred while deleting the item')
       })
@@ -315,9 +321,7 @@ state = {
       });
       setJwt(token)
     }
-
     this.loadInventory();
-
     this.loadProcedures();
   }
 }

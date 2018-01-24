@@ -9,6 +9,7 @@ import Table from 'grommet/components/Table';
 import TableHeader from 'grommet/components/TableHeader';
 import TableRow from 'grommet/components/TableRow';
 import Select from 'grommet/components/Select';
+import Box from 'grommet/components/Box';
 
 
 class Order extends Component {
@@ -30,13 +31,14 @@ class Order extends Component {
     return (
       <App>
         <Headline>Orders</Headline>
-        <Select name='supplier'
-                placeHolder='Supplier'
-                options={itemSupplier}
-                onChange={this.handleFilterChange}
-                value={this.state.filterValue}
-        />
-        <hr />
+        <Box>
+          <Select name='supplier'
+                  placeHolder='Supplier'
+                  options={itemSupplier}
+                  onChange={this.handleFilterChange}
+                  value={this.state.filterValue}
+          />
+        </Box>
         <Table>
           <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true} />
             <tbody>
