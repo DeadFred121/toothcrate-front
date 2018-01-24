@@ -122,6 +122,7 @@ state = {
               />
               <Route path="/stock" component={() => <Stock
                      inventory={ inventory }
+                     updateItemStock={ this.updateItemStock }
                      /> }
               />
               <Route component={NotFound} />
@@ -189,6 +190,15 @@ state = {
 
   selectInput = (event) => {
     this.setState({ currentValue: event.option })
+  }
+
+  updateItemStock = (invItem, quantity) => {
+    console.log(invItem, quantity)
+    const inventory = [...this.state.inventory]
+    const itemIndex = inventory.findIndex(item => item._id === invItem._id)
+    inventory[itemIndex].quantity = quantity
+    this.setState({inventory})
+    api.put(`/api/inventory/${invItem._id}`, inventory[itemIndex])
   }
 
   updateNewInventory = (invItem) => {
