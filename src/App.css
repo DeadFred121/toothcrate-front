@@ -36,8 +36,9 @@ html, body {
   padding-right: 100px;
 }
 
-#StockSearchBar {
-  padding-right: 155px;
+.StockSearchBar {
+  width: 32%;
+  margin: auto;
 }
 
 #OrdersSearchBar {
@@ -96,7 +97,9 @@ html, body {
 }
 
 .StockButtons {
-  width: 40%;
+  margin-top: 30px;
+  padding-top: 20;
+  width: 20%;
   margin: auto;
 }
 
