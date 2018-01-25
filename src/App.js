@@ -427,14 +427,25 @@ state = {
     api.get('/api/inventory').then(res => {
       const inventory = res.data
       this.setState({ inventory, loaded: this.state.loaded + 1 })
-    })
+    }).catch(error => {
+      console.log(error);
+      if (error.status === 401) {
+        this.deleteToken()
+      }
+    });
   }
 
   loadProcedures = () => {
     api.get('/api/procedure').then(res => {
      this.loadProcedureNames(res.data)
       this.setState({ procedures: res.data, loaded: this.state.loaded + 1 })
-    })
+    }).catch(error => {
+      console.log('test')
+      console.log(error.response);
+      if (error.status === 401) {
+        this.deleteToken()
+      }
+    });
   }
 
   loadProcedureNames = (procedures) => {
