@@ -239,13 +239,13 @@ performed:
 
 ## Team Minutes
 
----
+## ![Team minutes](https://docs.google.com/document/d/1wyQSbOQowzhkjUM6LwAwvhpKcJv1Uw4hlSdwVwUL17s/edit?usp=sharing)
 
 ####
 
 ## Client feedback
 
-## ![Client feedback](https://docs.google.com/document/d/1wyQSbOQowzhkjUM6LwAwvhpKcJv1Uw4hlSdwVwUL17s/edit?usp=sharing)
+## ![Client feedback]
 
 ![Feedback](./documentation/feedback1.png)
 ![Feedback](./documentation/feedback2.png)
