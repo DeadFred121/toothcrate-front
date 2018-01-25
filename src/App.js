@@ -49,9 +49,7 @@ state = {
   newItemAlert: false,
   newItemAlertText: '',
   deleteItemAlert: false,
-  deleteItemAlertText: '',
-  dentist: '',
-  location: ''
+  deleteItemAlertText: ''
 }
 
   render() {
@@ -117,7 +115,7 @@ state = {
                    inventory={ inventory }
                    handleSubmitProcedureHistory={ this.handleSubmitProcedureHistory }
                    dentist={ dentist }
-                   location={ location } 
+                   location={ location }
                    /> }
             />
             <Route path="/newproc" component={() => <NewProc
@@ -160,16 +158,10 @@ state = {
     })
   }
 
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
-
   handleSubmitProcedureHistory = (procedure, dentist, location) => {
     const procedurePackage = {
       dentist: dentist,
-      procedure:procedure._id,
+      procedure: procedure._id,
       surgery: location
     };
     api.post('/api/procedurehistory', procedurePackage)
