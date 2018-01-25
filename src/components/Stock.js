@@ -13,7 +13,7 @@ import Button from 'grommet/components/Button';
 // Internal Components
 import StockTableRow from '../components/StockTableRow';
 
-class Stock extends Component { 
+class Stock extends Component {
 
   state = {
     filterValue: null
@@ -32,15 +32,16 @@ class Stock extends Component {
     return (
       <App className="ItemEdit">
         <Headline>Stock Update</Headline>
+      <Box className='StockSearchBar'>
         <Select
-          id='StockSearchBar'
           placeHolder='Select Supplier'
           options={itemSupplier}
           onChange={this.handleFilterChange}
           value={this.state.filterValue}
         />
+      </Box>
         <Table>
-          <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Save?']} sortIndex={0} sortAscending={true}/>
+          <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Save?']} />
             <tbody>
               {
                 this.getFilteredItems().map(item => (
@@ -50,7 +51,6 @@ class Stock extends Component {
               }
             </tbody>
         </Table>
-        <hr />
         <Box className='StockButtons' direction='row' align='center'>
           <Button  path='/' className='modalButton2' accent='true' label='Cancel' fill='true'/>
         </Box>

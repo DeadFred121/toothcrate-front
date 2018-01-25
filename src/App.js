@@ -54,7 +54,7 @@ state = {
 
   render() {
 
-    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures, loaded, currentSupplierValue, newItemAlert, newItemAlertText, deleteItemAlert, deleteItemAlertText, dentist, location } = this.state
+    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures, loaded, currentSupplierValue, newItemAlert, newItemAlertText, deleteItemAlert, deleteItemAlertText, editItemAlert, editItemAlertText, dentist, location } = this.state
 
     if (loaded < 2) return <LoadingPage />
 
@@ -66,6 +66,8 @@ state = {
           newItemAlertText={newItemAlertText}
           deleteItemAlert={deleteItemAlert}
           deleteItemAlertText={deleteItemAlertText}
+          editItemAlert={editItemAlert}
+          editItemAlertText={editItemAlertText}
           handleToastClose={this.handleToastClose}
         />
         <Box className='Contents'>
@@ -154,7 +156,9 @@ state = {
       newItemAlert: false,
       newItemAlertText: '',
       deleteItemAlert: false,
-      deleteItemAlertText: ''
+      deleteItemAlertText: '',
+      editItemAlert: false,
+      editItemAlertText: ''
     })
   }
 
@@ -228,6 +232,11 @@ state = {
     }).then(res => {
       this.updateExistingInventory(res.data);
       this.props.history.push('/inventory');
+      this.loadInventory();
+      this.setState({
+        editItemAlert: true,
+        editItemAlertText: 'An Inventory Item has been updated!'
+      })
     })
   }
 
