@@ -82,9 +82,8 @@ the “danger zone”, which can in turn be organised by supplier.
 
 * [MongoDb](https://www.mongodb.com/): Database: MongoDB hosted by mlab - this
   is an industry standard online database system that has a cost-free option for
-  developing applications that require data storage. Store user details:
-  Username, name, email address, location (country, suburb, postcode),
-  motivation, bio, badges, pictures, etc
+  developing applications that require data storage. Store inventory items and
+  procedures.
 
 * [Grommet](http://grommet.io): A component and design resources you need to
   take your ideas from concept to a real application.
@@ -171,7 +170,7 @@ Wireframe mockups and user journey ![mockups](./documentation/userJourney.png)
 Figma designed Wire Frames
 ![Figma designed Wire Frames](./documentation/wireFrames.png)
 [Click through each wire frame here](https://www.figma.com/proto/fvrA6xFB2o54G53IxiYeYahw/Toothcrate?scaling=contain&redirected=1&node-id=4%3A3)
-
+Entity Relationship Diagram
 ![Entity Relationship Diagram](./documentation/ERD.png)
 
 ####
@@ -246,7 +245,7 @@ performed:
 
 ## Client feedback
 
----
+## ![Client feedback](https://docs.google.com/document/d/1wyQSbOQowzhkjUM6LwAwvhpKcJv1Uw4hlSdwVwUL17s/edit?usp=sharing)
 
 ![Feedback](./documentation/feedback1.png)
 ![Feedback](./documentation/feedback2.png)
@@ -260,7 +259,7 @@ performed:
 1. It was great to create an app to solve a real world problem.
 2. Great to refresh what we have learned and to apply it to the project.
 3. Nice to work on new things and discuss our individual strengths .
-4. WE learned to prioritise features rather than styling.
+4. We learned to prioritise features rather than styling.
 5. The whole team should have worked on the backend and then the frontend. This
    would have helped to equip the whole team to be productive on both stacks.
 6. As a team we should be more open with our questions and seek help.
