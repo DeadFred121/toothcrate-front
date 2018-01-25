@@ -20,12 +20,20 @@ import {
 
 class ProcShow extends Component {
 
-state = {
-}
+  state={
+    dentist: null,
+    location: null
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
 
   render () {
 
-  const { cancelRedirect, procedures, procSelectId, inventory, handleSubmitProcedureHistory, dentist, location, handleChange } = this.props
+  const { cancelRedirect, procedures, procSelectId, inventory, handleSubmitProcedureHistory } = this.props
 
   cancelRedirect()
 
@@ -77,9 +85,9 @@ state = {
                 <Box>
                 <TextInput
                   name='dentist'
-                  value={undefined}
+                  value={ this.state.dentist }
                   placeHolder='Dentist Name'
-                  onDOMChange={ handleChange }
+                  onDOMChange={ this.handleChange }
                   />
                 </Box>
               </td>
@@ -87,9 +95,9 @@ state = {
                 <Box>
                   <TextInput
                     name='location'
-                    value={undefined}
+                    value={ this.state.location }
                     placeHolder='Location for Procedure'
-                    onDOMChange={ handleChange }
+                    onDOMChange={ this.handleChange }
                   />
                 </Box>
               </td>
@@ -97,7 +105,7 @@ state = {
           </tbody>
         </Table>
         <Box className='ItemEditButtons' direction='row' align='stretch'>
-          <Button onClick={() => handleSubmitProcedureHistory(procedure, dentist, location) } type='submit' className='modalButton1' primary='true' label='Submit' fill='true' />
+          <Button onClick={() => handleSubmitProcedureHistory(procedure, this.state.dentist, this.state.location) } type='submit' className='modalButton1' primary='true' label='Submit' fill='true' />
           <Button path='/' className='modelButton2' accent='true' label='Cancel' fill='true'/>
         </Box>
       </App>

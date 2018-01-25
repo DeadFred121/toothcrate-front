@@ -49,11 +49,7 @@ state = {
   newItemAlert: false,
   newItemAlertText: '',
   deleteItemAlert: false,
-  deleteItemAlertText: '',
-  editItemAlert: false,
-  editItemAlertText: '',
-  dentist: '',
-  location: ''
+  deleteItemAlertText: ''
 }
 
   render() {
@@ -166,16 +162,10 @@ state = {
     })
   }
 
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
-
   handleSubmitProcedureHistory = (procedure, dentist, location) => {
     const procedurePackage = {
       dentist: dentist,
-      procedure:procedure._id,
+      procedure: procedure._id,
       surgery: location
     };
     api.post('/api/procedurehistory', procedurePackage)
