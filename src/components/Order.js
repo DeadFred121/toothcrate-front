@@ -31,16 +31,17 @@ class Order extends Component {
     return (
       <App>
         <Headline>Orders</Headline>
-        <Select 
-          name='supplier'
-          placeHolder='Supplier'
-          options={itemSupplier}
-          onChange={this.handleFilterChange}
-          value={this.state.filterValue}
-        />
-        <hr />
+        <Box className='StockSearchBar'>
+          <Select
+            name='supplier'
+            placeHolder='Supplier'
+            options={itemSupplier}
+            onChange={this.handleFilterChange}
+            value={this.state.filterValue}
+          />
+        </Box>
         <Table>
-          <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true} />
+          <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} />
             <tbody>
               {
                 this.getFilteredItems().map(item => (
@@ -65,7 +66,6 @@ class Order extends Component {
               }
             </tbody>
         </Table>
-        <hr />
       </App>
     )
   }
