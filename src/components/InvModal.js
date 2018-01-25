@@ -19,7 +19,7 @@ class InvModal extends Component {
 
   render() {
   
-    const { inventoryItem, selectItem, hideModal } = this.props
+    const { inventoryItem, hideModal } = this.props
 
     return (
       <Layer closer={true} onClose={ hideModal }>
