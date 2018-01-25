@@ -118,3 +118,12 @@ html, body {
 .NotFoundPage {
   margin-top: 25%;
 }
+
+.newProcButton {
+  margin-bottom: 20px;
+}
+
+.NewProcDeleteItemButton {
+  padding-left: 50px;
+  width: 3rem;
+}
