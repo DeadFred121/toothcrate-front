@@ -1,9 +1,13 @@
+
+// React Components
 import React from 'react'
 
+// Grommet Components
 import App from 'grommet/components/App';
 import Spinning from 'grommet/components/icons/Spinning';
 import Box from 'grommet/components/Box';
 import Label from 'grommet/components/Label';
+
 
 const LoadingPage = () => {
 

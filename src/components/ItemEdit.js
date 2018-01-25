@@ -14,7 +14,7 @@ import Button from 'grommet/components/Button';
 // Internal Components
 import ControlledSelect from '../components/ControlledSelect';
 
-
+// React-Router Components
 import { withRouter } from 'react-router';
 
 
@@ -63,7 +63,8 @@ class ItemEdit extends Component {
                     </Box>
                   </td>
                   <td>
-                    <ControlledSelect name='category'
+                    <ControlledSelect
+                      name='category'
                       placeHolder='Category'
                       options={itemCategory}
                     />
@@ -88,7 +89,8 @@ class ItemEdit extends Component {
               <tbody>
                 <TableRow>
                   <td>
-                    <ControlledSelect name='supplier'
+                    <ControlledSelect
+                      name='supplier'
                       placeHolder='Supplier'
                       options={itemSupplier}
                     />

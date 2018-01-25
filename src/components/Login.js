@@ -22,7 +22,14 @@ const Login = ({onLoginSubmitHandler}) => {
       <Split flex='left' separator={true}>
 
         <Article>
-          <Section full={true} colorIndex='brand' texture='url(img/splash.png)' pad='large' justify='center' align='center'>
+          <Section
+            full={true} 
+            colorIndex='brand' 
+            texture='url(img/splash.png)' 
+            pad='large' 
+            justify='center' 
+            align='center'
+          >
             <Heading align='center' tag='h1' strong={true}>ToothCrate</Heading>
             <Paragraph align='center' size='large'>
               Inventory management made easy
@@ -30,17 +37,30 @@ const Login = ({onLoginSubmitHandler}) => {
           </Section>
         </Article>
 
-        <Sidebar justify='between' align='center' pad='none' size='large'>
+        <Sidebar 
+          justify='between' 
+          align='center' 
+          pad='none' 
+          size='large'
+        >
           <span/>
-          <LoginForm align='center' title='Login' onSubmit={onLoginSubmitHandler} rememberMe={true}/>
-          <Footer direction='row' size='small' pad={{
+          <LoginForm 
+            align='center' 
+            title='Login' 
+            onSubmit={onLoginSubmitHandler} 
+            rememberMe={true}
+          />
+          <Footer 
+            direction='row' 
+            size='small' 
+            pad={{
               horizontal: 'medium',
               vertical: 'small'
-            }}>
+            }}
+          >
             <span className='secondary'>&copy; 2017 Invent/Story</span>
           </Footer>
         </Sidebar>
-
       </Split>
     </App>
   )

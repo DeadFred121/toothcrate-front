@@ -13,6 +13,7 @@ import EditIcon from 'grommet/components/icons/base/Edit';
 
 class InvModal extends Component {
 
+  // Hide modal on unmount
   componentWillUnmount() {
     this.props.hideModal()
   }

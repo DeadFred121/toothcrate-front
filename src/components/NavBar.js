@@ -21,39 +21,49 @@ class NavBar extends Component {
 
     return (
       <App className="NavBar">
-        <Header fixed={true}
-                float={false}
-                splash={false}
-                size='medium'>
+        <Header 
+          fixed={true}
+          float={false}
+          splash={false}
+          size='medium'
+        >
           {
             newItemAlert &&
-            <Toast status='ok'
-                   onClose={handleToastClose}>
+            <Toast 
+              status='ok'
+              onClose={handleToastClose}
+            >
               <Label>{newItemAlertText}</Label>
             </Toast>
           }
           {
             deleteItemAlert &&
-            <Toast status='critical'
-                   onClose={handleToastClose}
-                   size='large'>
+            <Toast 
+              status='critical'
+              onClose={handleToastClose}
+              size='large'
+            >
               <Label>{deleteItemAlertText}</Label>
             </Toast>
           }
           {
             editItemAlert &&
-            <Toast status='warning'
-                   onClose={handleToastClose}
-                   size='large'>
+            <Toast 
+              status='warning'
+              onClose={handleToastClose}
+              size='large'
+            >
               <Label>{editItemAlertText}</Label>
             </Toast>
           }
           <Title>
-            <Anchor icon={<LinkPreviousIcon />}
-                    label='Home'
-                    path='/'
-                    primary={true}
-                    reverse={false} />
+            <Anchor 
+              icon={<LinkPreviousIcon />}
+              label='Home'
+              path='/'
+              primary={true}
+              reverse={false}
+            />
           </Title>
           <Box flex={true} justify='end' direction='row' responsive={false}>
             <Menu icon={<MenuIcon />} dropAlign={{
