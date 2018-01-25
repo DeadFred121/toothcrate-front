@@ -11,6 +11,7 @@ import TableRow from 'grommet/components/TableRow';
 import NumberInput from 'grommet/components/NumberInput';
 import FormCloseIcon from 'grommet/components/icons/base/FormClose';
 import Button from 'grommet/components/Button';
+import Box from 'grommet/components/Box';
 
 // Internal Components
 import ControlledSelect from '../components/ControlledSelect';
@@ -18,9 +19,9 @@ import ControlledSelect from '../components/ControlledSelect';
 class NewProcAddItem extends Component {
 
   render () {
-  
+
     const { inventory } = this.props
-    const itemSelection = inventory.map(item => ({value: item._id, label: item.name})) 
+    const itemSelection = inventory.map(item => ({value: item._id, label: item.name}))
 
     return (
       <App>
@@ -29,14 +30,14 @@ class NewProcAddItem extends Component {
           <tbody>
             <TableRow>
               <td>
-                <ControlledSelect 
+                <ControlledSelect
                   name='item[]'
                   placeHolder='Item'
                   options={itemSelection}
                 />
               </td>
               <td>
-                <NumberInput 
+                <NumberInput
                   className='NewProcNumInput'
                   defaultValue={1}
                   step={1}
@@ -45,7 +46,9 @@ class NewProcAddItem extends Component {
                 />
               </td>
               <td>
-                <Button className='NewProcDeleteItemButton' icon={<FormCloseIcon colorIndex='light-1' />} accent={true}/>
+                <Box className='NewProcDeleteItemButton' >
+                  <Button icon={<FormCloseIcon colorIndex='light-1' />} accent={true}/>
+                </Box>
               </td>
             </TableRow>
           </tbody>

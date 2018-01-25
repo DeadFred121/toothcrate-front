@@ -73,7 +73,7 @@ state = {
         <Box className='Contents'>
           { !this.state.token ? <Login onLoginSubmitHandler={this.onLoginSubmitHandler} align='center'/> :
           <Switch>
-            <Route 
+            <Route
               exact path="/" component={() => <ModeSelect
               procedureNames={ procedureNames }
               procSelect={ procSelect }
@@ -95,7 +95,7 @@ state = {
               handleNewItemSubmit={ this.handleNewItemSubmit  }
             /> }
             />
-            <Route 
+            <Route
               path="/itemedit" component={() => <ItemEdit
               inventoryItem={ inventoryItem }
               inventory={ inventory }
@@ -105,7 +105,7 @@ state = {
               handleItemSubmit={ this.handleItemSubmit }
             /> }
             />
-            <Route 
+            <Route
               path="/inventory" component={() => <Inventory
               inventory={ inventory }
               selectItem={ selectItem }
@@ -114,7 +114,7 @@ state = {
               hideModal={ this.hideModal }
             /> }
             />
-            <Route 
+            <Route
               path="/procshow" component={() => <ProcShow
               procSelectId={ procSelectId }
               cancelRedirect={ this.cancelRedirect }
@@ -125,24 +125,24 @@ state = {
               location={ location }
             /> }
             />
-            <Route 
+            <Route
               path="/newproc" component={() => <NewProc
               inventory={ inventory }
               newProcSubmit={this.newProcSubmit}
             /> }
             />
-            <Route 
+            <Route
               path="/procedit" component={() => <ProcEdit
               inventory={ inventory }
             /> }
             />
-            <Route 
+            <Route
               path="/order" component={() => <Order
               inventory={ inventory }
               updateSupplierSearchId={ this.updateSupplierSearchId }
             /> }
             />
-            <Route 
+            <Route
               path="/stock" component={() => <Stock
               inventory={ inventory }
               updateItemStock={ this.updateItemStock }
@@ -176,7 +176,7 @@ state = {
     const procedurePackage = {
       dentist: dentist,
       procedure: procedure._id,
-      surgery: location
+      location: location
     };
     api.post('/api/procedurehistory', procedurePackage)
       .then(res => {
@@ -331,12 +331,12 @@ state = {
         useQuantity: quantities[index].value
       })
     })
-    
+
     api.post('/api/procedure', procedure).then(res => {
       this.updateExistingProcedures(res.data)
     })
   }
-  
+
   updateSupplierSearchId = ({ suggestion }) => {
     console.log(suggestion)
     this.setState({supplierSelectId: suggestion.value, redirect: '/suppliershow'})
@@ -420,7 +420,7 @@ state = {
     const procedureNames = procedures.map(procedure => {
       return { value: procedure._id, label: procedure.name }
     })
-    this.setState({ procedureNames })    
+    this.setState({ procedureNames })
   }
 
   // Rendering API Inventory request.

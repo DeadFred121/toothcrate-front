@@ -12,7 +12,7 @@ import Headline from 'grommet/components/Headline';
 import NewProcAddItem from './NewProcAddItem';
 
 
-class NewProc extends Component { 
+class NewProc extends Component {
 
   constructor(props) {
     super(props);
@@ -36,14 +36,15 @@ class NewProc extends Component {
       <App>
         <Headline>Add New Procedure</Headline>
         <form onSubmit={newProcSubmit}>
-          <Box>
+        <Box>
+          <Box className='StockSearchBar'>
             <TextInput
-              id='NewProcSearchBar' 
               placeHolder="Procedure Name"
               name='name'
             />
+          </Box>
             {
-              [...Array(this.state.itemCount)].map((value, key) => <NewProcAddItem inventory={inventory} key={key} />) 
+              [...Array(this.state.itemCount)].map((value, key) => <NewProcAddItem inventory={inventory} key={key} />)
             }
             <Box className='newProcButton'>
               <Button className='newProcAddItemButton' onClick={this.handleAddClick} accent={true} label='Add Item' fill={false} />
