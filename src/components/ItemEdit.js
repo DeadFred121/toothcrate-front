@@ -30,7 +30,7 @@ class ItemEdit extends Component {
   render() {
 
     const { inventory, inventoryItem, selectItem, hideModal, displayModal, updateExistingInventory, handleDelete, handleItemSubmit } = this.props
-    
+
     // Mapping through the Inventory by Supplier and setting as an Array
     const itemSupplier = Array.from(new Set(inventory.map(item => (item.supplier))))
     // Mapping through the Inventory by Category and setting as an Array
@@ -60,10 +60,14 @@ class ItemEdit extends Component {
               <tbody>
                 <TableRow>
                   <td>
-                    <TextInput name='name' defaultValue={ inventoryItem.name } />
+                    <Box>
+                      <TextInput name='name' defaultValue={ inventoryItem.name } />
+                    </Box>
                   </td>
                   <td>
-                    <TextInput name='code' defaultValue={ inventoryItem.code } />
+                    <Box>
+                      <TextInput name='code' defaultValue={ inventoryItem.code } />
+                    </Box>
                   </td>
                   <td>
                     <ControlledSelect name='category'
@@ -91,16 +95,20 @@ class ItemEdit extends Component {
               <tbody>
                 <TableRow>
                   <td>
-                    <ControlledSelect name='category'
-                      placeHolder='Category'
+                    <ControlledSelect name='supplier'
+                      placeHolder='Supplier'
                       options={itemSupplier}
                     />
                   </td>
                   <td>
-                    <TextInput name='unit' defaultValue={ inventoryItem.unit } />
+                    <Box>
+                      <TextInput name='unit' defaultValue={ inventoryItem.unit } />
+                    </Box>
                   </td>
                   <td>
+                  <Box>
                     <TextInput name='cost' defaultValue={ inventoryItem.cost } />
+                  </Box>
                   </td>
                 </TableRow>
               </tbody>
@@ -109,17 +117,29 @@ class ItemEdit extends Component {
               <thead>
                 <tr>
                   <th>
+                    <Box>
+                    </Box>
+                  </th>
+                  <th>
                     Quantity
                   </th>
                   <th>
                     Par Level
+                  </th>
+                  <th>
+                    <Box>
+                    </Box>
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <TableRow>
                   <td>
-                    <NumberInput 
+                    <Box>
+                    </Box>
+                  </td>
+                  <td>
+                    <NumberInput
                       name='quantity'
                       defaultValue={ inventoryItem.quantity }
                       step={1}
@@ -127,12 +147,16 @@ class ItemEdit extends Component {
                     />
                   </td>
                   <td>
-                    <NumberInput 
+                    <NumberInput
                       name='parLevel'
                       defaultValue={ inventoryItem.parLevel }
                       step={1}
                       min={0}
                     />
+                  </td>
+                  <td>
+                    <Box>
+                    </Box>
                   </td>
                 </TableRow>
               </tbody>
