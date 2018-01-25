@@ -23,7 +23,7 @@ state = {
 
   render () {
 
-  const { cancelRedirect, procedures, procSelectId, inventory } = this.props
+  const { cancelRedirect, procedures, procSelectId } = this.props
 
   cancelRedirect()
 
@@ -72,8 +72,8 @@ state = {
           </tbody>
         </Table>
         <Box className='ItemEditButtons' direction='row' align='stretch'>
-          <Button type='submit' className='modalButton1' primary='true' label='Submit' fill='true' />
-          <Button path='/' className='modelButton2' accent='true' label='Cancel' fill='true'/>
+          <Button type='submit' className='modalButton1' primary={true} label='Submit' fill={true} />
+          <Button path='/' className='modelButton2' accent={true} label='Cancel' fill={true}/>
         </Box>
       </App>
     )

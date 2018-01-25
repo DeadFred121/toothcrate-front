@@ -13,14 +13,13 @@ import Button from 'grommet/components/Button';
 
 // Internal Components
 import ControlledSelect from '../components/ControlledSelect';
-// API/Axios
-import { api } from '../api/init';
+
 
 class NewItem extends Component {
 
   render () {
 
-    const { inventory, inventoryItem, selectItem, hideModal, updateNewInventory, currentValue, selectInput, handleNewItemSubmit } = this.props
+    const { inventory, handleNewItemSubmit } = this.props
     // Mapping through the Inventory by Supplier and setting as an Array
     const itemSupplier = Array.from(new Set(inventory.map(item => (item.supplier))))
     // Mapping through the Inventory by Category and setting as an Array
@@ -53,7 +52,7 @@ class NewItem extends Component {
                     <TextInput name='name' placeHolder="Item Name" />
                   </td>
                   <td>
-                    <TextInput fill={true} name='code' placeHolder="Item Code" />
+                    <TextInput fill="true" name='code' placeHolder="Item Code" />
                   </td>
                   <td>
                     <ControlledSelect
@@ -131,8 +130,8 @@ class NewItem extends Component {
             </Table>
             <hr />
             <Box className='ItemEditButtons' direction='row' align='stretch'>
-              <Button type='submit' className='modalButton1' primary='true' label='Submit' fill='true' />
-              <Button path='/' className='modelButton2' accent='true' label='Cancel' fill='true'/>
+              <Button type='submit' className='modalButton1' primary={true} label='Submit' fill={true} />
+              <Button path='/' className='modelButton2' accent={true} label='Cancel' fill={true}/>
             </Box>
           </Box>
         </form>

@@ -24,22 +24,24 @@ const ProcEdit = ({ inventory, handleAddClick }) => {
           <tbody>
             <TableRow>
               <td>
-                <Select placeHolder='Item Name'
-                        multiple={true}
-                        onSearch={true}
-                        options={
-                          inventory.map(item => (item.name) )
-                        }
-                        // value={undefined}
-                        // onChange={...}
+                <Select
+                  placeHolder='Item Name'
+                  multiple={true}
+                  onSearch={true}
+                  options={
+                    inventory.map(item => (item.name) )
+                  }
+                  // value={undefined}
+                  // onChange={...}
                 />
               </td>
               <td>
-                <NumberInput className='NewProcNumInput'
-                            defaultValue={1}
-                            step={1}
-                            min={0}
-                          />
+                <NumberInput 
+                  className='NewProcNumInput'
+                  defaultValue={1}
+                  step={1}
+                  min={0}
+                />
               </td>
               <td>
                 <Button className='NewProcAddItem' icon={<FormCloseIcon colorIndex='light-1' />} accent="true"/>

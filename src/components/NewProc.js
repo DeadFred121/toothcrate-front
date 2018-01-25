@@ -14,29 +14,44 @@ import NewProcAddItem from './NewProcAddItem';
 
 class NewProc extends Component { 
 
-  state = {
-    
+  constructor(props) {
+    super(props);
+    this.state = {
+      itemCount: 1
+
+    };
+  }
+
+  handleAddClick = () => {
+    this.setState({
+      itemCount: this.state.itemCount + 1
+    });
   }
 
   render () {
 
-    const { inventory, handleAddClick } = this.props
+    const { inventory, newProcSubmit } = this.props
 
     return (
       <App>
         <Headline>Add New Procedure</Headline>
-        <form onSubmit={''}>
-          <TextInput
-            id='NewProcSearchBar' 
-            placeHolder="Procedure Name"
-          />
-          <NewProcAddItem inventory={inventory} />
-          <Box className='newProcButton'>
-            <Button className='newProcAddItemButton' onClick={handleAddClick} accent='true' label='Add Item' fill={false} />
-          </Box>
-          <Box className='ItemEditButtons' direction='row' align='stretch'>
-            <Button type='submit' onClick={''} className='modalButton1' primary='true' label='Submit' fill='true'/>
-            <Button path='/' className='modalButton2' accent='true' label='Cancel' fill='true'/>
+        <form onSubmit={newProcSubmit}>
+          <Box>
+            <TextInput
+              id='NewProcSearchBar' 
+              placeHolder="Procedure Name"
+              name='name'
+            />
+            {
+              [...Array(this.state.itemCount)].map((value, key) => <NewProcAddItem inventory={inventory} key={key} />) 
+            }
+            <Box className='newProcButton'>
+              <Button className='newProcAddItemButton' onClick={this.handleAddClick} accent={true} label='Add Item' fill={false} />
+            </Box>
+            <Box className='ItemEditButtons' direction='row' align='stretch'>
+              <Button type='submit' className='modalButton1' primary={true} label='Submit' fill={true}/>
+              <Button path='/' className='modalButton2' accent={true} label='Cancel' fill={true}/>
+            </Box>
           </Box>
         </form>
       </App>

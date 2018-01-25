@@ -18,7 +18,9 @@ class ControlledSelect extends Component {
     });
   }
 
-  changeHandler = ({ value }) => this.setState({ value });
+  changeHandler = ({ value }) => {
+    this.setState({ value: value.value || value })
+  };
 
   render() {
     const { options, name, placeHolder } = this.props;
@@ -29,7 +31,6 @@ class ControlledSelect extends Component {
         placeHolder={placeHolder}
         inline={false}
         multiple={false}
-        onSearch={false}
         options={options}
         onChange={this.changeHandler}
         value={value}

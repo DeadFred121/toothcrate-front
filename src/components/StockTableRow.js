@@ -29,7 +29,8 @@ class StockTableRow extends Component {
           {item.category}
         </td>
         <td>
-          <NumberInput defaultValue={item.quantity}
+          <NumberInput
+            defaultValue={item.quantity}
             min={0}
             step={1}
             onChange={(event) => {
@@ -41,9 +42,9 @@ class StockTableRow extends Component {
           <Button
             type='submit'
             className='modalButton1'
-            primary='true'
+            primary={true}
             label='Save'
-            fill='true'
+            fill={true}
             onClick={() => {
               updateItemStock(item, this.state.quantity)
             }}

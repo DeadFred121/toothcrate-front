@@ -10,26 +10,19 @@ import Table from 'grommet/components/Table';
 import Headline from 'grommet/components/Headline';
 import Box from 'grommet/components/Box';
 import Button from 'grommet/components/Button';
-import Form from 'grommet/components/Form';
 
 // Internal Components
 import ControlledSelect from '../components/ControlledSelect';
 
-// Routing Components
-import {
-  Redirect
-} from 'react-router-dom';
 
 import { withRouter } from 'react-router';
 
-// API
-import {api} from '../api/init';
 
 class ItemEdit extends Component {
 
   render() {
 
-    const { inventory, inventoryItem, selectItem, hideModal, displayModal, updateExistingInventory, handleDelete, handleItemSubmit } = this.props
+    const { inventory, inventoryItem, handleDelete, handleItemSubmit } = this.props
     
     // Mapping through the Inventory by Supplier and setting as an Array
     const itemSupplier = Array.from(new Set(inventory.map(item => (item.supplier))))
@@ -91,8 +84,8 @@ class ItemEdit extends Component {
               <tbody>
                 <TableRow>
                   <td>
-                    <ControlledSelect name='category'
-                      placeHolder='Category'
+                    <ControlledSelect name='supplier'
+                      placeHolder='Supplier'
                       options={itemSupplier}
                     />
                   </td>
@@ -139,10 +132,10 @@ class ItemEdit extends Component {
             </Table>
             <hr />
             <Box className='ItemEditButtons' direction='row' align='stretch'>
-              <Button type='submit' className='modalButton1' primary='true' label='Submit' fill='true'/>
-              <Button path='/inventory/' className='modelButton2' accent='true' label='Cancel' fill='true'/>
+              <Button type='submit' className='modalButton1' primary={true} label='Submit' fill={true}/>
+              <Button path='/inventory/' className='modelButton2' accent={true} label='Cancel' fill={true}/>
             </Box>
-            <Button id='deleteButton' hoverIndicator='accent' onClick={() => handleDelete(inventoryItem._id) } critical='true' label='Delete Item' fill='true'/>
+            <Button id='deleteButton' hoverIndicator='accent' onClick={() => handleDelete(inventoryItem._id) } critical={true} label='Delete Item' fill={true}/>
           </Box>
         </form>
       </App>

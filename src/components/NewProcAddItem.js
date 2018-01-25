@@ -1,16 +1,16 @@
 
 // React Components
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 // Grommet Components
-import App from 'grommet/components/App'
-import Table from 'grommet/components/Table'
-import TableHeader from 'grommet/components/TableHeader'
-import TableRow from 'grommet/components/TableRow'
-import Select from 'grommet/components/Select'
-import NumberInput from 'grommet/components/NumberInput'
-import FormCloseIcon from 'grommet/components/icons/base/FormClose'
-import Button from 'grommet/components/Button'
+import App from 'grommet/components/App';
+import Table from 'grommet/components/Table';
+import TableHeader from 'grommet/components/TableHeader';
+import TableRow from 'grommet/components/TableRow';
+// import Select from 'grommet/components/Select';
+import NumberInput from 'grommet/components/NumberInput';
+import FormCloseIcon from 'grommet/components/icons/base/FormClose';
+import Button from 'grommet/components/Button';
 
 // Internal Components
 import ControlledSelect from '../components/ControlledSelect';
@@ -20,7 +20,7 @@ class NewProcAddItem extends Component {
   render () {
   
     const { inventory } = this.props
-    const itemSelection = inventory.map((item) => (item.name)) 
+    const itemSelection = inventory.map(item => ({value: item._id, label: item.name})) 
 
     return (
       <App>
@@ -29,20 +29,23 @@ class NewProcAddItem extends Component {
           <tbody>
             <TableRow>
               <td>
-                <ControlledSelect name='item'
+                <ControlledSelect 
+                  name='item[]'
                   placeHolder='Item'
                   options={itemSelection}
                 />
               </td>
               <td>
-                <NumberInput className='NewProcNumInput'
+                <NumberInput 
+                  className='NewProcNumInput'
                   defaultValue={1}
                   step={1}
                   min={0}
+                  name='quantity[]'
                 />
               </td>
               <td>
-                <Button className='NewProcDeleteItemButton' icon={<FormCloseIcon colorIndex='light-1' />} accent="true"/>
+                <Button className='NewProcDeleteItemButton' icon={<FormCloseIcon colorIndex='light-1' />} accent={true}/>
               </td>
             </TableRow>
           </tbody>
