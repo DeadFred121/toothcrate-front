@@ -46,9 +46,11 @@ class NewProc extends Component {
             {
               [...Array(this.state.itemCount)].map((value, key) => <NewProcAddItem inventory={inventory} key={key} />)
             }
+
             <Box className='newProcButton'>
               <Button className='newProcAddItemButton' onClick={this.handleAddClick} accent={true} label='Add Item' fill={false} />
             </Box>
+            <hr />
             <Box className='ItemEditButtons' direction='row' align='stretch'>
               <Button type='submit' className='modalButton1' primary={true} label='Submit' fill={true}/>
               <Button path='/' className='modalButton2' accent={true} label='Cancel' fill={true}/>

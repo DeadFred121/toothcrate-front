@@ -136,6 +136,7 @@ class NewItem extends Component {
                 </TableRow>
               </tbody>
             </Table>
+            <hr />
             <Box className='ItemEditButtons' direction='row' align='stretch'>
               <Button type='submit' className='modalButton1' primary={true} label='Submit' fill={true} />
               <Button path='/' className='modelButton2' accent={true} label='Cancel' fill={true}/>

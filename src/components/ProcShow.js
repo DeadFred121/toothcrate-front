@@ -100,6 +100,7 @@ class ProcShow extends Component {
             </TableRow>
           </tbody>
         </Table>
+        <hr />
         <Box className="ItemEditButtons" direction="row" align="stretch">
           <Button
             onClick={() =>
