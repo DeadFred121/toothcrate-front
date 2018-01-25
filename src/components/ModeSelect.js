@@ -40,7 +40,7 @@ const ModeSelect = ({ showSearch, procSelect, procedureNames, procSearchValue, u
                 "duration" : 750,
                 "delay" : 0 }}
                 keep={true}>
-              <SearchInput onSelect={ updateProcSearchId } id='procSearchBar' placeHolder='Search procedures' suggestions={ procedureNames } />
+              <SearchInput onSelect={ updateProcSearchId } id='procSearchBar' placeHolder='Select procedure' suggestions={ procedureNames } />
               <br/>
             </Animate>
           </Box>
