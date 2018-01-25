@@ -32,14 +32,14 @@ class Stock extends Component {
     return (
       <App className="ItemEdit">
         <Headline>Stock Update</Headline>
-      <Box className='StockSearchBar'>
-        <Select
-          placeHolder='Select Supplier'
-          options={itemSupplier}
-          onChange={this.handleFilterChange}
-          value={this.state.filterValue}
-        />
-      </Box>
+        <Box className='StockSearchBar'>
+          <Select
+            placeHolder='Select Supplier'
+            options={itemSupplier}
+            onChange={this.handleFilterChange}
+            value={this.state.filterValue}
+          />
+        </Box>
         <Table>
           <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Save?']} />
             <tbody>

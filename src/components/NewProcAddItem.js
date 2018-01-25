@@ -21,6 +21,7 @@ class NewProcAddItem extends Component {
   render () {
 
     const { inventory } = this.props
+    // Mapping through Inventory to get Item Id and Name
     const itemSelection = inventory.map(item => ({value: item._id, label: item.name}))
 
     return (

@@ -18,6 +18,7 @@ class ControlledSelect extends Component {
     });
   }
 
+  // Function to change defaultValue to input value through state
   changeHandler = ({ value }) => {
     this.setState({ value: value.value || value })
   };

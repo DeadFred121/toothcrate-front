@@ -20,9 +20,10 @@ const Inventory = ({ inventory, selectItem, inventoryItem, displayModal, hideMod
       <Headline>Inventory</Headline>
       {
         selectItem &&
-        <InvModal inventoryItem={inventoryItem}
-                  selectItem={selectItem}
-                  hideModal={hideModal}
+        <InvModal
+          inventoryItem={inventoryItem}
+          selectItem={selectItem}
+          hideModal={hideModal}
         />
       }
       <Table responsive={false} >

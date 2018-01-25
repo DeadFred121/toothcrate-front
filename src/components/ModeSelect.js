@@ -36,11 +36,17 @@ const ModeSelect = ({ showSearch, procSelect, procedureNames, procSearchValue, u
         procSelect && <Box pad={{"between" : "small"}}
                            align='center'>
             <Animate enter={{
-                "animation" : "fade",
-                "duration" : 750,
-                "delay" : 0 }}
-                keep={true}>
-              <SearchInput onSelect={ updateProcSearchId } id='procSearchBar' placeHolder='Select procedure' suggestions={ procedureNames } />
+              "animation" : "fade",
+              "duration" : 750,
+              "delay" : 0 }}
+              keep={true}
+            >
+              <SearchInput 
+                onSelect={ updateProcSearchId } 
+                id='procSearchBar' 
+                placeHolder='Select procedure' 
+                suggestions={ procedureNames }
+              />
               <br/>
             </Animate>
           </Box>

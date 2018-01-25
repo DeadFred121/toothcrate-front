@@ -32,6 +32,7 @@ import { api, setJwt } from './api/init';
 
 class App extends Component {
 
+// Overall App state
 state = {
   inventory: [],
   selectItem: null,
@@ -54,8 +55,10 @@ state = {
 
   render() {
 
+    // Destructuring props to be passed into components
     const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures, loaded, currentSupplierValue, newItemAlert, newItemAlertText, deleteItemAlert, deleteItemAlertText, editItemAlert, editItemAlertText, dentist, location } = this.state
 
+    // Loading Screen Render
     if (loaded < 2 && this.state.token) return <LoadingPage />
 
     return (
@@ -157,10 +160,12 @@ state = {
     );
   }
 
+  // Handling the Inventory Redirect
   handleClickInventoryRedirect = () => {
       this.props.history.push('/inventory');
   };
 
+  // Handling Closing of Item notifications
   handleToastClose = () => {
     this.setState({
       newItemAlert: false,
@@ -172,6 +177,7 @@ state = {
     })
   }
 
+  // Handling Procedure History Submission
   handleSubmitProcedureHistory = (procedure, dentist, location) => {
     const procedurePackage = {
       dentist: dentist,
@@ -219,6 +225,7 @@ state = {
   //     });
   // }
 
+  //Handling Item Edit Submission
   handleItemSubmit = (event) => {
     event.preventDefault()
     const form = event.target
@@ -256,6 +263,7 @@ state = {
     });
   }
 
+  // Handling New Item Submission
   handleNewItemSubmit = (event) => {
     event.preventDefault()
     const form = event.target
@@ -296,6 +304,7 @@ state = {
     })
   }
 
+  // Handling deleting of Items
   handleDelete = (item_id) => {
     api.delete(`/api/inventory/${item_id}`)
       .then(() => {
@@ -316,15 +325,17 @@ state = {
       })
   }
 
-
+  // Redirect Handler
   cancelRedirect = () => {
     this.state.redirect && this.setState({redirect: null})
   }
 
+  // Updating Procedure Suggestions
   updateProcSearchId = ({ suggestion }) => {
     this.setState({procSelectId: suggestion.value, redirect: '/procshow'})
   }
 
+  // Handling New Procedure Submission
   newProcSubmit = (event) => {
     event.preventDefault()
     const form = event.target
@@ -353,11 +364,13 @@ state = {
     });
   }
 
+  // Updating Supplier Dropdown Suggestions
   updateSupplierSearchId = ({ suggestion }) => {
     console.log(suggestion)
     this.setState({supplierSelectId: suggestion.value, redirect: '/suppliershow'})
   }
 
+  // Login Form Handler
   onLoginSubmitHandler = ({ username, password }) => {
     api.post('/auth', { email: username, password }).then(res => {
       this.setState({
@@ -367,16 +380,19 @@ state = {
     })
   }
 
+  // Showing Procedure selections
   showSearch = () => {
     this.setState(prevState => ({
       procSelect: !prevState.procSelect
     }))
   }
 
+  // Current Value Selector 
   selectInput = (event) => {
     this.setState({ currentValue: event.option })
   }
 
+  // Update Item Stock Handler
   updateItemStock = (invItem, quantity) => {
     console.log(invItem, quantity)
     const inventory = [...this.state.inventory]
@@ -386,12 +402,14 @@ state = {
     api.put(`/api/inventory/${invItem._id}`, inventory[itemIndex])
   }
 
+  // Update New Inventory Item
   updateNewInventory = (invItem) => {
     const inventory = [...this.state.inventory]
     inventory.push(invItem)
     this.setState({ inventory })
   }
 
+  // Handler for updating existing inventory state with new items
   updateExistingInventory = (invItem) => {
     const inventory = [...this.state.inventory]
     const itemIndex = inventory.findIndex(item => item._id === invItem._id)
@@ -399,6 +417,7 @@ state = {
     this.setState({ inventory, inventoryItem: invItem })
   }
 
+  // Handler for updating existing procedure state with new procedures
   updateExistingProcedures = (newProc) => {
     const procedures = [...this.state.procedures]
     procedures.unshift(newProc)
@@ -408,7 +427,7 @@ state = {
     this.loadProcedureNames(procedures)
   }
 
-  // Function
+  // Item Display Modal
   displayModal = (item) => {
     this.setState({selectItem: item._id, inventoryItem: item})
   }
@@ -418,6 +437,7 @@ state = {
     this.setState({selectItem: null})
   }
 
+  // Original API request to Inventory endpoint to populate inventory state
   loadInventory = () => {
     api.get('/api/inventory').then(res => {
       const inventory = res.data
@@ -429,6 +449,7 @@ state = {
     });
   }
 
+  // Original API request to Procedure endpoint to populate procedure state
   loadProcedures = () => {
     api.get('/api/procedure').then(res => {
      this.loadProcedureNames(res.data)
@@ -440,6 +461,7 @@ state = {
     });
   }
 
+  // Procedure Name Handler for name display
   loadProcedureNames = (procedures) => {
     const procedureNames = procedures.map(procedure => {
       return { value: procedure._id, label: procedure.name }
@@ -447,6 +469,7 @@ state = {
     this.setState({ procedureNames })
   }
 
+  // Invalid/Expired JWT token handler
   deleteToken = (token) => {
     this.setState({
       token: null
