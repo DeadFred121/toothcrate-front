@@ -50,10 +50,14 @@ class NewItem extends Component {
               <tbody>
                 <TableRow>
                   <td>
-                    <TextInput name='name' placeHolder="Item Name" />
+                    <Box>
+                      <TextInput name='name' placeHolder="Item Name" />
+                    </Box>
                   </td>
                   <td>
-                    <TextInput fill={true} name='code' placeHolder="Item Code" />
+                    <Box>
+                      <TextInput fill={true} name='code' placeHolder="Item Code" />
+                    </Box>
                   </td>
                   <td>
                     <ControlledSelect
@@ -89,10 +93,14 @@ class NewItem extends Component {
                     />
                   </td>
                   <td>
-                    <TextInput name='unit' placeHolder="Unit" />
+                    <Box>
+                      <TextInput name='unit' placeHolder="Unit" />
+                    </Box>
                   </td>
                   <td>
-                    <TextInput name='cost' placeHolder="Cost" />
+                    <Box>
+                      <TextInput name='cost' placeHolder="Cost" />
+                    </Box>
                   </td>
                 </TableRow>
               </tbody>
@@ -111,7 +119,7 @@ class NewItem extends Component {
               <tbody>
                 <TableRow>
                   <td>
-                    <NumberInput 
+                    <NumberInput
                       name='quantity'
                       defaultValue={1}
                       step={1}
@@ -119,7 +127,7 @@ class NewItem extends Component {
                     />
                   </td>
                   <td>
-                    <NumberInput 
+                    <NumberInput
                       name='parLevel'
                       defaultValue={1}
                       step={1}
