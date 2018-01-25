@@ -33,7 +33,7 @@ class ProcShow extends Component {
 
   render () {
 
-  const { cancelRedirect, procedures, procSelectId, inventory, handleSubmitProcedureHistory } = this.props
+  const { cancelRedirect, procedures, procSelectId } = this.props
 
   cancelRedirect()
 
@@ -105,8 +105,13 @@ class ProcShow extends Component {
           </tbody>
         </Table>
         <Box className='ItemEditButtons' direction='row' align='stretch'>
+<<<<<<< HEAD
           <Button onClick={() => handleSubmitProcedureHistory(procedure, this.state.dentist, this.state.location) } type='submit' className='modalButton1' primary='true' label='Submit' fill='true' />
           <Button path='/' className='modelButton2' accent='true' label='Cancel' fill='true'/>
+=======
+          <Button type='submit' className='modalButton1' primary={true} label='Submit' fill={true} />
+          <Button path='/' className='modelButton2' accent={true} label='Cancel' fill={true}/>
+>>>>>>> addProc
         </Box>
       </App>
     )

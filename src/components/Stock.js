@@ -52,7 +52,7 @@ class Stock extends Component {
             </tbody>
         </Table>
         <Box className='StockButtons' direction='row' align='center'>
-          <Button  path='/' className='modalButton2' accent='true' label='Cancel' fill='true'/>
+          <Button  path='/' className='modalButton2' accent={true} label='Cancel' fill={true}/>
         </Box>
       </App>
     )

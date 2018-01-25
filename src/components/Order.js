@@ -23,7 +23,7 @@ class Order extends Component {
 
 
   render () {
-  const {inventory, updateSupplierSearchId } = this.props
+  const {inventory } = this.props
 
   // Mapping through the Inventory by Supplier and setting as an Array
   const itemSupplier = Array.from(new Set(inventory.map(item => (item.supplier))))

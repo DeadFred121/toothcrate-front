@@ -73,70 +73,80 @@ state = {
         <Box className='Contents'>
           { !this.state.token ? <Login onLoginSubmitHandler={this.onLoginSubmitHandler} align='center'/> :
           <Switch>
-            <Route exact path="/" component={() => <ModeSelect
-                   procedureNames={ procedureNames }
-                   procSelect={ procSelect }
-                   selectProc={ selectProc}
-                   showSearch={ this.showSearch }
-                   updateProcSearchId={ this.updateProcSearchId }
-                   procSelectId={ procSelectId }
-                   redirect={ redirect }
-                   handleClickInventoryRedirect={ this.handleClickInventoryRedirect }
-                   /> }
+            <Route 
+              exact path="/" component={() => <ModeSelect
+              procedureNames={ procedureNames }
+              procSelect={ procSelect }
+              selectProc={ selectProc}
+              showSearch={ this.showSearch }
+              updateProcSearchId={ this.updateProcSearchId }
+              procSelectId={ procSelectId }
+              redirect={ redirect }
+              handleClickInventoryRedirect={ this.handleClickInventoryRedirect }
+            /> }
             />
-            <Route path="/newitem"
-                   component={() => <NewItem
-                   updateNewInventory={ this.updateInventory }
-                   inventory={ inventory }
-                   currentSupplierValue={ currentSupplierValue }
-                   selectInput={ this.selectInput }
-                  handleNewItemSubmit={ this.handleNewItemSubmit  }
-                 /> }
+            <Route
+              path="/newitem"
+              component={() => <NewItem
+              updateNewInventory={ this.updateInventory }
+              inventory={ inventory }
+              currentSupplierValue={ currentSupplierValue }
+              selectInput={ this.selectInput }
+              handleNewItemSubmit={ this.handleNewItemSubmit  }
+            /> }
             />
-            <Route path="/itemedit" component={() => <ItemEdit
-                   inventoryItem={ inventoryItem }
-                   inventory={ inventory }
-                   displayModal= { this.displayModal }
-                   updateExistingInventory={ this.updateExistingInventory }
-                   handleDelete={ this.handleDelete }
-                  handleItemSubmit={ this.handleItemSubmit }
-                   /> }
+            <Route 
+              path="/itemedit" component={() => <ItemEdit
+              inventoryItem={ inventoryItem }
+              inventory={ inventory }
+              displayModal= { this.displayModal }
+              updateExistingInventory={ this.updateExistingInventory }
+              handleDelete={ this.handleDelete }
+              handleItemSubmit={ this.handleItemSubmit }
+            /> }
             />
-            <Route path="/inventory" component={() => <Inventory
-                   inventory={ inventory }
-                   selectItem={ selectItem }
-                   inventoryItem={ inventoryItem }
-                   displayModal={ this.displayModal }
-                   hideModal={ this.hideModal }
-                   /> }
+            <Route 
+              path="/inventory" component={() => <Inventory
+              inventory={ inventory }
+              selectItem={ selectItem }
+              inventoryItem={ inventoryItem }
+              displayModal={ this.displayModal }
+              hideModal={ this.hideModal }
+            /> }
             />
-            <Route path="/procshow" component={() => <ProcShow
-                   procSelectId={ procSelectId }
-                   cancelRedirect={ this.cancelRedirect }
-                   procedures={ procedures }
-                   inventory={ inventory }
-                   handleSubmitProcedureHistory={ this.handleSubmitProcedureHistory }
-                   dentist={ dentist }
-                   location={ location }
-                   /> }
+            <Route 
+              path="/procshow" component={() => <ProcShow
+              procSelectId={ procSelectId }
+              cancelRedirect={ this.cancelRedirect }
+              procedures={ procedures }
+              inventory={ inventory }
+              handleSubmitProcedureHistory={ this.handleSubmitProcedureHistory }
+              dentist={ dentist }
+              location={ location }
+            /> }
             />
-            <Route path="/newproc" component={() => <NewProc
-                   inventory={ inventory }
-                   /> }
+            <Route 
+              path="/newproc" component={() => <NewProc
+              inventory={ inventory }
+              newProcSubmit={this.newProcSubmit}
+            /> }
             />
-            <Route path="/procedit" component={() => <ProcEdit
-                   inventory={ inventory }
-                   /> }
+            <Route 
+              path="/procedit" component={() => <ProcEdit
+              inventory={ inventory }
+            /> }
             />
-            <Route path="/order" component={() => <Order
-                   inventory={ inventory }
-                   updateSupplierSearchId={ this.updateSupplierSearchId }
-                   /> }
+            <Route 
+              path="/order" component={() => <Order
+              inventory={ inventory }
+              updateSupplierSearchId={ this.updateSupplierSearchId }
+            /> }
             />
-            <Route path="/stock" component={() => <Stock
-                   inventory={ inventory }
-                   updateItemStock={ this.updateItemStock }
-                   /> }
+            <Route 
+              path="/stock" component={() => <Stock
+              inventory={ inventory }
+              updateItemStock={ this.updateItemStock }
+            /> }
             />
             <Route component={NotFound} />
           </Switch>
@@ -294,12 +304,42 @@ state = {
       })
   }
 
+
   cancelRedirect = () => {
     this.state.redirect && this.setState({redirect: null})
   }
 
   updateProcSearchId = ({ suggestion }) => {
     this.setState({procSelectId: suggestion.value, redirect: '/procshow'})
+  }
+
+  newProcSubmit = (event) => {
+    event.preventDefault()
+    const form = event.target
+    const elements = form.elements
+
+    const items = document.getElementsByName('item[]')
+    const quantities = document.getElementsByName('quantity[]')
+
+    const procedure = {}
+    procedure.name = elements.name.value
+    procedure.items = []
+
+    items.forEach((item, index) => {
+      procedure.items.push({
+        item: item.value,
+        useQuantity: quantities[index].value
+      })
+    })
+    
+    api.post('/api/procedure', procedure).then(res => {
+      this.updateExistingProcedures(res.data)
+    })
+  }
+  
+  updateSupplierSearchId = ({ suggestion }) => {
+    console.log(suggestion)
+    this.setState({supplierSelectId: suggestion.value, redirect: '/suppliershow'})
   }
 
   onLoginSubmitHandler = ({ username, password }) => {
@@ -343,6 +383,15 @@ state = {
     this.setState({ inventory, inventoryItem: invItem })
   }
 
+  updateExistingProcedures = (newProc) => {
+    const procedures = [...this.state.procedures]
+    procedures.unshift(newProc)
+    this.setState({
+      procedures
+    })
+    this.loadProcedureNames(procedures)
+  }
+
   // Function
   displayModal = (item) => {
     this.setState({selectItem: item._id, inventoryItem: item})
@@ -362,11 +411,16 @@ state = {
 
   loadProcedures = () => {
     api.get('/api/procedure').then(res => {
-      const procedureNames = res.data.map(procedure => {
-        return { value: procedure._id, label: procedure.name }
-      })
-      this.setState({ procedureNames, procedures: res.data, loaded: this.state.loaded + 1 })
+     this.loadProcedureNames(res.data)
+      this.setState({ procedures: res.data, loaded: this.state.loaded + 1 })
     })
+  }
+
+  loadProcedureNames = (procedures) => {
+    const procedureNames = procedures.map(procedure => {
+      return { value: procedure._id, label: procedure.name }
+    })
+    this.setState({ procedureNames })    
   }
 
   // Rendering API Inventory request.
