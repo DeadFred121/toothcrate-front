@@ -54,7 +54,7 @@ state = {
 
   render() {
 
-    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures, loaded, currentSupplierValue, newItemAlert, newItemAlertText, deleteItemAlert, deleteItemAlertText, editItemAlert, editItemAlertText, dentist, location, deleteToken } = this.state
+    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures, loaded, currentSupplierValue, newItemAlert, newItemAlertText, deleteItemAlert, deleteItemAlertText, editItemAlert, editItemAlertText, dentist, location } = this.state
 
     if (loaded < 2) return <LoadingPage />
 
@@ -192,7 +192,7 @@ state = {
         console.log(procedurePackage)
         console.log(error);
         if (error.status === 401) {
-          deleteToken(token)
+          this.deleteToken()
         }
       });
       
@@ -253,7 +253,7 @@ state = {
     }).catch(error => {
       console.log(error);
       if (error.status === 401) {
-        deleteToken(token)
+        this.deleteToken()
       }
     });
   }
@@ -293,7 +293,7 @@ state = {
       }).catch(error => {
         console.log(error);
         if (error.status === 401) {
-          deleteToken(token)
+          this.deleteToken()
         }
       });
     })
@@ -311,11 +311,11 @@ state = {
         deleteItemAlert: true,
         deleteItemAlertText: 'Item has been deleted from the Inventory.'
       })
-      }).catch((err) => {
+      }).catch((error) => {
         console.log('An error ocurred while deleting the item')
         console.log(error);
         if (error.status === 401) {
-          deleteToken(token)
+          this.deleteToken()
         }
       })
   }
@@ -353,7 +353,7 @@ state = {
     }).catch(error => {
       console.log(error);
       if (error.status === 401) {
-        deleteToken(token)
+        this.deleteToken()
       }
     });
   }
