@@ -36,7 +36,7 @@ state = {
       <App>
         <Headline>{ procedure.name }</Headline>
         <Table responsive={false} >
-          <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} sortIndex={0} sortAscending={true}/>
+          <TableHeader labels={['Item Code', 'Name', 'Category', 'Quantity', 'Par Level']} />
           <tbody>
             {
               procedure.items.map(individualItem => (
@@ -55,38 +55,47 @@ state = {
                 </td>
                 <td>
                  <Status value={individualItem.item.quantity > individualItem.item.parLevel ? 'ok' : 'warning'}/>
-
-                {/* //
-                //     {(e) => { */
-                //     if (e.item.parLevel <= (5 / 100) * e.item.quantity) {
-                //       'critical';
-                //     } else if (e.item.parLevel <= (15 / 100) * e.item.quantity) {
-                //       'warning';
-                //     } else {
-                //     'ok';
-                //     }
-                //   }
-                // }
-                }
                 </td>
               </TableRow>))
             }
           </tbody>
         </Table>
-        <FormField>
-          <TextInput
-            name='dentist'
-            value={undefined}
-            placeHolder='Dentist Name'
-            onDOMChange={ handleChange }
-            />
-          <TextInput
-            name='location'
-            value={undefined}
-            placeHolder='Location for Procedure'
-            onDOMChange={ handleChange }
-          />
-        </FormField>
+        <Table responsive={false} >
+          <thead>
+            <tr>
+              <th>
+                Dentist Name
+              </th>
+              <th>
+                Sergery Location
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <TableRow>
+              <td>
+                <Box>
+                <TextInput
+                  name='dentist'
+                  value={undefined}
+                  placeHolder='Dentist Name'
+                  onDOMChange={ handleChange }
+                  />
+                </Box>
+              </td>
+              <td>
+                <Box>
+                  <TextInput
+                    name='location'
+                    value={undefined}
+                    placeHolder='Location for Procedure'
+                    onDOMChange={ handleChange }
+                  />
+                </Box>
+              </td>
+            </TableRow>
+          </tbody>
+        </Table>
         <Box className='ItemEditButtons' direction='row' align='stretch'>
           <Button onClick={() => handleSubmitProcedureHistory(procedure, dentist, location) } type='submit' className='modalButton1' primary='true' label='Submit' fill='true' />
           <Button path='/' className='modelButton2' accent='true' label='Cancel' fill='true'/>
