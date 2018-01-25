@@ -56,7 +56,7 @@ state = {
 
     const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures, loaded, currentSupplierValue, newItemAlert, newItemAlertText, deleteItemAlert, deleteItemAlertText, editItemAlert, editItemAlertText, dentist, location } = this.state
 
-    if (loaded < 2) return <LoadingPage />
+    if (loaded < 2 && this.state.token) return <LoadingPage />
 
     return (
 
@@ -190,7 +190,6 @@ state = {
         })
       }).catch(error => {
         console.log(procedurePackage)
-        console.log(error);
         if (error.response.status === 401) {
           this.deleteToken()
         }
@@ -216,7 +215,7 @@ state = {
   //     })
   //     .catch(error => {
   //       console.log(procedurePackage)
-  //       console.log(error);
+  //       ;
   //     });
   // }
 
@@ -251,7 +250,6 @@ state = {
         editItemAlertText: 'An Inventory Item has been updated!'
       })
     }).catch(error => {
-      console.log(error);
       if (error.response.status === 401) {
         this.deleteToken()
       }
@@ -291,7 +289,6 @@ state = {
         newItemAlert: true,
         newItemAlertText: 'New Item created!'
       }).catch(error => {
-        console.log(error);
         if (error.response.status === 401) {
           this.deleteToken()
         }
@@ -313,7 +310,6 @@ state = {
       })
       }).catch((error) => {
         console.log('An error ocurred while deleting the item')
-        console.log(error);
         if (error.response.status === 401) {
           this.deleteToken()
         }
@@ -351,7 +347,6 @@ state = {
     api.post('/api/procedure', procedure).then(res => {
       this.updateExistingProcedures(res.data)
     }).catch(error => {
-      console.log(error);
       if (error.response.status === 401) {
         this.deleteToken()
       }
@@ -428,7 +423,6 @@ state = {
       const inventory = res.data
       this.setState({ inventory, loaded: this.state.loaded + 1 })
     }).catch(error => {
-      console.log(error);
       if (error.response.status === 401) {
         this.deleteToken()
       }
@@ -440,7 +434,6 @@ state = {
      this.loadProcedureNames(res.data)
       this.setState({ procedures: res.data, loaded: this.state.loaded + 1 })
     }).catch(error => {
-      console.log(error.response);
       if (error.response.status === 401) {
         this.deleteToken()
       }
