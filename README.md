@@ -239,7 +239,7 @@ performed:
 
 ## Team Minutes
 
-![Team minutes](https://docs.google.com/document/d/1wyQSbOQowzhkjUM6LwAwvhpKcJv1Uw4hlSdwVwUL17s/edit?usp=sharing)
+https://docs.google.com/document/d/1wyQSbOQowzhkjUM6LwAwvhpKcJv1Uw4hlSdwVwUL17s/edit?usp=sharing
 
 ####
 
