@@ -191,7 +191,7 @@ state = {
       }).catch(error => {
         console.log(procedurePackage)
         console.log(error);
-        if (error.status === 401) {
+        if (error.response.status === 401) {
           this.deleteToken()
         }
       });
@@ -252,7 +252,7 @@ state = {
       })
     }).catch(error => {
       console.log(error);
-      if (error.status === 401) {
+      if (error.response.status === 401) {
         this.deleteToken()
       }
     });
@@ -292,7 +292,7 @@ state = {
         newItemAlertText: 'New Item created!'
       }).catch(error => {
         console.log(error);
-        if (error.status === 401) {
+        if (error.response.status === 401) {
           this.deleteToken()
         }
       });
@@ -314,7 +314,7 @@ state = {
       }).catch((error) => {
         console.log('An error ocurred while deleting the item')
         console.log(error);
-        if (error.status === 401) {
+        if (error.response.status === 401) {
           this.deleteToken()
         }
       })
@@ -352,7 +352,7 @@ state = {
       this.updateExistingProcedures(res.data)
     }).catch(error => {
       console.log(error);
-      if (error.status === 401) {
+      if (error.response.status === 401) {
         this.deleteToken()
       }
     });
@@ -429,7 +429,7 @@ state = {
       this.setState({ inventory, loaded: this.state.loaded + 1 })
     }).catch(error => {
       console.log(error);
-      if (error.status === 401) {
+      if (error.response.status === 401) {
         this.deleteToken()
       }
     });
@@ -440,9 +440,8 @@ state = {
      this.loadProcedureNames(res.data)
       this.setState({ procedures: res.data, loaded: this.state.loaded + 1 })
     }).catch(error => {
-      console.log('test')
       console.log(error.response);
-      if (error.status === 401) {
+      if (error.response.status === 401) {
         this.deleteToken()
       }
     });
