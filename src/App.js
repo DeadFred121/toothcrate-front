@@ -54,7 +54,7 @@ state = {
 
   render() {
 
-    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures, loaded, currentSupplierValue, newItemAlert, newItemAlertText, deleteItemAlert, deleteItemAlertText, editItemAlert, editItemAlertText, dentist, location } = this.state
+    const { inventory, selectItem, inventoryItem, procedureNames, selectProc, procSelect, procSelectId, redirect, procedures, loaded, currentSupplierValue, newItemAlert, newItemAlertText, deleteItemAlert, deleteItemAlertText, editItemAlert, editItemAlertText, dentist, location, deleteToken } = this.state
 
     if (loaded < 2) return <LoadingPage />
 
@@ -188,11 +188,14 @@ state = {
           newItemAlert: true,
           newItemAlertText: 'Procedure successfully logged'
         })
-      })
-      .catch(error => {
+      }).catch(error => {
         console.log(procedurePackage)
         console.log(error);
+        if (error.status === 401) {
+          deleteToken(token)
+        }
       });
+      
   }
 
   // handleSubmitProcedure = (procedure) => {
@@ -247,7 +250,12 @@ state = {
         editItemAlert: true,
         editItemAlertText: 'An Inventory Item has been updated!'
       })
-    })
+    }).catch(error => {
+      console.log(error);
+      if (error.status === 401) {
+        deleteToken(token)
+      }
+    });
   }
 
   handleNewItemSubmit = (event) => {
@@ -282,7 +290,12 @@ state = {
       this.setState({
         newItemAlert: true,
         newItemAlertText: 'New Item created!'
-      })
+      }).catch(error => {
+        console.log(error);
+        if (error.status === 401) {
+          deleteToken(token)
+        }
+      });
     })
   }
 
@@ -298,9 +311,12 @@ state = {
         deleteItemAlert: true,
         deleteItemAlertText: 'Item has been deleted from the Inventory.'
       })
-    })
-      .catch((err) => {
+      }).catch((err) => {
         console.log('An error ocurred while deleting the item')
+        console.log(error);
+        if (error.status === 401) {
+          deleteToken(token)
+        }
       })
   }
 
@@ -334,7 +350,12 @@ state = {
     
     api.post('/api/procedure', procedure).then(res => {
       this.updateExistingProcedures(res.data)
-    })
+    }).catch(error => {
+      console.log(error);
+      if (error.status === 401) {
+        deleteToken(token)
+      }
+    });
   }
   
   updateSupplierSearchId = ({ suggestion }) => {
@@ -421,6 +442,12 @@ state = {
       return { value: procedure._id, label: procedure.name }
     })
     this.setState({ procedureNames })    
+  }
+
+  deleteToken = (token) => {
+    this.setState({
+      token: null
+    })
   }
 
   // Rendering API Inventory request.
